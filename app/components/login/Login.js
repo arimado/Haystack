@@ -27,7 +27,6 @@ import _ from 'lodash';
 // -----------------------------------------------------------------------------
 
 // reducers.js currently holds the store object
-
 import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
 
@@ -67,12 +66,13 @@ class Login extends Component {
           </Text>
         </TouchableOpacity>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
+            { this.props.state.counter }
         </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <TouchableOpacity onPress={() => this.props.increaseCounter()}>
+          <Text style={styles.instructions}>
+            Add
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }

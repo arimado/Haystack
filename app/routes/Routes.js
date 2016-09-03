@@ -61,15 +61,6 @@ class Routes extends Component {
         if (scene.key === prefix + 'stacks') {
             return <StacksContainer _handleNavigate={this._handleNavigate.bind(this)} />
         }
-        // if (scene.key === prefix + 'decks') {
-        //     return <DecksContainer _handleNavigate={this._handleNavigate.bind(this)} />
-        // }
-        // if (scene.key === prefix + 'create_deck') {
-        //     return <CreateDeckContainer _handleNavigate={this._handleNavigate.bind(this)} />
-        // }
-        // if (scene.key === prefix + 'show_deck') {
-        //     return <ShowDeckContainer _handleNavigate={this._handleNavigate.bind(this)} />
-        // }
     }
 
     render() {

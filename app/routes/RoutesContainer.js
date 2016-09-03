@@ -1,8 +1,6 @@
 import { connect } from 'react-redux'
 import Routes from './Routes'
 
-
-
 // -----------------------------------------------------------------------------
 
 function mapStateToProps (state) {

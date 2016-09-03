@@ -2,6 +2,8 @@ import {
   connect
 } from 'react-redux';
 
+import { incrementCounter } from '../../store/actions'
+
 // -----------------------------------------------------------------------------
 
 import Login from './Login';
@@ -10,13 +12,13 @@ import Login from './Login';
 
 var mapStateToProps = (state) => {
   return {
-    state: state
+    state: state.main
   }
 }
 
 var mapDispatchToProps = (dispatch) => {
   return {
-    doSomething: arg => console.log('nice')
+    increaseCounter: arg => dispatch(incrementCounter(arg))
   }
 }
 
