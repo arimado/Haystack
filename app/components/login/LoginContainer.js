@@ -1,27 +1,6 @@
-import React, { Component } from 'react'
-
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  NavigationExperimental
-} from 'react-native'
-
-import {
-  createStore,
-  combineReducers,
-  applyMiddleware
-} from 'redux'
-
-import {
-  connect,
-  Provider
+  connect
 } from 'react-redux';
-
-import Thunk from 'redux-thunk';
-import Logger from 'redux-logger';
-import _ from 'lodash';
 
 // -----------------------------------------------------------------------------
 

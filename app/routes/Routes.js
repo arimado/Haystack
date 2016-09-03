@@ -23,6 +23,7 @@ const {
 } = NavigationExperimental
 
 import LoginContainer from '../components/login/LoginContainer';
+import StacksContainer from '../components/stacks/StacksContainer';
 
 class Routes extends Component {
 
@@ -57,9 +58,9 @@ class Routes extends Component {
         if (scene.key === prefix + 'login') {
             return  <LoginContainer _handleNavigate={this._handleNavigate.bind(this)} />
         }
-        // if (scene.key === prefix + 'sign_up') {
-        //     return <SignUpContainer _handleNavigate={this._handleNavigate.bind(this)} />
-        // }
+        if (scene.key === prefix + 'stacks') {
+            return <StacksContainer _handleNavigate={this._handleNavigate.bind(this)} />
+        }
         // if (scene.key === prefix + 'decks') {
         //     return <DecksContainer _handleNavigate={this._handleNavigate.bind(this)} />
         // }
@@ -72,6 +73,9 @@ class Routes extends Component {
     }
 
     render() {
+
+        console.log('routes StacksContainer: ', StacksContainer);
+        console.log('routes LoginContainer: ', LoginContainer);
 
         let navDirection = null;
         let routes = this.props.navigation.routes

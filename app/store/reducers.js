@@ -49,9 +49,11 @@ const isRootRoute = (state) => {
 const navReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'PUSH_ROUTE':
+            console.log('recieved PUSH_ROUTE Dispatch Request')
             if ( isSameRoute(state, action) ) return state;
             return NavigationStateUtils.push(state, action.route)
         case 'POP_ROUTE':
+            console.log('recieved POP_ROUTE Dispatch Request')
             if ( isRootRoute(state) ) return state;
             return NavigationStateUtils.pop(state);
         default:

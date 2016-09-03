@@ -5,7 +5,8 @@ import {
   StyleSheet,
   Text,
   View,
-  NavigationExperimental
+  NavigationExperimental,
+  TouchableOpacity
 } from 'react-native'
 
 import {
@@ -32,13 +33,39 @@ import RoutesContainer from '../../routes/RoutesContainer';
 
 // -----------------------------------------------------------------------------
 
+const SIGN_UP_ROUTE = {
+  type: 'push',
+  route: {
+    key: 'sign_up',
+    title: 'sign_up'
+  }
+}
+
+const STACKS_ROUTE = {
+  type: 'push',
+  route: {
+    key: 'stacks',
+    title: 'Stacks'
+  }
+}
+
+// -----------------------------------------------------------------------------
+
 class Login extends Component {
+
+  constructor(props, context) {
+    super(props);
+    console.log(props);
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Haystack
-        </Text>
+        <TouchableOpacity onPress={()=>{this.props._handleNavigate(STACKS_ROUTE)}} >
+          <Text style={styles.welcome}>
+            Haystack
+          </Text>
+        </TouchableOpacity>
         <Text style={styles.instructions}>
           To get started, edit index.ios.js
         </Text>
