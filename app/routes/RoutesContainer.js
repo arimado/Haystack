@@ -7,17 +7,12 @@ import Routes from './Routes'
 
 function mapStateToProps (state) {
   return {
-    state: state
+    navigation: state.navigation
   }
 }
 
 function mapDispatchToProps (dispatch) {
-  return {
-    pushRoute: (route) => dispatch({
-        type: 'PUSH_ROUTE',
-        route: route
-    })
-  }
+  return {}
 }
 
 export default connect(

@@ -10,7 +10,7 @@ import { AppRegistry } from 'react-native';
 
 // Components ------------------------------------------------------------------
 
-import Index from './app/components/index.js';
+import Index from './app/components/index';
 
 // -----------------------------------------------------------------------------
 

@@ -77,7 +77,7 @@ class Routes extends Component {
         let routes = this.props.navigation.routes
         let currentRoute = routes[routes.length - 1]
         if (currentRoute.direction) navDirection = currentRoute.direction;
-        
+
         return (
             <NavigationCardStack
               direction={navDirection}
@@ -87,5 +87,16 @@ class Routes extends Component {
         );
     }
 }
+
+// class Routes extends Component {
+//     constructor(props, context) {
+//         super(props, context)
+//     }
+//     render() {
+//         return (
+//             <NavigationCardStack/>
+//         );
+//     }
+// }
 
 export default Routes

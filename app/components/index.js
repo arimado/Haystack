@@ -25,52 +25,17 @@ import _ from 'lodash';
 
 // -----------------------------------------------------------------------------
 
+// reducers.js currently holds the store object
 
+import store from '../store/reducers';
+import RoutesContainer from '../routes/RoutesContainer';
+import Login from './login/Login';
 
-class Index extends Component {
-  render() {
+// -----------------------------------------------------------------------------
+
+const Index = () => {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Haystack
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-
-
-
-const App = () => {
-    return (
-        <Provider store={d1Store}>
+        <Provider store={store}>
             <RoutesContainer/>
         </Provider>
     )

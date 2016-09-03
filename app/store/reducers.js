@@ -60,24 +60,16 @@ const navReducer = (state = initialState, action) => {
 }
 
 const rootReducer = combineReducers({
-    decks: decks,
-    navigation: navReducer,
-    requests: requestsReducer,
-    session: sessionReducer
+    navigation: navReducer
 });
 
 
 const loggerMiddleware = Logger()
 
-const d1Store = createStore(
+const store = createStore(
     rootReducer,
     applyMiddleware( Thunk, loggerMiddleware )
 )
 
-const App = () => {
-    return (
-        <Provider store={d1Store}>
-            <RoutesContainer/>
-        </Provider>
-    )
-}
+
+export default store;
