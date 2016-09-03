@@ -1,12 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
-} from 'react-native';
+  View,
+  NavigationExperimental
+} from 'react-native'
 
-class Haystack extends Component {
+import {
+  createStore,
+  combineReducers,
+  applyMiddleware
+} from 'redux'
+
+import {
+  connect,
+  Provider
+} from 'react-redux';
+
+import Thunk from 'redux-thunk';
+import Logger from 'redux-logger';
+import _ from 'lodash';
+
+// -----------------------------------------------------------------------------
+
+
+
+class Index extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -44,4 +65,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Haystack;
+
+
+
+const App = () => {
+    return (
+        <Provider store={d1Store}>
+            <RoutesContainer/>
+        </Provider>
+    )
+}
+
+export default Index;
