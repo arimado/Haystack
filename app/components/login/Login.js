@@ -9,36 +9,16 @@ import {
   TouchableOpacity
 } from 'react-native'
 
-import {
-  createStore,
-  combineReducers,
-  applyMiddleware
-} from 'redux'
-
-import {
-  connect,
-  Provider
-} from 'react-redux';
-
-import Thunk from 'redux-thunk';
-import Logger from 'redux-logger';
 import _ from 'lodash';
 
 // -----------------------------------------------------------------------------
 
 // reducers.js currently holds the store object
+import styles from '../styles'
 import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
 
 // -----------------------------------------------------------------------------
-
-const SIGN_UP_ROUTE = {
-  type: 'push',
-  route: {
-    key: 'sign_up',
-    title: 'sign_up'
-  }
-}
 
 const STACKS_ROUTE = {
   type: 'push',
@@ -62,7 +42,7 @@ class Login extends Component {
       <View style={styles.container}>
         <TouchableOpacity onPress={()=>{this.props._handleNavigate(STACKS_ROUTE)}} >
           <Text style={styles.welcome}>
-            Haystack
+            HayStack
           </Text>
         </TouchableOpacity>
         <Text style={styles.instructions}>
@@ -77,24 +57,5 @@ class Login extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 export default Login
