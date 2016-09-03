@@ -22,7 +22,7 @@ const {
   StateUtils: NavigationStateUtils
 } = NavigationExperimental
 
-import Login from '../components/login/Login';
+import LoginContainer from '../components/login/LoginContainer';
 
 class Routes extends Component {
 
@@ -55,7 +55,7 @@ class Routes extends Component {
         const prefix = 'scene_'
         const { scene } = props
         if (scene.key === prefix + 'login') {
-            return  <Login _handleNavigate={this._handleNavigate.bind(this)} />
+            return  <LoginContainer _handleNavigate={this._handleNavigate.bind(this)} />
         }
         // if (scene.key === prefix + 'sign_up') {
         //     return <SignUpContainer _handleNavigate={this._handleNavigate.bind(this)} />

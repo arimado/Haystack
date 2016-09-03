@@ -12,7 +12,15 @@ function mapStateToProps (state) {
 }
 
 function mapDispatchToProps (dispatch) {
-  return {}
+  return {
+    pushRoute: (route) => dispatch({
+        type: 'PUSH_ROUTE',
+        route: route
+    }),
+    popRoute: () => dispatch({
+        type: 'POP_ROUTE'
+    })
+  }
 }
 
 export default connect(
