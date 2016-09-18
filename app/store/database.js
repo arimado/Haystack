@@ -10,7 +10,7 @@ var users = [
 var stacks = [
     {
         id: '#',
-        userId: '#'
+        userId: '#',
         stuff: '34',
     }
 ]
@@ -18,7 +18,7 @@ var stacks = [
 var questions = [
     {
         id: '#',
-        userId: '#'
+        userId: '#',
         stuff: '34',
     }
 ]
@@ -26,7 +26,7 @@ var questions = [
 var answers = [
     {
         id: '#',
-        userId: '#'
+        userId: '#',
         stuff: '34',
     }
 ]

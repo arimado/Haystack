@@ -23,7 +23,7 @@ const {
 } = NavigationExperimental
 
 import Login from '../components/login/Login';
-import Stacks from '../components/stacks/Stacks';
+import Index from '../components/index/Index';
 
 class Routes extends Component {
 
@@ -59,7 +59,7 @@ class Routes extends Component {
             return  <Login _handleNavigate={this._handleNavigate.bind(this)} />
         }
         if (scene.key === prefix + 'stacks') {
-            return <Stacks _handleNavigate={this._handleNavigate.bind(this)} />
+            return <Index _handleNavigate={this._handleNavigate.bind(this)} />
         }
     }
 
@@ -79,16 +79,5 @@ class Routes extends Component {
         );
     }
 }
-
-// class Routes extends Component {
-//     constructor(props, context) {
-//         super(props, context)
-//     }
-//     render() {
-//         return (
-//             <NavigationCardStack/>
-//         );
-//     }
-// }
 
 export default Routes

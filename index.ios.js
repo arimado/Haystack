@@ -10,8 +10,8 @@ import { AppRegistry } from 'react-native';
 
 // Components ------------------------------------------------------------------
 
-import Index from './app/components/index';
+import App from './app/components/App';
 
 // -----------------------------------------------------------------------------
 
-AppRegistry.registerComponent('Haystack', () => Index);
+AppRegistry.registerComponent('Haystack', () => App);
