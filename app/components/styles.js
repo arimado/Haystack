@@ -3,6 +3,10 @@ import {
 } from 'react-native'
 
 export default StyleSheet.create({
+  header: {
+    height: 30,
+    backgroundColor: 'grey'
+  },
   statusBarBg: {
     height: 20
   },

@@ -22,8 +22,8 @@ const {
   StateUtils: NavigationStateUtils
 } = NavigationExperimental
 
-import LoginContainer from '../components/login/LoginContainer';
-import StacksContainer from '../components/stacks/StacksContainer';
+import Login from '../components/login/Login';
+import Stacks from '../components/stacks/Stacks';
 
 class Routes extends Component {
 
@@ -56,17 +56,14 @@ class Routes extends Component {
         const prefix = 'scene_'
         const { scene } = props
         if (scene.key === prefix + 'login') {
-            return  <LoginContainer _handleNavigate={this._handleNavigate.bind(this)} />
+            return  <Login _handleNavigate={this._handleNavigate.bind(this)} />
         }
         if (scene.key === prefix + 'stacks') {
-            return <StacksContainer _handleNavigate={this._handleNavigate.bind(this)} />
+            return <Stacks _handleNavigate={this._handleNavigate.bind(this)} />
         }
     }
 
     render() {
-
-        console.log('routes StacksContainer: ', StacksContainer);
-        console.log('routes LoginContainer: ', LoginContainer);
 
         let navDirection = null;
         let routes = this.props.navigation.routes

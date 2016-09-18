@@ -18,7 +18,7 @@ import _ from 'lodash';
 import styles from '../styles'
 import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
-import HeaderContainer from '../header/HeaderContainer';
+import Header from '../shared/Header';
 
 // -----------------------------------------------------------------------------
 
@@ -31,8 +31,8 @@ const BACK = {
 class Stacks extends Component {
   render() {
     return (
-      <View>
-        <HeaderContainer/>
+      <View style={styles.header}>
+        <Header/>
         <TouchableOpacity onPress={()=>this.props._handleNavigate(BACK)}>
           <Text style={styles.welcome}>
             Stacks
@@ -43,4 +43,34 @@ class Stacks extends Component {
   }
 }
 
-export default Stacks
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// REDUX CONTAINER -------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
+import {
+  connect
+} from 'react-redux';
+
+// -----------------------------------------------------------------------------
+
+
+var mapStateToProps = (state) => {
+  return {
+    state: state
+  }
+}
+
+var mapDispatchToProps = (dispatch) => {
+  return {
+    doSomething: arg => console.log('nice')
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Stacks)
