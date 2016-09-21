@@ -22,6 +22,7 @@ const {
   StateUtils: NavigationStateUtils
 } = NavigationExperimental
 
+import Intro from '../components/intro/Intro'
 import Login from '../components/login/Login';
 import Index from '../components/index/Index';
 
@@ -56,7 +57,7 @@ class Routes extends Component {
         const prefix = 'scene_'
         const { scene } = props
         if (scene.key === prefix + 'login') {
-            return  <Login _handleNavigate={this._handleNavigate.bind(this)} />
+            return  <Intro _handleNavigate={this._handleNavigate.bind(this)} />
         }
         if (scene.key === prefix + 'stacks') {
             return <Index _handleNavigate={this._handleNavigate.bind(this)} />
