@@ -17,6 +17,9 @@ import _ from 'lodash';
 import styles from '../styles'
 import store from '../../store/reducers';
 
+import Header from '../shared/Header'
+import StatusBarBg from '../shared/StatusBarBg'
+
 // -----------------------------------------------------------------------------
 
 const STACKS_ROUTE = {
@@ -38,24 +41,41 @@ class CurrentComponent extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={()=>{this.props._handleNavigate(STACKS_ROUTE)}} >
-          <Text style={styles.welcome}>
-            HayStack (Index)
-          </Text>
-        </TouchableOpacity>
-        <Text style={styles.instructions}>
+      <View>
+        <StatusBarBg />
+        <Text>
             { this.props.state.counter }
         </Text>
-        <TouchableOpacity onPress={() => this.props.increaseCounter()}>
-          <Text style={styles.instructions}>
-            Add
-          </Text>
-        </TouchableOpacity>
+
+        <View style={style.bottomSection}>
+          <Text> Another element </Text>
+          <View style={style.bottomSectionChild}>
+            <TouchableOpacity onPress={()=>{this.props._handleNavigate(STACKS_ROUTE)}} >
+              <Text>
+                HayStack (Index)
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.increaseCounter()}>
+              <Text>
+                Add
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     );
   }
 }
+
+const style = StyleSheet.create({
+  bottomSection: {
+    backgroundColor: '#F5FCFF',
+  },
+  bottomSectionChild: {
+    flex: 1
+    
+  }
+})
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
