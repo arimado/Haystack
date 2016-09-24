@@ -41,25 +41,33 @@ class CurrentComponent extends Component {
 
   render() {
     return (
-      <View>
+      <View style={s.base}>
         <StatusBarBg />
-        <Text>
-            { this.props.state.counter }
-        </Text>
-
-        <View style={style.bottomSection}>
-          <Text> Another element </Text>
-          <View style={style.bottomSectionChild}>
-            <TouchableOpacity onPress={()=>{this.props._handleNavigate(STACKS_ROUTE)}} >
-              <Text>
-                HayStack (Index)
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => this.props.increaseCounter()}>
-              <Text>
-                Add
-              </Text>
-            </TouchableOpacity>
+        <View style={s.bg}>
+          <View style={s.topSection}>
+            <View style={s.contentSpacerTop}></View>
+            <View style={s.content}>
+              <Text style={s.logo}>HayStack</Text>
+              <Text style={s.tagLine}>Haystack is an app where you can meet people. Instead of swiping through faces like Tinder. You swipe through a set of questions that you write yourself. </Text>
+            </View>
+            <View style={s.contentSpacerBot}></View>
+          </View>
+          <View style={s.botSection}>
+            <View style={s.pagerParent}>
+              <View style={s.pager}>
+                <Text style={s.pagerItem}> 1 </Text>
+                <Text style={s.pagerItem}> 2 </Text>
+                <Text style={s.pagerItem}> 3 </Text>
+              </View>
+            </View>
+            <View style={s.buttonsParent}>
+              <TouchableOpacity style={s.button}>
+                <Text style={s.buttonText}> Quick Start </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={s.button}>
+                <Text style={s.buttonText}> Create Profile </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
@@ -67,14 +75,76 @@ class CurrentComponent extends Component {
   }
 }
 
-const style = StyleSheet.create({
-  bottomSection: {
-    backgroundColor: '#F5FCFF',
-  },
-  bottomSectionChild: {
+const s = StyleSheet.create({
+  base: {
     flex: 1
-    
+  },
+  bg: {
+    flex: 1,
+    backgroundColor: 'cornflowerblue'
+  },
+  topSection: {
+    backgroundColor: 'burlywood',
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+
+  contentSpacerTop: {
+    flex: 0.3
+  },
+
+  content: {
+    backgroundColor: 'lemonchiffon',
+    padding: 20,
+    flex: 1
+  },
+
+    logo: {
+      fontSize: 40
+    },
+
+  contentSpacerBot: {
+    flex: 0.2
+  },
+
+  botSection: {
+    backgroundColor: 'coral',
+    flex: 0.3
+  },
+  bottomSection: {
+    backgroundColor: '#F5FCFF'
+  },
+  pagerParent: {
+    backgroundColor: 'chartreuse',
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1
+  },
+    pager: {
+      flex: 1,
+      flexDirection: 'row',
+    },
+      pagerItem: {
+        flex: 1,
+        textAlign: 'center',
+        color: 'cornsilk'
+      },
+  buttonsParent: {
+    backgroundColor: 'blueviolet',
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'center',
+  },
+  button: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  buttonText: {
+    color: 'cornsilk',
+    textAlign: 'center'
   }
+
 })
 
 // -----------------------------------------------------------------------------
