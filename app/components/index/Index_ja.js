@@ -34,6 +34,7 @@ class Stacks extends Component {
   render() {
     return (
       <View style={S.base}>
+        <Header />
         <TouchableOpacity onPress={()=>this.props._handleNavigate(BACK)}>
           <Text style={styles.welcome}>
             Stacks

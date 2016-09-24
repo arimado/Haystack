@@ -17,6 +17,7 @@ import {
   TouchableOpacity,
 
 } from 'react-native'
+import S from '../styles/styles'
 
 import _ from 'lodash';
 
@@ -33,12 +34,36 @@ const Header = () => {
   return (
     <View>
       <StatusBarBg/>
-      <View>
-        <Text>Header!</Text>
+      <View style={s.container}>
+        <TouchableOpacity style={s.button}>
+            <Text style={s.buttonText}> M </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={s.button}>
+            <Text style={s.buttonText}> M </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={s.button}>
+            <Text style={s.buttonText}> M </Text>
+        </TouchableOpacity>
       </View>
     </View>
   )
 }
+
+const s = StyleSheet.create({
+  container: {
+    backgroundColor: 'rebeccapurple',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  button: {
+    padding: 20,
+    backgroundColor: 'plum'
+  },
+  buttonText: {
+    color: 'white',
+
+  }
+})
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
