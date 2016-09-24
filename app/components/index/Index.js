@@ -9,6 +9,8 @@ import {
   TouchableOpacity
 } from 'react-native'
 
+import S from '../styles/styles.js';
+
 import _ from 'lodash';
 
 // -----------------------------------------------------------------------------
@@ -31,8 +33,7 @@ const BACK = {
 class Stacks extends Component {
   render() {
     return (
-      <View style={styles.header}>
-        <Header/>
+      <View style={S.base}>
         <TouchableOpacity onPress={()=>this.props._handleNavigate(BACK)}>
           <Text style={styles.welcome}>
             Stacks

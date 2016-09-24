@@ -49,7 +49,7 @@ const initialNavState = {
     key: 'root',
     routes: [
         {
-            key: 'login',
+            key: 'index',
             title: 'Welcome',
         }
     ]

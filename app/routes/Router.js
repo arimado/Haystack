@@ -56,10 +56,10 @@ class Routes extends Component {
 
         const prefix = 'scene_'
         const { scene } = props
-        if (scene.key === prefix + 'login') {
+        if (scene.key === prefix + 'intro') {
             return  <Intro _handleNavigate={this._handleNavigate.bind(this)} />
         }
-        if (scene.key === prefix + 'stacks') {
+        if (scene.key === prefix + 'index') {
             return <Index _handleNavigate={this._handleNavigate.bind(this)} />
         }
     }

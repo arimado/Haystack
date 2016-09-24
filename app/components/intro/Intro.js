@@ -16,16 +16,15 @@ import _ from 'lodash';
 // reducers.js currently holds the store object
 import styles from '../styles'
 import store from '../../store/reducers';
-
-import Header from '../shared/Header'
-import StatusBarBg from '../shared/StatusBarBg'
+import Header from '../shared/Header';
+import StatusBarBg from '../shared/StatusBarBg';
 
 // -----------------------------------------------------------------------------
 
-const STACKS_ROUTE = {
+const INDEX_ROUTE = {
   type: 'push',
   route: {
-    key: 'stacks',
+    key: 'index',
     title: 'Stacks'
   }
 }
@@ -36,7 +35,6 @@ class CurrentComponent extends Component {
 
   constructor(props, context) {
     super(props);
-    console.log(props);
   }
 
   render() {
@@ -61,7 +59,7 @@ class CurrentComponent extends Component {
               </View>
             </View>
             <View style={s.buttonsParent}>
-              <TouchableOpacity style={s.button} onPress={() => this.props._handleNavigate(STACKS_ROUTE)}>
+              <TouchableOpacity style={s.button} onPress={() => this.props._handleNavigate(INDEX_ROUTE)}>
                 <Text style={s.buttonText}> Quick Start </Text>
               </TouchableOpacity>
               <TouchableOpacity style={s.button}>
