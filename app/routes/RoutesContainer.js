@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Routes from './Routes'
+import Router from './Router'
 
 // -----------------------------------------------------------------------------
 
@@ -24,4 +24,4 @@ function mapDispatchToProps (dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Routes)
+)(Router)

@@ -25,8 +25,8 @@ import StatusBarBg from '../shared/StatusBarBg'
 const STACKS_ROUTE = {
   type: 'push',
   route: {
-    key: 'login',
-    title: 'Login'
+    key: 'stacks',
+    title: 'Stacks'
   }
 }
 
@@ -61,7 +61,7 @@ class CurrentComponent extends Component {
               </View>
             </View>
             <View style={s.buttonsParent}>
-              <TouchableOpacity style={s.button}>
+              <TouchableOpacity style={s.button} onPress={() => this.props._handleNavigate(STACKS_ROUTE)}>
                 <Text style={s.buttonText}> Quick Start </Text>
               </TouchableOpacity>
               <TouchableOpacity style={s.button}>
