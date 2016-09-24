@@ -8,16 +8,16 @@ import {
   NavigationExperimental,
   TouchableOpacity
 } from 'react-native'
+import SwipeCards from 'react-native-swipe-cards';
+
 
 import S from '../styles/styles.js';
-
 import _ from 'lodash';
 
 // -----------------------------------------------------------------------------
 
 // reducers.js currently holds the store object
 
-import styles from '../styles'
 import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
 import Header from '../shared/Header';
@@ -28,21 +28,61 @@ const BACK = {
   type: 'pop'
 }
 
+const Cards = [
+  {text: 'Tomato', backgroundColor: 'red'},
+  {text: 'Aubergine', backgroundColor: 'purple'},
+  {text: 'Courgette', backgroundColor: 'green'},
+  {text: 'Blueberry', backgroundColor: 'blue'},
+  {text: 'Umm...', backgroundColor: 'cyan'},
+  {text: 'orange', backgroundColor: 'orange'},
+]
+
 // -----------------------------------------------------------------------------
 
-class Stacks extends Component {
+class Card extends Component {
   render() {
     return (
-      <View style={S.base}>
-        <TouchableOpacity onPress={()=>this.props._handleNavigate(BACK)}>
-          <Text style={styles.welcome}>
-            Stacks
-          </Text>
-        </TouchableOpacity>
+      <View style={[styles.card, {backgroundColor: this.props.backgroundColor}]}>
+        <Text>{this.props.text}</Text>
       </View>
-    );
+    )
   }
 }
+
+class Stacks extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { cards: Cards }
+  }
+  handleYup (card) {
+   console.log(`Yup for ${card.text}`)
+  }
+  handleNope (card) {
+   console.log(`Nope for ${card.text}`)
+  }
+  render() {
+   return (
+     <SwipeCards
+       cards={this.state.cards}
+       renderCard={(cardData) => <Card {...cardData} />}
+       renderNoMoreCards={() => <NoMoreCards />}
+       handleYup={this.handleYup}
+       handleNope={this.handleNope}
+     />
+   )
+  }
+}
+
+
+const styles = StyleSheet.create({
+  card: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 300,
+    height: 300,
+  }
+})
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
