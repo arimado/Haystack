@@ -36,6 +36,7 @@ const BACK = {
 class Stack extends Component {
   constructor(props) {
     super(props)
+
     this.state = {
       bounceValue: new Animated.Value(0),
       pan: new Animated.ValueXY(),
@@ -45,10 +46,8 @@ class Stack extends Component {
 
   componentWillMount() {
     this._panResponder = PanResponder.create({
-
       onMoveShouldSetResponderCapture: () => true,
       onMoveShouldSetPanResponderCapture: () => true,
-
       onPanResponderGrant: (e, gestureState) => {
 
         this.state.pan.setOffset({x: this.state.pan.x._value, y: this.state.pan.y._value});
@@ -105,6 +104,9 @@ class Stack extends Component {
 }
 
 class Stacks extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <View style={S.base}>

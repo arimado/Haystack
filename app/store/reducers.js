@@ -20,14 +20,16 @@ const {
   StateUtils: NavigationStateUtils
 } = NavigationExperimental
 
+import db from './database'
+
 // STATE REDUCERS --------------------------------------------------------------
 
 const initialMainState = {
   isFetching: false,
-  stacks: [],
-  questions: [],
-  answers: [],
-  users: [],
+  stacks: db.stacks,
+  questions: db.questions,
+  answers: db.answers,
+  users: db.users,
   counter: 0
 }
 

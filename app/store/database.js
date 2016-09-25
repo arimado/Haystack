@@ -1,13 +1,3 @@
-
-// const initialMainState = {
-//   isFetching: false,
-//   stacks: [],
-//   questions: [],
-//   answers: [],
-//   users: [],
-//   counter: 0
-// }
-
 var users = [
     { name: 'Jeremy'
     , age:      '24'
@@ -97,8 +87,9 @@ var answers = [
     { id: '1'
     , questionId: '1'
     , value: 'Blue'
-    , isCorrect: 'true' },
+    , isCorrect: 'true' }
 ]
 
+const db = { users: users, stacks: stacks, questions: questions, answers: answers }
 
-default export { users, stacks, questions, answers }
+export default db;
