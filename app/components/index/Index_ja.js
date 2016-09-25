@@ -74,11 +74,13 @@ class Stack extends Component {
     let { pan, scale } = this.state;
     let [translateX, translateY] = [pan.x, pan.y];
     let rotate = '0deg';
-    let boxStyle = {transform: [{translateX}, {translateY}, {rotate}, {scale}]};
+    let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}]};
 
     return (
-      <Animated.View style={[s.stackContainer, boxStyle]} {...this._panResponder.panHandlers}>
-        <Text> Animated view </Text>
+      <Animated.View style={[s.stackContainer, transform]} {...this._panResponder.panHandlers}>
+        <View>
+          <Text> Animated view </Text>
+        </View>
       </Animated.View>
     )
   }
@@ -105,9 +107,6 @@ class Stacks extends Component {
     return (
       <View style={S.base}>
         <Header />
-        <TouchableOpacity onPress={()=>this.props._handleNavigate(BACK)}>
-
-        </TouchableOpacity>
         <Stack />
       </View>
     );
@@ -117,8 +116,8 @@ class Stacks extends Component {
 
 const style = (c) => (StyleSheet.create({
   stackContainer: {
-    width: 100,
-    height: 100,
+    flex: 1,
+    margin: 10,
     backgroundColor: 'blueviolet'
   }
 }))
