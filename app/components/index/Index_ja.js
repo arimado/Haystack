@@ -58,6 +58,12 @@ class Stack extends Component {
       onPanResponderMove: Animated.event([ null, {dx: this.state.pan.x, dy: this.state.pan.y},]),
       onPanResponderRelease: (e, {vx, vy}) => {
         this.state.pan.flattenOffset();
+
+        Animated.spring(this.state.pan, {
+            toValue: {x: 0, y: 0},
+            friction: 3
+          }).start()
+
       }
     });
   }
