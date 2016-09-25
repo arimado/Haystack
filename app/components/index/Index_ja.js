@@ -33,23 +33,7 @@ const BACK = {
 
 // -----------------------------------------------------------------------------
 
-
 class Stack extends Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    return (
-      <Animated.View>
-        <View>
-          <Text> Animated view </Text>
-        </View>
-      </Animated.View>
-    )
-  }
-}
-
-class Stacks extends Component {
   constructor(props) {
     super(props)
 
@@ -93,12 +77,8 @@ class Stacks extends Component {
     let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", "0deg", "30deg"]});
     let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}]};
 
-    let stacks = [1, 2, 3].map((n, i) => <Animated.View key={i} style={[s.stackContainer, transform]} {...this._panResponder.panHandlers}/>)
-
     return (
-      <View style={{flex: 1}}>
-        {stacks}
-      </View>
+        <Animated.View style={[s.stackContainer, transform]} {...this._panResponder.panHandlers}/>
     )
   }
 
@@ -123,10 +103,15 @@ class Index extends Component {
     super(props);
   }
   render() {
+    const s = style(this);
     return (
       <View style={S.base}>
         <Header />
-        <Stacks mainState={this.props.state.main}/>
+        <View style={s.stacksContainer}>
+          <Stack mainState={this.props.state.main}/>
+          <Stack mainState={this.props.state.main}/>
+          <Stack mainState={this.props.state.main}/>
+        </View>
       </View>
     );
   }
@@ -134,7 +119,17 @@ class Index extends Component {
 
 
 const style = (c) => (StyleSheet.create({
+  stacksContainer: {
+    flex: 1,
+    backgroundColor: 'darksalmon',
+    position: 'relative'
+  },
   stackContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
     flex: 1,
     margin: 10,
     backgroundColor: 'blueviolet'
