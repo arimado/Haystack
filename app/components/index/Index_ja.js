@@ -38,7 +38,8 @@ class Stack extends Component {
     super(props)
     this.state = {
       bounceValue: new Animated.Value(0),
-      pan: new Animated.ValueXY()
+      pan: new Animated.ValueXY(),
+      scale: new Animated.Value(1)
     }
   }
 
@@ -47,25 +48,33 @@ class Stack extends Component {
       onMoveShouldSetResponderCapture: () => true,
       onMoveShouldSetPanResponderCapture: () => true,
       onPanResponderGrant: (e, gestureState) => {
+        this.state.pan.setOffset({x: this.state.pan.x._value, y: this.state.pan.y._value});
         this.state.pan.setValue({x: 0, y: 0});
+        Animated.spring(
+          this.state.scale,
+          { toValue: 1.1, friction: 3 }
+        ).start();
       },
       onPanResponderMove: Animated.event([ null, {dx: this.state.pan.x, dy: this.state.pan.y},]),
-
-      onPanResponderRelease: (e, {vx, vy}) => {}
+      onPanResponderRelease: (e, {vx, vy}) => {
+        this.state.pan.flattenOffset();
+        Animated.spring(
+          this.state.scale,
+          { toValue: 1, friction: 3 }
+        ).start();
+      }
     });
   }
 
   render(){
+    console.log('render!')
     const s = style(this);
 
-    // Destructure the value of pan from the state
-    let { pan } = this.state;
-
-    // Calculate the x and y transform from the pan value
+    // get the pan positions
+    let { pan, scale } = this.state;
     let [translateX, translateY] = [pan.x, pan.y];
-
-    // Calculate the transform property and set it as a value for our style which we add below to the Animated.View component
-    let boxStyle = {transform: [{translateX}, {translateY}]};
+    let rotate = '0deg';
+    let boxStyle = {transform: [{translateX}, {translateY}, {rotate}, {scale}]};
 
     return (
       <Animated.View style={[s.stackContainer, boxStyle]} {...this._panResponder.panHandlers}>
@@ -84,6 +93,11 @@ class Stack extends Component {
       }
     ).start();
   }
+
+  componentWillUpdate() {
+    console.log('component updated');
+  }
+
 }
 
 class Stacks extends Component {
