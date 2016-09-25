@@ -16,16 +16,16 @@ var users = [
 var stacks = [
     { id: '1'
     , userId: '1'
-    , colorScheme: 'blue' },
+    , colorScheme: 'crimson' },
     { id: '2'
     , userId: '2'
-    , colorScheme: 'blue' },
+    , colorScheme: 'darkseagreen' },
     { id: '3'
     , userId: '3'
-    , colorScheme: 'blue' },
+    , colorScheme: 'slateblue' },
     { id: '4'
     , userId: '4'
-    , colorScheme: 'blue' },
+    , colorScheme: 'crimson' },
 ]
 
 var questions = [
