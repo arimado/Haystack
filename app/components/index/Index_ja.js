@@ -6,7 +6,8 @@ import {
   Text,
   View,
   NavigationExperimental,
-  TouchableOpacity
+  TouchableOpacity,
+  Animated
 } from 'react-native'
 
 import S from '../styles/styles.js';
@@ -22,6 +23,7 @@ import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
 import Header from '../shared/Header';
 
+
 // -----------------------------------------------------------------------------
 
 const BACK = {
@@ -30,6 +32,35 @@ const BACK = {
 
 // -----------------------------------------------------------------------------
 
+class Stack extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      bounceValue: new Animated.Value(0)
+    }
+  }
+
+  render(){
+    const s = style(this);
+    return (
+      <Animated.View style={s.stackContainer}>
+        <Text> Animated view </Text>
+      </Animated.View>
+    )
+  }
+
+  componentDidMount() {
+    this.state.bounceValue.setValue(1.5);
+    Animated.spring(
+      this.state.bounceValue,
+      {
+        toValue: 0.8,
+        friction: 1
+      }
+    ).start();
+  }
+}
+
 class Stacks extends Component {
   render() {
     return (
@@ -37,13 +68,25 @@ class Stacks extends Component {
         <Header />
         <TouchableOpacity onPress={()=>this.props._handleNavigate(BACK)}>
           <Text style={styles.welcome}>
-            Stacks
+            <Stack />
           </Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
+
+
+const style = (c) => (StyleSheet.create({
+  stackContainer: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'blueviolet',
+    flex: 1,
+    transform: [ { scale: c.state.bounceValue ? c.state.bounceValue : 0 } ]
+  }
+}))
+
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
