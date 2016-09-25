@@ -33,7 +33,23 @@ const BACK = {
 
 // -----------------------------------------------------------------------------
 
+
 class Stack extends Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return (
+      <Animated.View>
+        <View>
+          <Text> Animated view </Text>
+        </View>
+      </Animated.View>
+    )
+  }
+}
+
+class Stacks extends Component {
   constructor(props) {
     super(props)
 
@@ -77,12 +93,12 @@ class Stack extends Component {
     let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", "0deg", "30deg"]});
     let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}]};
 
+    let stacks = [1, 2, 3].map((n, i) => <Animated.View key={i} style={[s.stackContainer, transform]} {...this._panResponder.panHandlers}/>)
+
     return (
-      <Animated.View style={[s.stackContainer, transform]} {...this._panResponder.panHandlers}>
-        <View>
-          <Text> Animated view </Text>
-        </View>
-      </Animated.View>
+      <View style={{flex: 1}}>
+        {stacks}
+      </View>
     )
   }
 
@@ -98,12 +114,11 @@ class Stack extends Component {
   }
 
   componentWillUpdate() {
-    console.log('component updated');
   }
 
 }
 
-class Stacks extends Component {
+class Index extends Component {
   constructor(props) {
     super(props);
   }
@@ -111,7 +126,7 @@ class Stacks extends Component {
     return (
       <View style={S.base}>
         <Header />
-        <Stack />
+        <Stacks mainState={this.props.state.main}/>
       </View>
     );
   }
@@ -157,4 +172,4 @@ var mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Stacks)
+)(Index)
