@@ -45,23 +45,19 @@ class Stack extends Component {
 
   componentWillMount() {
     this._panResponder = PanResponder.create({
+
       onMoveShouldSetResponderCapture: () => true,
       onMoveShouldSetPanResponderCapture: () => true,
+
       onPanResponderGrant: (e, gestureState) => {
+
         this.state.pan.setOffset({x: this.state.pan.x._value, y: this.state.pan.y._value});
         this.state.pan.setValue({x: 0, y: 0});
-        Animated.spring(
-          this.state.scale,
-          { toValue: 1.1, friction: 3 }
-        ).start();
+
       },
       onPanResponderMove: Animated.event([ null, {dx: this.state.pan.x, dy: this.state.pan.y},]),
       onPanResponderRelease: (e, {vx, vy}) => {
         this.state.pan.flattenOffset();
-        Animated.spring(
-          this.state.scale,
-          { toValue: 1, friction: 3 }
-        ).start();
       }
     });
   }
@@ -73,7 +69,7 @@ class Stack extends Component {
     // get the pan positions
     let { pan, scale } = this.state;
     let [translateX, translateY] = [pan.x, pan.y];
-    let rotate = '0deg';
+    let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", "0deg", "30deg"]});
     let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}]};
 
     return (
