@@ -16,7 +16,7 @@ var users = [
 var stacks = [
     { id: '1'
     , userId: '1'
-    , colorScheme: 'crimson' },
+    , colorScheme: 'yellow' },
     { id: '2'
     , userId: '2'
     , colorScheme: 'darkseagreen' },

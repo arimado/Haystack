@@ -36,11 +36,11 @@ const BACK = {
 class Stack extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       bounceValue: new Animated.Value(0),
       pan: new Animated.ValueXY(),
-      scale: new Animated.Value(1)
+      scale: new Animated.Value(1),
+      rotate: new Animated.Value(1)
     }
   }
 
@@ -49,7 +49,6 @@ class Stack extends Component {
       onMoveShouldSetResponderCapture: () => true,
       onMoveShouldSetPanResponderCapture: () => true,
       onPanResponderGrant: (e, gestureState) => {
-
         this.state.pan.setOffset({x: this.state.pan.x._value, y: this.state.pan.y._value});
         this.state.pan.setValue({x: 0, y: 0});
 
@@ -57,24 +56,21 @@ class Stack extends Component {
       onPanResponderMove: Animated.event([ null, {dx: this.state.pan.x, dy: this.state.pan.y},]),
       onPanResponderRelease: (e, {vx, vy}) => {
         this.state.pan.flattenOffset();
-
         Animated.spring(this.state.pan, {
             toValue: {x: 0, y: 0},
             friction: 3
           }).start()
-
       }
     });
   }
 
   render(){
-    console.log('render!')
+    console.log('this.props.data: ', this.props.data.id)
     const s = style(this);
-
     // get the pan positions
     let { pan, scale } = this.state;
     let [translateX, translateY] = [pan.x, pan.y];
-    let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", "0deg", "30deg"]});
+    let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `-${this.props.data.id/3}deg`, "30deg"]});
     let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}]};
 
     return (
@@ -111,7 +107,7 @@ const style = (c) => (StyleSheet.create({
     top: 0,
     bottom: 0,
     flex: 1,
-    margin: 10,
+    margin: 15,
     backgroundColor: c.props.data.colorScheme
   }
 }))
