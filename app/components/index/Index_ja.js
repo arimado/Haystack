@@ -41,7 +41,10 @@ class Index extends Component {
   }
   render() {
     const s = style(this);
-    let { stacks } = this.props.state.main
+    // only render 4 stacks from visibleStack
+    let { stacks } = this.props.state.main;
+          stacks   = stacks.slice(0, 4);
+          
     return (
       <View style={S.base}>
         <Header />

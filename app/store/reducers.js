@@ -26,6 +26,7 @@ import db from './database'
 
 const initialMainState = {
   isFetching: false,
+  visibleStack: 0,
   stacks: db.stacks,
   questions: db.questions,
   answers: db.answers,
