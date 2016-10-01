@@ -41,15 +41,16 @@ class Index extends Component {
   }
   render() {
     const s = style(this);
+
     // only render 4 stacks from visibleStack
-    let { stacks } = this.props.state.main;
-          stacks   = stacks.slice(0, 4);
-          
+    let { stacks, visibleStack } = this.props.state.main;
+    let currentStacks = stacks.slice(visibleStack, 4);
+    
     return (
       <View style={S.base}>
         <Header />
         <View style={s.stacksContainer}>
-          {stacks.map((stack, i) => (<Stack key={i} data={stack}/>))}
+          {currentStacks.map((stack, i) => (<Stack key={i} data={stack}/>))}
         </View>
       </View>
     );
