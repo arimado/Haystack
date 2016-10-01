@@ -24,7 +24,6 @@ import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
 import Header from '../shared/Header';
 
-
 // -----------------------------------------------------------------------------
 
 const BACK = {
@@ -51,15 +50,18 @@ class Stack extends Component {
       onPanResponderGrant: (e, gestureState) => {
         this.state.pan.setOffset({x: this.state.pan.x._value, y: this.state.pan.y._value});
         this.state.pan.setValue({x: 0, y: 0});
-
       },
       onPanResponderMove: Animated.event([ null, {dx: this.state.pan.x, dy: this.state.pan.y},]),
       onPanResponderRelease: (e, {vx, vy}) => {
+
+        // IF you release beyond the swipe threshold then fire the next card event
+
+        // Go back to initial position
         this.state.pan.flattenOffset();
         Animated.spring(this.state.pan, {
             toValue: {x: 0, y: 0},
             friction: 3
-          }).start()
+        }).start()
       }
     });
   }
@@ -70,8 +72,12 @@ class Stack extends Component {
     // get the pan positions
     let { pan, scale } = this.state;
     let [translateX, translateY] = [pan.x, pan.y];
-    let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `-${this.props.data.id/3}deg`, "30deg"]});
-    let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}]};
+    // rotate intital start state of stack based on id
+    // probably should update this
+    let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `-${this.props.data.id/2}deg`, "30deg"]});
+    let opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.4, 1, 0.4]})
+    // transform position based on pan state
+    let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity: opacity};
 
     return (
         <Animated.View style={[s.stackContainer, transform]} {...this._panResponder.panHandlers}/>
@@ -82,10 +88,7 @@ class Stack extends Component {
     this.state.bounceValue.setValue(1.5);
     Animated.spring(
       this.state.bounceValue,
-      {
-        toValue: 0.8,
-        friction: 1
-      }
+      { toValue: 0.8, friction: 1 }
     ).start();
   }
 

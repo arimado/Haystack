@@ -26,6 +26,78 @@ var stacks = [
     { id: '4'
     , userId: '4'
     , colorScheme: 'crimson' },
+    { id: '5'
+    , userId: '5'
+    , colorScheme: 'yellow' },
+    { id: '6'
+    , userId: '6'
+    , colorScheme: 'darkseagreen' },
+    { id: '7'
+    , userId: '7'
+    , colorScheme: 'slateblue' },
+    { id: '8'
+    , userId: '8'
+    , colorScheme: 'crimson' },
+    { id: '9'
+    , userId: '9'
+    , colorScheme: 'yellow' },
+    { id: '10'
+    , userId: '10'
+    , colorScheme: 'darkseagreen' },
+    { id: '11'
+    , userId: '11'
+    , colorScheme: 'slateblue' },
+    { id: '12'
+    , userId: '12'
+    , colorScheme: 'crimson' },
+    { id: '13'
+    , userId: '13'
+    , colorScheme: 'yellow' },
+    { id: '14'
+    , userId: '14'
+    , colorScheme: 'darkseagreen' },
+    { id: '15'
+    , userId: '15'
+    , colorScheme: 'slateblue' },
+    { id: '16'
+    , userId: '16'
+    , colorScheme: 'crimson' },
+    { id: '17'
+    , userId: '17'
+    , colorScheme: 'yellow' },
+    { id: '18'
+    , userId: '18'
+    , colorScheme: 'darkseagreen' },
+    { id: '19'
+    , userId: '19'
+    , colorScheme: 'slateblue' },
+    { id: '20'
+    , userId: '20'
+    , colorScheme: 'crimson' },
+    { id: '21'
+    , userId: '21'
+    , colorScheme: 'yellow' },
+    { id: '22'
+    , userId: '22'
+    , colorScheme: 'darkseagreen' },
+    { id: '23'
+    , userId: '23'
+    , colorScheme: 'slateblue' },
+    { id: '24'
+    , userId: '24'
+    , colorScheme: 'crimson' },
+    { id: '25'
+    , userId: '25'
+    , colorScheme: 'yellow' },
+    { id: '26'
+    , userId: '26'
+    , colorScheme: 'darkseagreen' },
+    { id: '27'
+    , userId: '27'
+    , colorScheme: 'slateblue' },
+    { id: '28'
+    , userId: '28'
+    , colorScheme: 'crimson' },
 ]
 
 var questions = [
