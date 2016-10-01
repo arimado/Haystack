@@ -26,8 +26,15 @@ import Header from '../shared/Header';
 
 // -----------------------------------------------------------------------------
 
-const BACK = {
-  type: 'pop'
+const BACK = { type: 'pop'};
+const SWIPE_THRESHOLD = 150;
+
+// -----------------------------------------------------------------------------
+
+const nextCardState = (component) => {
+  return (cb) => {
+    cb();
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -55,16 +62,30 @@ class Stack extends Component {
       },
       onPanResponderMove: Animated.event([ null, {dx: this.state.pan.x, dy: this.state.pan.y},]),
       onPanResponderRelease: (e, {vx, vy}) => {
-        // IF you release beyond the swipe threshold then fire the next card event
+        // JA
+        // Dont get what this is lol
 
-        nextCard();
-
-        // Go back to initial position
         this.state.pan.flattenOffset();
-        Animated.spring(this.state.pan, {
-            toValue: {x: 0, y: 0},
-            friction: 3
-        }).start()
+
+        // IF you release beyond the swipe threshold then fire the next card event
+        // nextCard();
+
+        let swipeDistance = Math.abs(this.state.pan.x._value);
+        if (swipeDistance > SWIPE_THRESHOLD) {
+          Animated.decay(this.state.pan, {
+            velocity: {x: 0, y: 0},
+            deceleration: 0.97
+          }).start(this._nextCardState())
+        } else {
+          // Go back to initial position
+          Animated.spring(this.state.pan, {
+              toValue: {x: 0, y: 0},
+              friction: 3
+          }).start()
+        }
+
+
+
       }
     });
   }
@@ -84,7 +105,7 @@ class Stack extends Component {
     let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `-${this.props.data.id/2}deg`, "30deg"]});
     let opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.4, 1, 0.4]})
     // transform position based on pan state
-    let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity: opacity};
+    let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity};
 
     // JSX ----------------------------
 
@@ -102,7 +123,9 @@ class Stack extends Component {
     ).start();
   }
 
-  componentWillUpdate() {
+  _nextCardState() {
+    this.state.pan.setValue({x: 0, y: 0});
+    this.props.nextCard();
   }
 
 }

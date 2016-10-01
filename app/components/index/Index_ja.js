@@ -45,8 +45,6 @@ class Index extends Component {
     let { stacks, visibleStack } = this.props.state.main;
     let currentStacks = stacks.slice(visibleStack, visibleStack + 4).reverse();
 
-    console.log('currentStacks: ', currentStacks);
-
     return (
       <View style={S.base}>
         <Header />
