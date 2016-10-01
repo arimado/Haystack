@@ -44,6 +44,9 @@ class Stack extends Component {
   }
 
   componentWillMount() {
+
+    let { nextCard } = this.props;
+
     this._panResponder = PanResponder.create({
       onMoveShouldSetResponderCapture: () => true,
       onMoveShouldSetPanResponderCapture: () => true,
@@ -53,8 +56,9 @@ class Stack extends Component {
       },
       onPanResponderMove: Animated.event([ null, {dx: this.state.pan.x, dy: this.state.pan.y},]),
       onPanResponderRelease: (e, {vx, vy}) => {
-
         // IF you release beyond the swipe threshold then fire the next card event
+
+        nextCard();
 
         // Go back to initial position
         this.state.pan.flattenOffset();
@@ -66,8 +70,12 @@ class Stack extends Component {
     });
   }
 
+  // RENDER --------------------------------------------------------------------
+
   render(){
-    console.log('this.props.data: ', this.props.data.id)
+
+    // visuals ----------------------------
+
     const s = style(this);
     // get the pan positions
     let { pan, scale } = this.state;
@@ -79,8 +87,11 @@ class Stack extends Component {
     // transform position based on pan state
     let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity: opacity};
 
+    // JSX ----------------------------
+
     return (
-        <Animated.View style={[s.stackContainer, transform]} {...this._panResponder.panHandlers}/>
+        <Animated.View style={[s.stackContainer, transform]} {...this._panResponder.panHandlers}>
+        </Animated.View>
     )
   }
 
@@ -130,6 +141,8 @@ import {
 
 // -----------------------------------------------------------------------------
 
+import { nextCard } from '../../store/actions'
+
 
 var mapStateToProps = (state) => {
   return {
@@ -139,7 +152,8 @@ var mapStateToProps = (state) => {
 
 var mapDispatchToProps = (dispatch) => {
   return {
-    doSomething: arg => console.log('nice')
+    doSomething: arg => console.log('nice'),
+    nextCard: () => dispatch(nextCard())
   }
 }
 

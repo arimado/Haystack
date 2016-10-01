@@ -119,15 +119,15 @@ const s = StyleSheet.create({
     alignItems: 'center',
     flex: 1
   },
-    pager: {
+  pager: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+    pagerItem: {
       flex: 1,
-      flexDirection: 'row',
+      textAlign: 'center',
+      color: 'cornsilk'
     },
-      pagerItem: {
-        flex: 1,
-        textAlign: 'center',
-        color: 'cornsilk'
-      },
   buttonsParent: {
     backgroundColor: 'blueviolet',
     flexDirection: 'row',

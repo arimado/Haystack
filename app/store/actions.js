@@ -1,18 +1,21 @@
-export const ADD_STACK = 'ADD_STACK';
-export const addDeck = ( deck ) => {
-    return {
-        type: ADD_STACK,
-        deck: {
-            id: deck.id,
-            userID: deck.userID,
-            color: deck.color
-        }
-    }
-}
+import * as types from '../constants/actionTypes'
 
-export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 export const incrementCounter = ( count ) => {
     return {
-        type: INCREMENT_COUNTER
+        type: types.INCREMENT_COUNTER
     }
 }
+export const nextCard = () => ({ type: types.NEXT_CARD });
+
+// -----------------------------------------------------------------------------
+
+// Example actions:
+
+// import * as types from '../constants/ActionTypes'
+//
+// export const addTodo = text => ({ type: types.ADD_TODO, text })
+// export const deleteTodo = id => ({ type: types.DELETE_TODO, id })
+// export const editTodo = (id, text) => ({ type: types.EDIT_TODO, id, text })
+// export const completeTodo = id => ({ type: types.COMPLETE_TODO, id })
+// export const completeAll = () => ({ type: types.COMPLETE_ALL })
+// export const clearCompleted = () => ({ type: types.CLEAR_COMPLETED })

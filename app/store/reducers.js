@@ -22,6 +22,13 @@ const {
 
 import db from './database'
 
+// ACTIONS ---------------------------------------------------------------------
+
+import {
+  INCREMENT_COUNTER,
+  NEXT_CARD
+} from '../constants/actionTypes'
+
 // STATE REDUCERS --------------------------------------------------------------
 
 const initialMainState = {
@@ -36,10 +43,14 @@ const initialMainState = {
 
 const mainReducer = (state = initialMainState, action) => {
   switch (action.type) {
-    case 'INCREMENT_COUNTER':
+    case INCREMENT_COUNTER:
       return Object.assign({}, state, {
         counter: state.counter += 1
       })
+      break;
+    case NEXT_CARD:
+      return Object.assign({}, state, { visibleStack: state.visibleStack + 1 })
+      break;
     default:
       return state;
   }
