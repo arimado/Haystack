@@ -46,7 +46,7 @@ class Stack extends Component {
       bounceValue: new Animated.Value(0),
       pan: new Animated.ValueXY(),
       scale: new Animated.Value(1),
-      rotate: new Animated.Value(1)
+      rotate: new Animated.Value()
     }
   }
   componentWillMount() {
@@ -59,17 +59,18 @@ class Stack extends Component {
       onPanResponderGrant: (e, gestureState) => {
         this.state.pan.setOffset({x: this.state.pan.x._value, y: this.state.pan.y._value});
         this.state.pan.setValue({x: 0, y: 0});
+        this.state.rotate.setValue(90);
       },
-      onPanResponderMove: Animated.event([ null, {dx: this.state.pan.x, dy: this.state.pan.y},]),
+      onPanResponderMove: (event, gestureState) => {
+        Animated.event([ null, {dx: this.state.pan.x, dy: this.state.pan.y},]).call(this, event, gestureState);
+      },
       onPanResponderRelease: (e, {vx, vy}) => {
         // JA
         // Dont get what this is lol
-
         this.state.pan.flattenOffset();
 
         // IF you release beyond the swipe threshold then fire the next card event
         // nextCard();
-
         let swipeDistance = Math.abs(this.state.pan.x._value);
         if (swipeDistance > SWIPE_THRESHOLD) {
           Animated.decay(this.state.pan, {
@@ -83,8 +84,6 @@ class Stack extends Component {
               friction: 3
           }).start()
         }
-
-
 
       }
     });
@@ -102,7 +101,7 @@ class Stack extends Component {
     let [translateX, translateY] = [pan.x, pan.y];
     // rotate intital start state of stack based on id
     // probably should update this
-    let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `-${this.props.data.id/2}deg`, "30deg"]});
+    let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `0deg`, "30deg"]});
     let opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.4, 1, 0.4]})
     // transform position based on pan state
     let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity};
