@@ -31,10 +31,10 @@ const SWIPE_THRESHOLD = 150;
 
 // -----------------------------------------------------------------------------
 
-const nextCardState = (component) => {
-  return (cb) => {
-    cb();
-  }
+const offsetRotationEvery = (number, reset) => {
+  if ( number === 0 ) return '0deg'
+  if ( number % reset > 0 ) return number % reset / 2 + 'deg'
+  return 4 / 2 + 'deg'
 }
 
 // -----------------------------------------------------------------------------
@@ -96,12 +96,18 @@ class Stack extends Component {
     // visuals ----------------------------
 
     const s = style(this);
+
+    // get card data
+    let stackData  = this.props.data
+
     // get the pan positions
     let { pan, scale } = this.state;
     let [translateX, translateY] = [pan.x, pan.y];
     // rotate intital start state of stack based on id
     // probably should update this
-    let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `0deg`, "30deg"]});
+    let initialOffset = offsetRotationEvery(stackData.stackNumber, 4);
+
+    let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `${initialOffset}`, "30deg"]});
     let opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.4, 1, 0.4]})
     // transform position based on pan state
     let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity};
