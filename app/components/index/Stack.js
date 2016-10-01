@@ -42,7 +42,6 @@ class Stack extends Component {
       rotate: new Animated.Value(1)
     }
   }
-
   componentWillMount() {
 
     let { nextCard } = this.props;

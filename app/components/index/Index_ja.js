@@ -34,7 +34,6 @@ const BACK = {
 
 // -----------------------------------------------------------------------------
 
-
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -44,7 +43,9 @@ class Index extends Component {
 
     // only render 4 stacks from visibleStack
     let { stacks, visibleStack } = this.props.state.main;
-    let currentStacks = stacks.slice(visibleStack, visibleStack + 4);
+    let currentStacks = stacks.slice(visibleStack, visibleStack + 4).reverse();
+
+    console.log('currentStacks: ', currentStacks);
 
     return (
       <View style={S.base}>
