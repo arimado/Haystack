@@ -8,7 +8,8 @@ import {
   NavigationExperimental,
   TouchableOpacity,
   PanResponder,
-  Animated
+  Animated,
+  Image
 } from 'react-native'
 
 import S from '../styles/styles.js';
@@ -65,6 +66,17 @@ class Stack extends Component {
         Animated.event([ null, {dx: this.state.pan.x, dy: this.state.pan.y},]).call(this, event, gestureState);
       },
       onPanResponderRelease: (e, {vx, vy}) => {
+
+        // JA
+        // Possible pan/touch-to open response solution:
+        // if distnance travelled of pan responder touch and release
+        // is below a threshold then open that bad boy up. If it isn't, then just move it
+        // Not sure if you can track the movement distance if it moves away then back within
+        // the threshold then release..
+
+
+
+
         // JA
         // Dont get what this is lol
         this.state.pan.flattenOffset();
@@ -114,7 +126,17 @@ class Stack extends Component {
 
     return (
         <Animated.View style={[s.stackContainer, transform]} {...this._panResponder.panHandlers}>
-          
+          <View style={s.stackContent}>
+            <View style={s.header}>
+              <Image
+                style={s.stackProfile}
+                source={{uri: 'https://www.phactual.com/wp-content/uploads/2015/05/006-bill-murray-theredlist-5-times-bill-murray-won-at-life-the-only-way-bill-murray-can.jpeg'}}
+              />
+              <View style={s.headerTextContainer}>
+                <Text style={s.headerText}>Bill, 32</Text>
+              </View>
+            </View>
+          </View>
         </Animated.View>
     )
   }
@@ -149,6 +171,25 @@ const style = (c) => (StyleSheet.create({
     flex: 1,
     margin: 15,
     backgroundColor: c.props.data.colorScheme
+  },
+  stackContent: {
+    flex: 1,
+    padding: 20
+  },
+  header: {
+    flexDirection: 'row',
+  },
+  stackProfile: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    marginRight: 20
+  },
+  headerTextContainer: {
+    justifyContent: 'center'
+  },
+  headerText: {
+    fontSize: 30
   }
 }))
 
