@@ -7,9 +7,6 @@ export default StyleSheet.create({
     height: 30,
     backgroundColor: 'grey'
   },
-  statusBarBg: {
-    height: 20
-  },
   container: {
     flex: 1,
     justifyContent: 'center',

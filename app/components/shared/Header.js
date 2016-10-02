@@ -38,13 +38,13 @@ const Header = () => {
       <View style={s.container}>
         <TouchableOpacity style={s.button}>
             {/*<Text style={s.buttonText}> M </Text>*/}
-            <Icon name="new-message" style={s.buttonText} />
+            <Icon name="text-document-inverted" style={s.buttonText} />
         </TouchableOpacity>
         <TouchableOpacity style={s.button}>
             <Icon name="layers" style={s.buttonText} />
         </TouchableOpacity>
         <TouchableOpacity style={s.button}>
-            <Icon name="message" style={s.buttonText} /> 
+            <Icon name="message" style={s.buttonText} />
         </TouchableOpacity>
       </View>
     </View>
@@ -58,12 +58,14 @@ const s = StyleSheet.create({
     justifyContent: 'space-between'
   },
   button: {
-    padding: 20,
-    backgroundColor: 'plum'
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 10
   },
   buttonText: {
     color: 'white',
-
+    fontSize: 30
   }
 })
 

@@ -65,7 +65,7 @@ class Index extends Component {
 const style = (c) => (StyleSheet.create({
   stacksContainer: {
     flex: 1,
-    backgroundColor: 'darksalmon',
+    backgroundColor: 'indigo',
     position: 'relative'
   }
 }))

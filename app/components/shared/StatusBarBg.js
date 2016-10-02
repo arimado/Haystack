@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 import {
-  View
+  View,
+  StyleSheet
 } from 'react-native'
 
 import styles from '../styles'
@@ -9,6 +10,14 @@ import styles from '../styles'
 
 export default () => {
   return (
-    <View style={styles.statusBarBg}></View>
+    <View style={s.statusBarBg}></View>
   )
 }
+
+
+const s = StyleSheet.create({
+  statusBarBg: {
+    height: 20,
+    backgroundColor: 'rebeccapurple'
+  }
+})
