@@ -94,7 +94,6 @@ class Stack extends Component {
   render(){
 
     // visuals ----------------------------
-
     const s = style(this);
 
     // get card data
@@ -106,9 +105,8 @@ class Stack extends Component {
     // rotate intital start state of stack based on id
     // probably should update this
     let initialOffset = offsetRotationEvery(stackData.stackNumber, 4);
-
     let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `${initialOffset}`, "30deg"]});
-    let opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.4, 1, 0.4]})
+    let opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.4, 1, 0.4]});
     // transform position based on pan state
     let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity};
 
@@ -116,6 +114,7 @@ class Stack extends Component {
 
     return (
         <Animated.View style={[s.stackContainer, transform]} {...this._panResponder.panHandlers}>
+          
         </Animated.View>
     )
   }

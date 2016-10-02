@@ -16,10 +16,11 @@ import {
   NavigationExperimental,
   TouchableOpacity,
 
-} from 'react-native'
-import S from '../styles/styles'
-
+} from 'react-native';
 import _ from 'lodash';
+import Icon from 'react-native-vector-icons/Entypo'
+
+import S from '../styles/styles'
 
 // -----------------------------------------------------------------------------
 
@@ -36,13 +37,14 @@ const Header = () => {
       <StatusBarBg/>
       <View style={s.container}>
         <TouchableOpacity style={s.button}>
-            <Text style={s.buttonText}> M </Text>
+            {/*<Text style={s.buttonText}> M </Text>*/}
+            <Icon name="new-message" style={s.buttonText} />
         </TouchableOpacity>
         <TouchableOpacity style={s.button}>
-            <Text style={s.buttonText}> M </Text>
+            <Icon name="layers" style={s.buttonText} />
         </TouchableOpacity>
         <TouchableOpacity style={s.button}>
-            <Text style={s.buttonText}> M </Text>
+            <Icon name="message" style={s.buttonText} /> 
         </TouchableOpacity>
       </View>
     </View>

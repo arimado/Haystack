@@ -43,7 +43,7 @@ class Index extends Component {
 
     // only render 4 stacks from visibleStack
     let { stacks, visibleStack } = this.props.state.main;
-    
+
     let currentStacks = stacks.map((s, i) => ({ stackNumber: i, ...s }))
                               .slice(visibleStack, visibleStack + 4)
                               .reverse();
