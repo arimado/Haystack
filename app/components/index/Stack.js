@@ -174,10 +174,11 @@ const style = (c) => (StyleSheet.create({
   },
   stackContent: {
     flex: 1,
-    padding: 20
   },
   header: {
     flexDirection: 'row',
+    backgroundColor: 'rgba(0,0,0, 0.3)',
+    padding: 20
   },
   stackProfile: {
     width: 70,
@@ -189,7 +190,8 @@ const style = (c) => (StyleSheet.create({
     justifyContent: 'center'
   },
   headerText: {
-    fontSize: 30
+    fontSize: 30,
+    color: 'white'
   }
 }))
 
