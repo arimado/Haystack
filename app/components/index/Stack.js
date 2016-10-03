@@ -47,7 +47,8 @@ class Stack extends Component {
       bounceValue: new Animated.Value(0),
       pan: new Animated.ValueXY(),
       scale: new Animated.Value(1),
-      rotate: new Animated.Value()
+      rotate: new Animated.Value(),
+      response: ['lol', 'nice']
     }
   }
   componentWillMount() {
@@ -55,8 +56,26 @@ class Stack extends Component {
     let { nextCard } = this.props;
 
     this._panResponder = PanResponder.create({
-      onMoveShouldSetResponderCapture: () => true,
-      onMoveShouldSetPanResponderCapture: () => true,
+
+      // JA
+      // onMoveShouldSetResponderCapture &
+      // onMoveShouldSetPanResponderCapture
+      // ----
+      // these functions will allow the capture of responder events
+      // currently if the current position of touch event is vx or vy is 0
+      // (the user is not dragging, just touching a static position) then the
+      // pan responder will not activate
+      // this is so touchable events can still happen within the containg element
+      // accepting touch events
+
+      onMoveShouldSetResponderCapture: (e, {vx, vy}) => {
+        if ( vx === 0 && vy === 0) return false;
+        return true;
+      },
+      onMoveShouldSetPanResponderCapture: (e, {vx, vy}) => {
+        if ( vx === 0 && vy === 0) return false;
+        return true;
+      },
       onPanResponderGrant: (e, gestureState) => {
         this.state.pan.setOffset({x: this.state.pan.x._value, y: this.state.pan.y._value});
         this.state.pan.setValue({x: 0, y: 0});
@@ -67,15 +86,16 @@ class Stack extends Component {
       },
       onPanResponderRelease: (e, {vx, vy}) => {
 
+        this.setState((s1, s2) => {
+          return { response: ['pan responder', ...s1.response] }
+        })
+
         // JA
         // Possible pan/touch-to open response solution:
         // if distnance travelled of pan responder touch and release
         // is below a threshold then open that bad boy up. If it isn't, then just move it
         // Not sure if you can track the movement distance if it moves away then back within
         // the threshold then release..
-
-
-
 
         // JA
         // Dont get what this is lol
@@ -124,9 +144,16 @@ class Stack extends Component {
 
     // JSX ----------------------------
 
+    console.log('render response: ', this.state.response);
+
     return (
-        <Animated.View style={[s.stackContainer, transform]} {...this._panResponder.panHandlers}>
-          <View style={s.stackContent}>
+        <Animated.View
+          style={[s.stackContainer, transform]}
+          {...this._panResponder.panHandlers}>
+          <TouchableOpacity
+            style={s.stackContent}
+            onPress={() => { this._stackPress() }}
+            >
             <View style={s.header}>
               <Image
                 style={s.stackProfile}
@@ -136,7 +163,10 @@ class Stack extends Component {
                 <Text style={s.headerText}>Bill, 32</Text>
               </View>
             </View>
-          </View>
+            <View style={s.body}>
+              {this.state.response.map((res, i) => (<Text key={i}>{res}</Text>))}
+            </View>
+          </TouchableOpacity>
         </Animated.View>
     )
   }
@@ -152,6 +182,13 @@ class Stack extends Component {
   _nextCardState() {
     this.state.pan.setValue({x: 0, y: 0});
     this.props.nextCard();
+  }
+
+  _stackPress() {
+    console.log('stacked pressed')
+    this.setState((s1, s2) => {
+      return { response: ['press', ...s1.response] }
+    })
   }
 
 }
@@ -177,7 +214,7 @@ const style = (c) => (StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    backgroundColor: 'rgba(0,0,0, 0.3)',
+    // backgroundColor: 'rgba(0,0,0, 0.3)',
     padding: 20
   },
   stackProfile: {
@@ -192,6 +229,9 @@ const style = (c) => (StyleSheet.create({
   headerText: {
     fontSize: 30,
     color: 'white'
+  },
+  body: {
+
   }
 }))
 

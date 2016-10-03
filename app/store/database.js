@@ -16,7 +16,7 @@ var users = [
 var stacks = [
     { id: '1'
     , userId: '1'
-    , colorScheme: 'yellow' },
+    , colorScheme: 'gold' },
     { id: '2'
     , userId: '2'
     , colorScheme: 'darkseagreen' },
@@ -28,7 +28,7 @@ var stacks = [
     , colorScheme: 'crimson' },
     { id: '5'
     , userId: '5'
-    , colorScheme: 'yellow' },
+    , colorScheme: 'gold' },
     { id: '6'
     , userId: '6'
     , colorScheme: 'darkseagreen' },
@@ -40,7 +40,7 @@ var stacks = [
     , colorScheme: 'crimson' },
     { id: '9'
     , userId: '9'
-    , colorScheme: 'yellow' },
+    , colorScheme: 'gold' },
     { id: '10'
     , userId: '10'
     , colorScheme: 'darkseagreen' },
@@ -52,7 +52,7 @@ var stacks = [
     , colorScheme: 'crimson' },
     { id: '13'
     , userId: '13'
-    , colorScheme: 'yellow' },
+    , colorScheme: 'gold' },
     { id: '14'
     , userId: '14'
     , colorScheme: 'darkseagreen' },
@@ -64,7 +64,7 @@ var stacks = [
     , colorScheme: 'crimson' },
     { id: '17'
     , userId: '17'
-    , colorScheme: 'yellow' },
+    , colorScheme: 'gold' },
     { id: '18'
     , userId: '18'
     , colorScheme: 'darkseagreen' },
@@ -76,7 +76,7 @@ var stacks = [
     , colorScheme: 'crimson' },
     { id: '21'
     , userId: '21'
-    , colorScheme: 'yellow' },
+    , colorScheme: 'gold' },
     { id: '22'
     , userId: '22'
     , colorScheme: 'darkseagreen' },
@@ -88,7 +88,7 @@ var stacks = [
     , colorScheme: 'crimson' },
     { id: '25'
     , userId: '25'
-    , colorScheme: 'yellow' },
+    , colorScheme: 'gold' },
     { id: '26'
     , userId: '26'
     , colorScheme: 'darkseagreen' },
