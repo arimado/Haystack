@@ -14,7 +14,6 @@ import _ from 'lodash';
 // -----------------------------------------------------------------------------
 
 // reducers.js currently holds the store object
-import styles from '../styles'
 import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
 
@@ -39,20 +38,7 @@ class Login extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={()=>{this.props._handleNavigate(STACKS_ROUTE)}} >
-          <Text style={styles.welcome}>
-            HayStack
-          </Text>
-        </TouchableOpacity>
-        <Text style={styles.instructions}>
-            { this.props.state.counter }
-        </Text>
-        <TouchableOpacity onPress={() => this.props.increaseCounter()}>
-          <Text style={styles.instructions}>
-            Add
-          </Text>
-        </TouchableOpacity>
+      <View>
       </View>
     );
   }

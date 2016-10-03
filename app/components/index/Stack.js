@@ -19,8 +19,6 @@ import _ from 'lodash';
 // -----------------------------------------------------------------------------
 
 // reducers.js currently holds the store object
-
-import styles from '../styles';
 import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
 import Header from '../shared/Header';
@@ -144,11 +142,9 @@ class Stack extends Component {
 
     // JSX ----------------------------
 
-    console.log('render response: ', this.state.response);
-
     return (
         <Animated.View
-          style={[s.stackContainer, transform]}
+          style={[(stackData.id === '1' ? s.stackContainerOpen : s.stackContainer), transform]}
           {...this._panResponder.panHandlers}>
           <TouchableOpacity
             style={s.stackContent}
@@ -185,7 +181,6 @@ class Stack extends Component {
   }
 
   _stackPress() {
-    console.log('stacked pressed')
     this.setState((s1, s2) => {
       return { response: ['press', ...s1.response] }
     })
@@ -209,12 +204,17 @@ const style = (c) => (StyleSheet.create({
     margin: 15,
     backgroundColor: c.props.data.colorScheme
   },
+  stackContainerOpen: {
+    flex: 1,
+    margin: 15,
+    backgroundColor: 'blue'
+  },
   stackContent: {
     flex: 1,
   },
   header: {
     flexDirection: 'row',
-    // backgroundColor: 'rgba(0,0,0, 0.3)',
+    backgroundColor: 'rgba(255,255,255, 0.1)',
     padding: 20
   },
   stackProfile: {

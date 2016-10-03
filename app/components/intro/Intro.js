@@ -14,7 +14,6 @@ import _ from 'lodash';
 // -----------------------------------------------------------------------------
 
 // reducers.js currently holds the store object
-import styles from '../styles'
 import store from '../../store/reducers';
 import Header from '../shared/Header';
 import StatusBarBg from '../shared/StatusBarBg';
