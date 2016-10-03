@@ -8,7 +8,8 @@ import {
   NavigationExperimental,
   TouchableOpacity,
   PanResponder,
-  Animated
+  Animated,
+  ScrollView
 } from 'react-native'
 
 import S from '../styles/styles.js';
@@ -53,7 +54,8 @@ class Index extends Component {
       <View style={S.base}>
         <Header />
         <View style={s.stacksContainer}>
-          {currentStacks.map((stack, i) => (<Stack key={i} data={stack}/>))}
+          {currentStacks.map((stack, i) => (<Stack key={i} data={stack} isSwipe={true}/>))}
+          {/* <ScrollView></ScrollView> */}
         </View>
       </View>
     );

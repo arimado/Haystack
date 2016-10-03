@@ -144,7 +144,7 @@ class Stack extends Component {
 
     return (
         <Animated.View
-          style={[(stackData.id === '1' ? s.stackContainerOpen : s.stackContainer), transform]}
+          style={[s.stackContainer, transform]}
           {...this._panResponder.panHandlers}>
           <TouchableOpacity
             style={s.stackContent}
@@ -207,7 +207,7 @@ const style = (c) => (StyleSheet.create({
   stackContainerOpen: {
     flex: 1,
     margin: 15,
-    backgroundColor: 'blue'
+    backgroundColor: c.props.data.colorScheme
   },
   stackContent: {
     flex: 1,
