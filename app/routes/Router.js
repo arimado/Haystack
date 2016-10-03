@@ -25,7 +25,7 @@ const {
 import Intro from '../components/intro/Intro'
 import Login from '../components/login/Login';
 import Index from '../components/index/Index';
-import Index_JA from '../components/index/Index_JA';
+import Index_JA from '../components/index/Index_ja';
 
 class Routes extends Component {
 
