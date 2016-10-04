@@ -34,6 +34,9 @@ const BACK = {
 
 // -----------------------------------------------------------------------------
 
+const StackScroll = (key, data, isSwipe) => (
+  <ScrollView key={key}><Stack data={data} isSwipe={isSwipe}/></ScrollView>);
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -49,12 +52,14 @@ class Index extends Component {
                               .reverse();
 
     console.log('currentStacks: ', currentStacks.forEach(s => console.log(s)));
-
     return (
       <View style={S.base}>
         <Header />
         <View style={s.stacksContainer}>
-          {currentStacks.map((stack, i) => (<Stack key={i} data={stack} isSwipe={true}/>))}
+          {currentStacks.map((stack, i) =>  {
+            return ( i < currentStacks.length - 1 ? <Stack key={i} data={stack} isSwipe={false}/> : StackScroll(i, stack, false))
+          })}
+
           {/* <ScrollView></ScrollView> */}
         </View>
       </View>

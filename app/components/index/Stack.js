@@ -127,7 +127,9 @@ class Stack extends Component {
     const s = style(this);
 
     // get card data
-    let stackData  = this.props.data
+    let stackData   = this.props.data;
+    let isSwipe     = this.props.isSwipe;
+
 
     // get the pan positions
     let { pan, scale } = this.state;
@@ -140,11 +142,16 @@ class Stack extends Component {
     // transform position based on pan state
     let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity};
 
+    // Position Styles
+
+    let StackContainerStyle = isSwipe ? s.stackContainerOpen : s.stackContainer;
+    console.log(StackContainerStyle);
+
     // JSX ----------------------------
 
     return (
         <Animated.View
-          style={[s.stackContainer, transform]}
+          style={[StackContainerStyle, transform]}
           {...this._panResponder.panHandlers}>
           <TouchableOpacity
             style={s.stackContent}
@@ -191,7 +198,6 @@ class Stack extends Component {
 const style = (c) => (StyleSheet.create({
   stacksContainer: {
     flex: 1,
-    backgroundColor: 'darksalmon',
     position: 'relative'
   },
   stackContainer: {
@@ -206,8 +212,9 @@ const style = (c) => (StyleSheet.create({
   },
   stackContainerOpen: {
     flex: 1,
+    height: 400,
     margin: 15,
-    backgroundColor: c.props.data.colorScheme
+    backgroundColor: 'red'
   },
   stackContent: {
     flex: 1,
