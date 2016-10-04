@@ -35,7 +35,9 @@ const BACK = {
 // -----------------------------------------------------------------------------
 
 const StackScroll = (key, data, isSwipe) => (
-  <ScrollView key={key}><Stack data={data} isSwipe={isSwipe}/></ScrollView>);
+  <ScrollView key={key}>
+      <Stack data={data} isSwipe={isSwipe}/>
+  </ScrollView>);
 
 class Index extends Component {
   constructor(props) {
@@ -57,7 +59,9 @@ class Index extends Component {
         <Header />
         <View style={s.stacksContainer}>
           {currentStacks.map((stack, i) =>  {
-            return ( i < currentStacks.length - 1 ? <Stack key={i} data={stack} isSwipe={false}/> : StackScroll(i, stack, false))
+            return ( i < currentStacks.length - 1 ?
+                    <Stack key={i} data={stack} isSwipe={true}/> :
+                    StackScroll(i, stack, false))
           })}
 
           {/* <ScrollView></ScrollView> */}
@@ -73,6 +77,16 @@ const style = (c) => (StyleSheet.create({
     flex: 1,
     backgroundColor: 'indigo',
     position: 'relative'
+  },
+  stackContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    flex: 1,
+    margin: 15,
+    backgroundColor: 'red'
   }
 }))
 

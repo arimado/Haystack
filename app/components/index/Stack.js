@@ -129,24 +129,19 @@ class Stack extends Component {
     // get card data
     let stackData   = this.props.data;
     let isSwipe     = this.props.isSwipe;
-
-
-    // get the pan positions
     let { pan, scale } = this.state;
     let [translateX, translateY] = [pan.x, pan.y];
-    // rotate intital start state of stack based on id
-    // probably should update this
-    let initialOffset = offsetRotationEvery(stackData.stackNumber, 4);
-    let rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `${initialOffset}`, "30deg"]});
-    let opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.4, 1, 0.4]});
-    // transform position based on pan state
-    let transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity};
+    let initialOffset, rotate, opacity, transform = {};
 
-    // Position Styles
+    let StackContainerStyle = isSwipe ? s.stackContainer : s.stackContainerOpen ;
 
-    let StackContainerStyle = isSwipe ? s.stackContainerOpen : s.stackContainer;
-    console.log(StackContainerStyle);
-
+    if (isSwipe) {
+      initialOffset = offsetRotationEvery(stackData.stackNumber, 4);
+      rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `${initialOffset}`, "30deg"]});
+      opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.4, 1, 0.4]});
+      // transform position based on pan state
+      transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity};
+    }
     // JSX ----------------------------
 
     return (
@@ -165,6 +160,7 @@ class Stack extends Component {
               <View style={s.headerTextContainer}>
                 <Text style={s.headerText}>Bill, 32</Text>
               </View>
+
             </View>
             <View style={s.body}>
               {this.state.response.map((res, i) => (<Text key={i}>{res}</Text>))}
@@ -212,9 +208,8 @@ const style = (c) => (StyleSheet.create({
   },
   stackContainerOpen: {
     flex: 1,
-    height: 400,
     margin: 15,
-    backgroundColor: 'red'
+    backgroundColor: c.props.data.colorScheme
   },
   stackContent: {
     flex: 1,
