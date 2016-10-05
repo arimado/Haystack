@@ -185,12 +185,11 @@ class Stack extends Component {
   }
 
   _stackPress() {
-
+    let { id } = this.props.data;
     this.setState((s1, s2) => {
-      return { response: ['press', ...s1.response] }
+      return { response: ['press' + id, ...s1.response] }
     })
-
-
+    this.props.activateStack(id); 
   }
 
 }

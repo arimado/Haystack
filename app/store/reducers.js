@@ -54,7 +54,7 @@ const mainReducer = (state = initialMainState, action) => {
       return Object.assign({}, state, { visibleStack: state.visibleStack + 1 })
       break;
     case ACTIVATE_STACK:
-      return Object.assign({}, state, { activeStack: action.stack })
+      return Object.assign({}, state, { activeStack: action.stackNum })
       break;
     default:
       return state;

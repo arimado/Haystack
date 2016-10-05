@@ -58,7 +58,7 @@ class Index extends Component {
         <Header />
         <View style={s.stacksContainer}>
           {currentStacks.map((stack, i) =>  {
-            return ( i === activeStack ? StackScroll(i, stack, false) : <Stack key={i} data={stack} isSwipe={true}/> )
+            return ( stack.id === activeStack ? StackScroll(i, stack, false) : <Stack key={i} data={stack} isSwipe={true}/> )
           })}
 
           {/* <ScrollView></ScrollView> */}
