@@ -5,7 +5,8 @@ export const incrementCounter = ( count ) => {
         type: types.INCREMENT_COUNTER
     }
 }
-export const nextCard = () => ({ type: types.NEXT_CARD }); 
+export const nextCard = () => ({ type: types.NEXT_CARD });
+export const activateStack = (stackNum) => ({ type: types.ACTIVATE_STACK, stackNum });
 
 // -----------------------------------------------------------------------------
 

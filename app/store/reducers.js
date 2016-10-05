@@ -26,7 +26,8 @@ import db from './database'
 
 import {
   INCREMENT_COUNTER,
-  NEXT_CARD
+  NEXT_CARD,
+  ACTIVATE_STACK
 } from '../constants/actionTypes'
 
 // STATE REDUCERS --------------------------------------------------------------
@@ -34,6 +35,7 @@ import {
 const initialMainState = {
   isFetching: false,
   visibleStack: 0,
+  activeStack: null,
   stacks: db.stacks,
   questions: db.questions,
   answers: db.answers,
@@ -48,8 +50,11 @@ const mainReducer = (state = initialMainState, action) => {
         counter: state.counter += 1
       })
       break;
-    case NEXT_CARD:
+    case NEXT_CARD: // You need to change this name to stack instead
       return Object.assign({}, state, { visibleStack: state.visibleStack + 1 })
+      break;
+    case ACTIVATE_STACK:
+      return Object.assign({}, state, { activeStack: action.stack })
       break;
     default:
       return state;

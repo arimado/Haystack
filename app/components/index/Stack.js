@@ -67,10 +67,12 @@ class Stack extends Component {
       // accepting touch events
 
       onMoveShouldSetResponderCapture: (e, {vx, vy}) => {
+        if ( !this.props.isSwipe ) return false;
         if ( vx === 0 && vy === 0) return false;
         return true;
       },
       onMoveShouldSetPanResponderCapture: (e, {vx, vy}) => {
+        if ( !this.props.isSwipe ) return false;
         if ( vx === 0 && vy === 0) return false;
         return true;
       },
@@ -150,7 +152,7 @@ class Stack extends Component {
           {...this._panResponder.panHandlers}>
           <TouchableOpacity
             style={s.stackContent}
-            onPress={() => { this._stackPress() }}
+            onPress={() => { this._stackPress(stackData.id) }}
             >
             <View style={s.header}>
               <Image
@@ -160,7 +162,6 @@ class Stack extends Component {
               <View style={s.headerTextContainer}>
                 <Text style={s.headerText}>Bill, 32</Text>
               </View>
-
             </View>
             <View style={s.body}>
               {this.state.response.map((res, i) => (<Text key={i}>{res}</Text>))}
@@ -184,9 +185,12 @@ class Stack extends Component {
   }
 
   _stackPress() {
+
     this.setState((s1, s2) => {
       return { response: ['press', ...s1.response] }
     })
+
+
   }
 
 }
@@ -252,7 +256,7 @@ import {
 
 // -----------------------------------------------------------------------------
 
-import { nextCard } from '../../store/actions'
+import { nextCard, activateStack } from '../../store/actions'
 
 
 var mapStateToProps = (state) => {
@@ -264,7 +268,8 @@ var mapStateToProps = (state) => {
 var mapDispatchToProps = (dispatch) => {
   return {
     doSomething: arg => console.log('nice'),
-    nextCard: () => dispatch(nextCard())
+    nextCard: () => dispatch(nextCard()),
+    activateStack: stackNum => dispatch(activateStack(stackNum))
   }
 }
 

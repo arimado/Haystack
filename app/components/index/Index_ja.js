@@ -46,8 +46,7 @@ class Index extends Component {
   render() {
     const s = style(this);
 
-    // only render 4 stacks from visibleStack
-    let { stacks, visibleStack } = this.props.state.main;
+    let { stacks, visibleStack, activeStack } = this.props.state.main;
 
     let currentStacks = stacks.map((s, i) => ({ stackNumber: i, ...s }))
                               .slice(visibleStack, visibleStack + 4)
@@ -59,9 +58,7 @@ class Index extends Component {
         <Header />
         <View style={s.stacksContainer}>
           {currentStacks.map((stack, i) =>  {
-            return ( i < currentStacks.length - 1 ?
-                    <Stack key={i} data={stack} isSwipe={true}/> :
-                    StackScroll(i, stack, false))
+            return ( i === activeStack ? StackScroll(i, stack, false) : <Stack key={i} data={stack} isSwipe={true}/> )
           })}
 
           {/* <ScrollView></ScrollView> */}
@@ -70,7 +67,6 @@ class Index extends Component {
     );
   }
 }
-
 
 const style = (c) => (StyleSheet.create({
   stacksContainer: {
