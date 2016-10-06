@@ -27,7 +27,8 @@ import db from './database'
 import {
   INCREMENT_COUNTER,
   NEXT_CARD,
-  ACTIVATE_STACK
+  ACTIVATE_STACK,
+  DEACTIVATE_STACK
 } from '../constants/actionTypes'
 
 // STATE REDUCERS --------------------------------------------------------------
@@ -55,6 +56,9 @@ const mainReducer = (state = initialMainState, action) => {
       break;
     case ACTIVATE_STACK:
       return Object.assign({}, state, { activeStack: action.stackNum })
+      break;
+    case DEACTIVATE_STACK:
+      return Object.assign({}, state, { activeStack: null })
       break;
     default:
       return state;

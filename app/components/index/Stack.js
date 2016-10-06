@@ -189,7 +189,7 @@ class Stack extends Component {
     this.setState((s1, s2) => {
       return { response: ['press' + id, ...s1.response] }
     })
-    this.props.activateStack(id); 
+    this.props.activateStack(id);
   }
 
 }
@@ -255,7 +255,11 @@ import {
 
 // -----------------------------------------------------------------------------
 
-import { nextCard, activateStack } from '../../store/actions'
+import {
+nextCard,
+activateStack,
+deactivateStack
+} from '../../store/actions'
 
 
 var mapStateToProps = (state) => {
@@ -268,7 +272,8 @@ var mapDispatchToProps = (dispatch) => {
   return {
     doSomething: arg => console.log('nice'),
     nextCard: () => dispatch(nextCard()),
-    activateStack: stackNum => dispatch(activateStack(stackNum))
+    activateStack: stackNum => dispatch(activateStack(stackNum)),
+    deactivateStack: stackNum => dispatch(deactivateStack(stackNum))
   }
 }
 
