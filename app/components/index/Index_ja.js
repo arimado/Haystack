@@ -50,8 +50,6 @@ class Index extends Component {
     let currentStacks = stacks.map((s, i) => ({ stackNumber: i, ...s }))
                               .slice(visibleStack, visibleStack + 4)
                               .reverse();
-
-    console.log('currentStacks: ', currentStacks.forEach(s => console.log(s)));
     return (
       <View style={S.base}>
         <Header />

@@ -27,6 +27,7 @@ import Header from '../shared/Header';
 
 const BACK = { type: 'pop'};
 const SWIPE_THRESHOLD = 150;
+const OPEN_STACK_SCALE = 1.02;
 
 // -----------------------------------------------------------------------------
 
@@ -53,12 +54,24 @@ class Stack extends Component {
       pan: new Animated.ValueXY(),
       scale: new Animated.Value(1),
       rotate: new Animated.Value(),
-      response: ['lol', 'nice']
+      response: ['lol', 'nice'],
+      offsetEnabled: true
     }
   }
   componentWillMount() {
 
-    let { nextCard } = this.props;
+    let { nextCard, isSwipe } = this.props;
+
+
+    if (!isSwipe) {
+      console.log('componentWillMount: increasing scale')
+      Animated.spring(this.state.scale, {
+          toValue: 1.02,
+          friction: 3
+      }).start()
+    }
+
+
 
     this._panResponder = PanResponder.create({
 
@@ -142,19 +155,24 @@ class Stack extends Component {
     // get card data
     let stackData   = this.props.data;
     let isSwipe     = this.props.isSwipe;
-    let { pan, scale } = this.state;
+    let { pan, scale, offsetEnabled } = this.state;
     let [translateX, translateY] = [ pan.x, pan.y ];
     let initialOffset, rotate, opacity, transform = {};
 
     let StackContainerStyle = isSwipe ? s.stackContainer : s.stackContainerOpen ;
 
     if (isSwipe) {
-      initialOffset = offsetRotationEvery(stackData.stackNumber, 4);
+      initialOffset = offsetEnabled ? offsetRotationEvery(stackData.stackNumber, 4) : '0deg';
+      console.log('initialOffset: ', initialOffset);
       rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `${initialOffset}`, "30deg"]});
       opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.4, 1, 0.4]});
       // transform position based on pan state
       transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity};
+    } else {
+      transform = {transform: [{translateX: 0}, {translateY: 0}, {rotate: '0deg'}, {scale}]};
     }
+
+
     // JSX ----------------------------
 
     return (
@@ -211,7 +229,13 @@ class Stack extends Component {
   }
 
   _stackClose() {
-    this.props.deactivateStack();
+    this.setState({offsetEnabled: false});
+    Animated.spring(this.state.scale, {
+        toValue: OPEN_STACK_SCALE,
+        friction: 3
+    }).start(()=> {
+    })
+
   }
 
 }
