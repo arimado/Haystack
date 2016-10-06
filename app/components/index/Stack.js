@@ -27,7 +27,7 @@ import Header from '../shared/Header';
 
 const BACK = { type: 'pop'};
 const SWIPE_THRESHOLD = 150;
-const OPEN_STACK_SCALE = 1.02;
+const OPEN_STACK_SCALE = 1.03;
 
 // -----------------------------------------------------------------------------
 
@@ -66,7 +66,7 @@ class Stack extends Component {
     if (!isSwipe) {
       console.log('componentWillMount: increasing scale')
       Animated.spring(this.state.scale, {
-          toValue: 1.02,
+          toValue: OPEN_STACK_SCALE,
           friction: 3
       }).start()
     }
