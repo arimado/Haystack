@@ -38,6 +38,13 @@ const offsetRotationEvery = (number, reset) => {
 
 // -----------------------------------------------------------------------------
 
+const StackStaticPress = (props) => {
+  let { isSwipe, style, children, onPress} = props;
+  console.log('isSWipe: ', isSwipe);
+  if (isSwipe) return (<TouchableOpacity style={{flex: 1}} onPress={() => onPress()}>{children}</TouchableOpacity>);
+  return (<View style={{flex: 1}}>{children}</View>);
+}
+
 class Stack extends Component {
   constructor(props) {
     super(props)
@@ -68,12 +75,16 @@ class Stack extends Component {
 
       onMoveShouldSetResponderCapture: (e, {vx, vy}) => {
         if ( !this.props.isSwipe ) return false;
+        console.log(`onMoveShouldSetResponderCapture --- vx: ${vx} vy: ${vy}`)
         if ( vx === 0 && vy === 0) return false;
+
         return true;
       },
       onMoveShouldSetPanResponderCapture: (e, {vx, vy}) => {
         if ( !this.props.isSwipe ) return false;
+        console.log(`onMoveShouldSetPanResponderCapture --- vx: ${vx} vy: ${vy}`)
         if ( vx === 0 && vy === 0) return false;
+
         return true;
       },
       onPanResponderGrant: (e, gestureState) => {
@@ -132,7 +143,7 @@ class Stack extends Component {
     let stackData   = this.props.data;
     let isSwipe     = this.props.isSwipe;
     let { pan, scale } = this.state;
-    let [translateX, translateY] = [pan.x, pan.y];
+    let [translateX, translateY] = [ pan.x, pan.y ];
     let initialOffset, rotate, opacity, transform = {};
 
     let StackContainerStyle = isSwipe ? s.stackContainer : s.stackContainerOpen ;
@@ -150,9 +161,10 @@ class Stack extends Component {
         <Animated.View
           style={[StackContainerStyle, transform]}
           {...this._panResponder.panHandlers}>
-          <TouchableOpacity
+          <StackStaticPress
             style={s.stackContent}
-            onPress={() => { this._stackPress(stackData.id) }}
+            onPress={this._stackPress()}
+            isSwipe={isSwipe}
             >
             <View style={s.header}>
               <Image
@@ -166,7 +178,7 @@ class Stack extends Component {
             <View style={s.body}>
               {this.state.response.map((res, i) => (<Text key={i}>{res}</Text>))}
             </View>
-          </TouchableOpacity>
+          </StackStaticPress>
         </Animated.View>
     )
   }
@@ -185,11 +197,14 @@ class Stack extends Component {
   }
 
   _stackPress() {
-    let { id } = this.props.data;
-    this.setState((s1, s2) => {
-      return { response: ['press' + id, ...s1.response] }
-    })
-    this.props.activateStack(id);
+    let that = this;
+    return () => {
+      let { id } = this.props.data;
+      that.setState((s1, s2) => {
+        return { response: ['press' + id, ...s1.response] }
+      })
+      that.props.activateStack(id);
+    }
   }
 
 }
