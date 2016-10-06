@@ -176,6 +176,9 @@ class Stack extends Component {
               </View>
             </View>
             <View style={s.body}>
+              <TouchableOpacity onPress={() => this._stackClose() }>
+                <Text> Exit </Text>
+              </TouchableOpacity>
               {this.state.response.map((res, i) => (<Text key={i}>{res}</Text>))}
             </View>
           </StackStaticPress>
@@ -205,6 +208,10 @@ class Stack extends Component {
       })
       that.props.activateStack(id);
     }
+  }
+
+  _stackClose() {
+    this.props.deactivateStack();
   }
 
 }

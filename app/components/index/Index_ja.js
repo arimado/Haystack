@@ -25,7 +25,6 @@ import RoutesContainer from '../../routes/RoutesContainer';
 import Header from '../shared/Header';
 import Stack from './Stack'
 
-
 // -----------------------------------------------------------------------------
 
 const BACK = {
