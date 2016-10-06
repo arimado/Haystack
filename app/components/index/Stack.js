@@ -223,7 +223,7 @@ class Stack extends Component {
       let { id } = this.props.data;
       that.setState((s1, s2) => {
         return { response: ['press' + id, ...s1.response] }
-      })
+      }) 
       that.props.activateStack(id);
     }
   }
@@ -235,7 +235,7 @@ class Stack extends Component {
         friction: 3
     }).start(()=> {
     })
-
+    that.props.deactivateStack();
   }
 
 }

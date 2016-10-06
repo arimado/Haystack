@@ -106,44 +106,44 @@ var questions = [
     , value: 'What is your favourite color?' },
     { id: '2'
     , stackId: '1'
-    , value: 'What is your favourite color?' },
+    , value: 'What is your favourite car?' },
     { id: '3'
     , stackId: '1'
-    , value: 'What is your favourite color?' },
+    , value: 'What is your favourite chair?' },
     { id: '4'
     , stackId: '1'
-    , value: 'What is your favourite color?' },
-    { id: '1'
+    , value: 'What is your favourite bus?' },
+    { id: '5'
     , stackId: '2'
     , value: 'What is your favourite color?' },
-    { id: '2'
+    { id: '6'
     , stackId: '2'
     , value: 'What is your favourite color?' },
-    { id: '3'
+    { id: '7'
     , stackId: '2'
     , value: 'What is your favourite color?' },
-    { id: '4'
+    { id: '8'
     , stackId: '2'
     , value: 'What is your favourite color?' },
-    { id: '1'
+    { id: '9'
     , stackId: '3'
     , value: 'What is your favourite color?' },
-    { id: '2'
+    { id: '10'
     , stackId: '3'
     , value: 'What is your favourite color?' },
-    { id: '3'
+    { id: '11'
     , stackId: '3'
     , value: 'What is your favourite color?' },
-    { id: '4'
+    { id: '12'
     , stackId: '3'
     , value: 'What is your favourite color?' },
-    { id: '1'
+    { id: '13'
     , stackId: '4'
     , value: 'What is your favourite color?' },
-    { id: '2'
+    { id: '14'
     , stackId: '4'
     , value: 'What is your favourite color?' },
-    { id: '3'
+    { id: '15'
     , stackId: '4'
     , value: 'What is your favourite color?' },
     { id: '4'
@@ -156,10 +156,42 @@ var answers = [
     , questionId: '1'
     , value: 'Blue'
     , isCorrect: 'true' },
-    { id: '1'
+    { id: '2'
     , questionId: '1'
     , value: 'Blue'
-    , isCorrect: 'true' }
+    , isCorrect: 'true' },
+    { id: '3'
+    , questionId: '2'
+    , value: 'Blue'
+    , isCorrect: 'true' },
+    { id: '4'
+    , questionId: '2'
+    , value: 'Blue'
+    , isCorrect: 'true' },
+    { id: '5'
+    , questionId: '3'
+    , value: 'Blue'
+    , isCorrect: 'true' },
+    { id: '6'
+    , questionId: '3'
+    , value: 'Blue'
+    , isCorrect: 'true' },
+    { id: '7'
+    , questionId: '3'
+    , value: 'Blue'
+    , isCorrect: 'true' },
+    { id: '8'
+    , questionId: '3'
+    , value: 'Blue'
+    , isCorrect: 'true' },
+    { id: '9'
+    , questionId: '4'
+    , value: 'Blue'
+    , isCorrect: 'true' },
+    { id: '10'
+    , questionId: '4'
+    , value: 'Blue'
+    , isCorrect: 'true' },
 ]
 
 const db = { users: users, stacks: stacks, questions: questions, answers: answers }
