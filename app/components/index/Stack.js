@@ -41,9 +41,21 @@ const offsetRotationEvery = (number, reset) => {
 
 const StackStaticPress = (props) => {
   let { isSwipe, style, children, onPress} = props;
-  console.log('isSWipe: ', isSwipe);
   if (isSwipe) return (<TouchableOpacity style={{flex: 1}} onPress={() => onPress()}>{children}</TouchableOpacity>);
   return (<View style={{flex: 1}}>{children}</View>);
+}
+
+const StaticQuestions = ({ stackId, questions }) => {
+  let currentQuestions = questions.filter(q => q.stackId === stackId)
+       .sort((q1, q2) => {
+         let q1Pos = parseInt(q1.position);
+         let q2Pos = parseInt(q2.position);
+         if (q1Pos > q2Pos) return 1;
+         if (q1Pos < q2Pos) return -1;
+         return 0;
+       })
+       .map((q, i) => (<Text key={i}>{q.position}. {q.value}</Text>))
+  return (<View>{currentQuestions}</View>)
 }
 
 class Stack extends Component {
@@ -64,7 +76,6 @@ class Stack extends Component {
 
 
     if (!isSwipe) {
-      console.log('componentWillMount: increasing scale')
       Animated.spring(this.state.scale, {
           toValue: OPEN_STACK_SCALE,
           friction: 3
@@ -88,14 +99,12 @@ class Stack extends Component {
 
       onMoveShouldSetResponderCapture: (e, {vx, vy}) => {
         if ( !this.props.isSwipe ) return false;
-        console.log(`onMoveShouldSetResponderCapture --- vx: ${vx} vy: ${vy}`)
         if ( vx === 0 && vy === 0) return false;
 
         return true;
       },
       onMoveShouldSetPanResponderCapture: (e, {vx, vy}) => {
         if ( !this.props.isSwipe ) return false;
-        console.log(`onMoveShouldSetPanResponderCapture --- vx: ${vx} vy: ${vy}`)
         if ( vx === 0 && vy === 0) return false;
 
         return true;
@@ -163,7 +172,6 @@ class Stack extends Component {
 
     if (isSwipe) {
       initialOffset = offsetEnabled ? offsetRotationEvery(stackData.stackNumber, 4) : '0deg';
-      console.log('initialOffset: ', initialOffset);
       rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `${initialOffset}`, "30deg"]});
       opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.4, 1, 0.4]});
       // transform position based on pan state
@@ -174,6 +182,16 @@ class Stack extends Component {
 
 
     // JSX ----------------------------
+
+    // get all the current questions with this stack id
+      // get all the answers associated with that question
+        // make sure there's an answer flag
+
+    // this would come from main state
+
+    let { users, questions, answers } = this.props.state.main;
+
+    let owner = users.filter(u => u.id === stackData.userId)[0];
 
     return (
         <Animated.View
@@ -190,10 +208,31 @@ class Stack extends Component {
                 source={{uri: 'https://www.phactual.com/wp-content/uploads/2015/05/006-bill-murray-theredlist-5-times-bill-murray-won-at-life-the-only-way-bill-murray-can.jpeg'}}
               />
               <View style={s.headerTextContainer}>
-                <Text style={s.headerText}>Bill, 32</Text>
+                <Text style={s.headerText}>{owner.name}, {owner.age}</Text>
               </View>
             </View>
             <View style={s.body}>
+
+              {/*
+
+                - show questions
+                - hide questions
+
+                StackContent component
+
+                it accepts all the data
+                one component renders all the data + interface gestures and all that
+                the other just renders questions
+
+                static component can be pure
+
+                touchable component will need animations and stuff on it
+
+              */}
+
+              <StaticQuestions stackId={stackData.id} questions={questions} />
+
+
               <TouchableOpacity onPress={() => this._stackClose() }>
                 <Text> Exit </Text>
               </TouchableOpacity>
@@ -223,11 +262,10 @@ class Stack extends Component {
       let { id } = this.props.data;
       that.setState((s1, s2) => {
         return { response: ['press' + id, ...s1.response] }
-      }) 
+      })
       that.props.activateStack(id);
     }
   }
-
   _stackClose() {
     this.setState({offsetEnabled: false});
     Animated.spring(this.state.scale, {

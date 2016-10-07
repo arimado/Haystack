@@ -79,7 +79,6 @@ const initialNavState = {
         }
     ]
 }
-
 const isSameRoute = (state, action) => {
     return (
         state.routes[state.index].key ===
