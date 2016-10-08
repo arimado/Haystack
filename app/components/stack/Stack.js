@@ -22,6 +22,8 @@ import _ from 'lodash';
 import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
 import Header from '../shared/Header';
+import StackStaticPressContainer from './StackStaticPressContainer';
+import StaticQuestions from './StaticQuestions';
 
 // -----------------------------------------------------------------------------
 
@@ -38,25 +40,6 @@ const offsetRotationEvery = (number, reset) => {
 }
 
 // -----------------------------------------------------------------------------
-
-const StackStaticPress = (props) => {
-  let { isSwipe, style, children, onPress} = props;
-  if (isSwipe) return (<TouchableOpacity style={{flex: 1}} onPress={() => onPress()}>{children}</TouchableOpacity>);
-  return (<View style={{flex: 1}}>{children}</View>);
-}
-
-const StaticQuestions = ({ stackId, questions }) => {
-  let currentQuestions = questions.filter(q => q.stackId === stackId)
-       .sort((q1, q2) => {
-         let q1Pos = parseInt(q1.position);
-         let q2Pos = parseInt(q2.position);
-         if (q1Pos > q2Pos) return 1;
-         if (q1Pos < q2Pos) return -1;
-         return 0;
-       })
-       .map((q, i) => (<Text key={i}>{q.position}. {q.value}</Text>))
-  return (<View>{currentQuestions}</View>)
-}
 
 class Stack extends Component {
   constructor(props) {
@@ -197,7 +180,7 @@ class Stack extends Component {
         <Animated.View
           style={[StackContainerStyle, transform]}
           {...this._panResponder.panHandlers}>
-          <StackStaticPress
+          <StackStaticPressContainer
             style={s.stackContent}
             onPress={this._stackPress()}
             isSwipe={isSwipe}
@@ -228,6 +211,8 @@ class Stack extends Component {
 
                 touchable component will need animations and stuff on it
 
+                QuestionsAndAnswers
+
               */}
 
               <StaticQuestions stackId={stackData.id} questions={questions} />
@@ -238,7 +223,7 @@ class Stack extends Component {
               </TouchableOpacity>
               {this.state.response.map((res, i) => (<Text key={i}>{res}</Text>))}
             </View>
-          </StackStaticPress>
+          </StackStaticPressContainer>
         </Animated.View>
     )
   }

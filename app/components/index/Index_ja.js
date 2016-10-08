@@ -23,7 +23,7 @@ import _ from 'lodash';
 import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
 import Header from '../shared/Header';
-import Stack from './Stack'
+import Stack from '../stack/Stack'
 
 // -----------------------------------------------------------------------------
 
