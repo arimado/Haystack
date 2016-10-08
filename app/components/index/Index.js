@@ -52,7 +52,7 @@ class Index extends Component {
                               .reverse();
     return (
       <View style={S.base}>
-        <Header />
+        <Header handleNavigate={this.props._handleNavigate} resetStacks={this.props.resetStacks}/>
         <View style={s.stacksContainer}>
           {currentStacks.map((stack, i) =>  {
             return ( stack.id === activeStack ? <StackScroll key={i} data={stack} isSwipe={false} /> :
@@ -99,6 +99,9 @@ import {
 
 // -----------------------------------------------------------------------------
 
+import {
+resetStacks
+} from '../../store/actions'
 
 var mapStateToProps = (state) => {
   return {
@@ -108,7 +111,7 @@ var mapStateToProps = (state) => {
 
 var mapDispatchToProps = (dispatch) => {
   return {
-    doSomething: arg => console.log('nice')
+    resetStacks: () => dispatch(resetStacks())
   }
 }
 

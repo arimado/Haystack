@@ -91,7 +91,7 @@ var users = [
 var stacks = [
     { id: '1'
     , userId: '1'
-    , colorScheme: 'gold' },
+    , colorScheme: 'darkorange' },
     { id: '2'
     , userId: '2'
     , colorScheme: 'darkseagreen' },
@@ -178,64 +178,64 @@ var stacks = [
 var questions = [
     { id: '1'
     , stackId: '1'
-    , position: '4'
-    , value: 'What is your favourite color?' },
+    , position: '1'
+    , value: 'Star Wars or Star Trek' },
     { id: '2'
     , stackId: '1'
     , position: '2'
-    , value: 'What is your favourite car?' },
+    , value: 'Who would you fight?' },
     { id: '3'
     , stackId: '1'
     , position: '3'
-    , value: 'What is your favourite chair? asdasd asd asd asd asd asd' },
+    , value: 'Who should be president of the US?' },
     { id: '4'
     , stackId: '1'
-    , position: '1'
-    , value: 'What is your favourite bus?' },
+    , position: '4'
+    , value: 'Choose a Frank Ocean song' },
     { id: '5'
     , stackId: '2'
     , position: '1'
-    , value: 'What is your favourite color?' },
+    , value: 'Bey or Jay?' },
     { id: '6'
     , stackId: '2'
     , position: '2'
-    , value: 'What is your favourite color?' },
+    , value: 'Tay or Ye?' },
     { id: '7'
     , stackId: '2'
     , position: '3'
-    , value: 'What is your favourite color?' },
+    , value: 'Are you the dude? Do you abide?' },
     { id: '8'
     , stackId: '2'
     , position: '4'
-    , value: 'What is your favourite color?' },
+    , value: 'What do you do on Monday nights?' },
     { id: '9'
     , stackId: '3'
     , position: '1'
-    , value: 'What is your favourite color?' },
+    , value: 'FUCK ' },
     { id: '10'
     , stackId: '3'
     , position: '2'
-    , value: 'What is your favourite color?' },
+    , value: 'MARRY ' },
     { id: '11'
     , stackId: '3'
     , position: '3'
-    , value: 'What is your favourite color?' },
+    , value: 'KILL ' },
     { id: '12'
     , stackId: '3'
     , position: '4'
-    , value: 'What is your favourite color?' },
+    , value: 'WHERE CAN I PURCHASE DRUGS?' },
     { id: '13'
     , stackId: '4'
     , position: '1'
-    , value: 'What is your favourite color?' },
+    , value: 'How do you say hello in german?' },
     { id: '14'
     , stackId: '4'
     , position: '2'
-    , value: 'What is your favourite color?' },
+    , value: 'Does he look like a bitch?' },
     { id: '15'
     , stackId: '4'
     , position: '3'
-    , value: 'What is your favourite color?' },
+    , value: 'Object Oriented or Functional' },
     { id: '4'
     , stackId: '4'
     , position: '4'
@@ -245,52 +245,137 @@ var questions = [
 var answers = [
     { id: '1'
     , questionId: '1'
-    , value: 'Crawl'
+    , value: 'War'
     , isCorrect: 'true'
     , isSelected: 'false'},
     { id: '2'
     , questionId: '1'
-    , value: 'k.dot'
+    , value: 'Trek'
     , isCorrect: 'true'
     , isSelected: 'false'},
     { id: '3'
     , questionId: '2'
-    , value: 'J.cole'
+    , value: 'William Shatner'
     , isCorrect: 'true'
     , isSelected: 'false'},
     { id: '4'
     , questionId: '2'
-    , value: 'Blue'
+    , value: 'Shooter McGavin from Happy Gilmore'
     , isCorrect: 'true'
     , isSelected: 'false'},
     { id: '5'
     , questionId: '3'
-    , value: 'Bluasdasde asd asd asd'
+    , value: 'MAKE AMERICA GREAT AGAIN'
     , isCorrect: 'true'
     , isSelected: 'false'},
     { id: '6'
     , questionId: '3'
-    , value: 'Blue'
+    , value: 'IM WITH HER'
     , isCorrect: 'true'
     , isSelected: 'false'},
     { id: '7'
     , questionId: '3'
-    , value: 'Blue'
+    , value: "Paris Hilton's dog"
     , isCorrect: 'true'
     , isSelected: 'false'},
     { id: '8'
-    , questionId: '3'
-    , value: 'Blue'
+    , questionId: '4'
+    , value: 'Pyramids'
     , isCorrect: 'true'
     , isSelected: 'false'},
     { id: '9'
     , questionId: '4'
-    , value: 'Blue'
+    , value: 'Forrest Gump'
     , isCorrect: 'true'
     , isSelected: 'false'},
     { id: '10'
     , questionId: '4'
-    , value: 'Blue'
+    , value: 'Lost'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '11'
+    , questionId: '5'
+    , value: 'Bey'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '12'
+    , questionId: '5'
+    , value: 'Jay'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '13'
+    , questionId: '6'
+    , value: 'Tay'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '14'
+    , questionId: '6'
+    , value: 'Ye'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '15'
+    , questionId: '7'
+    , value: 'Yes'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '16'
+    , questionId: '8'
+    , value: 'Writing Raps'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '17'
+    , questionId: '8'
+    , value: 'Writing Code'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '18'
+    , questionId: '8'
+    , value: 'Layin fake ass gangstas down'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '19'
+    , questionId: '9'
+    , value: 'Casio Watch'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '20'
+    , questionId: '9'
+    , value: 'Shooter McGavin from Happy Gilmore'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '21'
+    , questionId: '10'
+    , value: 'Beyonce Knowles'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '22'
+    , questionId: '10'
+    , value: 'Ryan Renolds'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '23'
+    , questionId: '10'
+    , value: 'Barack Obama'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '24'
+    , questionId: '11'
+    , value: 'Your Hopes and Dreams'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '25'
+    , questionId: '12'
+    , value: 'FUCK'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '26'
+    , questionId: '12'
+    , value: 'FUCK'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '27'
+    , questionId: '12'
+    , value: 'FUCK'
     , isCorrect: 'true'
     , isSelected: 'false'},
 ]

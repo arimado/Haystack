@@ -30,7 +30,8 @@ import {
   NEXT_CARD,
   ACTIVATE_STACK,
   DEACTIVATE_STACK,
-  SELECT_ANSWER
+  SELECT_ANSWER,
+  RESET_STACKS
 } from '../constants/actionTypes'
 
 // STATE REDUCERS --------------------------------------------------------------
@@ -65,6 +66,9 @@ const mainReducer = (state = initialMainState, action) => {
     case SELECT_ANSWER:
       let updatedAnswerInAnswers = H.setValueOnEntity(state.answers, { id: action.id }, a => ({ isSelected: 'true' }));
       return Object.assign({}, state, {answers: updatedAnswerInAnswers})
+      break;
+    case RESET_STACKS: // You need to change this name to stack instead
+      return Object.assign({}, state, { visibleStack: 0 })
       break;
     default:
       return state;

@@ -8,7 +8,8 @@ export const incrementCounter = ( count ) => {
 export const nextCard         = () => ({ type: types.NEXT_CARD });
 export const activateStack    = (stackNum) => ({ type: types.ACTIVATE_STACK, stackNum });
 export const deactivateStack  = (stackNum) => ({ type: types.DEACTIVATE_STACK, stackNum });
-export const selectAnswer     = (id) => ({type: types.SELECT_ANSWER, id})
+export const selectAnswer     = (id) => ({type: types.SELECT_ANSWER, id});
+export const resetStacks     = () => ({type: types.RESET_STACKS});
 
 
 // -----------------------------------------------------------------------------

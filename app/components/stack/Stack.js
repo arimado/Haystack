@@ -11,6 +11,7 @@ import {
   Animated,
   Image
 } from 'react-native'
+import Icon from 'react-native-vector-icons/Entypo'
 
 import S from '../styles/styles.js';
 import * as H from '../../helpers/helpers';
@@ -211,12 +212,11 @@ class Stack extends Component {
               { isSwipe ? <StaticQuestions stackId={stackData.id} questions={questions} />
                         : <Test stackId={stackData.id} questions={questions} answers={answers} />}
 
+              { isSwipe ? null : (<TouchableOpacity style={s.exitButton} onPress={() => this._stackClose() }>
+                <Icon name="circle-with-cross" style={s.exitIcon} />
+              </TouchableOpacity>) }
 
-
-              <TouchableOpacity onPress={() => this._stackClose() }>
-                <Text> Exit </Text>
-              </TouchableOpacity>
-              {this.state.response.map((res, i) => (<Text key={i}>{res}</Text>))}
+              {/*{this.state.response.map((res, i) => (<Text key={i}>{res}</Text>))}*/}
             </View>
           </StackStaticPressContainer>
         </Animated.View>
@@ -283,7 +283,7 @@ const style = (c) => (StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    backgroundColor: 'rgba(255,255,255, 0.1)',
+    backgroundColor: 'rgba(255,255,255, 0.2)',
     padding: 20
   },
   stackProfile: {
@@ -301,6 +301,15 @@ const style = (c) => (StyleSheet.create({
   },
   body: {
     flex: 1
+  },
+  exitButton: {
+    padding: 20,
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0, 0.3)',
+  },
+  exitIcon: {
+    color: 'white',
+    fontSize: 30
   }
 }))
 

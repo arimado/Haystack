@@ -55,6 +55,7 @@ class Answer extends Component {
 
 const style = (c) => (StyleSheet.create({
   rootContainer: {
+    flex: 1,
     margin: 5
   },
   button: {
@@ -63,7 +64,7 @@ const style = (c) => (StyleSheet.create({
     backgroundColor: 'rgba(0,0,0, 0.2)',
     borderRadius: 10,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   text: {
     color: 'white'

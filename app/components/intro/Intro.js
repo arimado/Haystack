@@ -21,11 +21,7 @@ import StatusBarBg from '../shared/StatusBarBg';
 // -----------------------------------------------------------------------------
 
 const INDEX_ROUTE = {
-  type: 'push',
-  route: {
-    key: 'index',
-    title: 'Stacks'
-  }
+  type: 'pop'
 }
 
 // -----------------------------------------------------------------------------

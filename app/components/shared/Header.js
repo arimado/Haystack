@@ -29,18 +29,26 @@ import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
 import StatusBarBg from './StatusBarBg'
 
+const INTRO_ROUTE = {
+  type: 'push',
+  route: {
+    key: 'intro',
+    title: 'Stacks'
+  }
+}
+
 // -----------------------------------------------------------------------------
 
-const Header = () => {
+const Header = ({handleNavigate, resetStacks}) => {
   return (
     <View>
       <StatusBarBg/>
       <View style={s.container}>
-        <TouchableOpacity style={s.button}>
+        <TouchableOpacity style={s.button} onPress={() => { handleNavigate(INTRO_ROUTE) }} >
             {/*<Text style={s.buttonText}> M </Text>*/}
             <Icon name="text-document-inverted" style={s.buttonText} />
         </TouchableOpacity>
-        <TouchableOpacity style={s.button}>
+        <TouchableOpacity style={s.button} onPress={() => {resetStacks()}}>
             <Icon name="layers" style={s.buttonText} />
         </TouchableOpacity>
         <TouchableOpacity style={s.button}>
