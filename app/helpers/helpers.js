@@ -1,5 +1,16 @@
 // DATA ------------------------------------------------------------------------
 
+export const setValueOnEntity = (entities, idObj, returnObj ) => {
+    let i = _.findIndex(entities, idObj)
+    let entity = entities[i];
+    let updatedEntity = Object.assign({}, entity, returnObj(entity))
+    return [
+        ...entities.slice(0, i),
+        updatedEntity,
+        ...entities.slice(i + 1)
+    ]
+}
+
 // ANIMATION -------------------------------------------------------------------
 
 export const offsetRotationEvery = (number, reset) => {

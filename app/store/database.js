@@ -245,15 +245,15 @@ var questions = [
 var answers = [
     { id: '1'
     , questionId: '1'
-    , value: 'Blue'
+    , value: 'Crawl'
     , isCorrect: 'true' },
     { id: '2'
     , questionId: '1'
-    , value: 'Blue'
+    , value: 'k.dot'
     , isCorrect: 'true' },
     { id: '3'
     , questionId: '2'
-    , value: 'Blue'
+    , value: 'J.cole'
     , isCorrect: 'true' },
     { id: '4'
     , questionId: '2'

@@ -6,11 +6,13 @@ import {
 
 import * as H from '../../helpers/helpers';
 
+import Answer from './Answer';
+
 const QuestionWithAnswers = ({ question, answers}) => {
   return (
     <View>
       <Text>{question.position}. {question.value}</Text>
-      {answers.map((a, i) => <Text key={i}>{a.value}</Text>)}
+      {answers.map((a, i) => <Answer key={i} answer={a}/>)}
     </View>
   )
 }

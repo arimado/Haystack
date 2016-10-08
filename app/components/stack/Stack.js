@@ -253,7 +253,7 @@ class Stack extends Component {
         friction: 3
     }).start(()=> {
     })
-    that.props.deactivateStack();
+    this.props.deactivateStack();
   }
 
 }

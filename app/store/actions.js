@@ -5,9 +5,11 @@ export const incrementCounter = ( count ) => {
         type: types.INCREMENT_COUNTER
     }
 }
-export const nextCard = () => ({ type: types.NEXT_CARD });
-export const activateStack = (stackNum) => ({ type: types.ACTIVATE_STACK, stackNum });
-export const deactivateStack = (stackNum) => ({ type: types.DEACTIVATE_STACK, stackNum });
+export const nextCard         = () => ({ type: types.NEXT_CARD });
+export const activateStack    = (stackNum) => ({ type: types.ACTIVATE_STACK, stackNum });
+export const deactivateStack  = (stackNum) => ({ type: types.DEACTIVATE_STACK, stackNum });
+export const selectAnswer     = (id) => ({type: types.SELECT_ANSWER, id})
+
 
 // -----------------------------------------------------------------------------
 
