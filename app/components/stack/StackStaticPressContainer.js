@@ -10,4 +10,4 @@ const StackStaticPressContainer = (props) => {
   return (<View style={{flex: 1}}>{children}</View>);
 }
 
-export default StackStaticPressContainer
+export default StackStaticPressContainer;

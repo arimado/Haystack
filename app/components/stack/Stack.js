@@ -13,6 +13,7 @@ import {
 } from 'react-native'
 
 import S from '../styles/styles.js';
+import * as H from '../../helpers/helpers';
 
 import _ from 'lodash';
 
@@ -30,14 +31,6 @@ import StaticQuestions from './StaticQuestions';
 const BACK = { type: 'pop'};
 const SWIPE_THRESHOLD = 150;
 const OPEN_STACK_SCALE = 1.03;
-
-// -----------------------------------------------------------------------------
-
-const offsetRotationEvery = (number, reset) => {
-  if ( number === 0 ) return '0deg'
-  if ( number % reset > 0 ) return number % reset / 2 + 'deg'
-  return 4 / 2 + 'deg'
-}
 
 // -----------------------------------------------------------------------------
 
@@ -154,7 +147,7 @@ class Stack extends Component {
     let StackContainerStyle = isSwipe ? s.stackContainer : s.stackContainerOpen ;
 
     if (isSwipe) {
-      initialOffset = offsetEnabled ? offsetRotationEvery(stackData.stackNumber, 4) : '0deg';
+      initialOffset = offsetEnabled ? H.offsetRotationEvery(stackData.stackNumber, 4) : '0deg';
       rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `${initialOffset}`, "30deg"]});
       opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.4, 1, 0.4]});
       // transform position based on pan state
@@ -212,10 +205,10 @@ class Stack extends Component {
                 touchable component will need animations and stuff on it
 
                 QuestionsAndAnswers
-
               */}
 
               <StaticQuestions stackId={stackData.id} questions={questions} />
+
 
 
               <TouchableOpacity onPress={() => this._stackClose() }>
