@@ -6,12 +6,14 @@ import {
   Text,
   View,
   NavigationExperimental,
-  TouchableOpacity
+  TouchableOpacity,
+  PanResponder,
+  Animated,
+  ScrollView
 } from 'react-native'
-import SwipeCards from 'react-native-swipe-cards';
-
 
 import S from '../styles/styles.js';
+
 import _ from 'lodash';
 
 // -----------------------------------------------------------------------------
@@ -21,6 +23,7 @@ import _ from 'lodash';
 import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
 import Header from '../shared/Header';
+import Stack from '../stack/Stack'
 
 // -----------------------------------------------------------------------------
 
@@ -28,61 +31,59 @@ const BACK = {
   type: 'pop'
 }
 
-const Cards = [
-  {text: 'Tomato', backgroundColor: 'red'},
-  {text: 'Aubergine', backgroundColor: 'purple'},
-  {text: 'Courgette', backgroundColor: 'green'},
-  {text: 'Blueberry', backgroundColor: 'blue'},
-  {text: 'Umm...', backgroundColor: 'cyan'},
-  {text: 'orange', backgroundColor: 'orange'},
-]
-
 // -----------------------------------------------------------------------------
 
-class Card extends Component {
-  render() {
-    return (
-      <View style={[styles.card, {backgroundColor: this.props.backgroundColor}]}>
-        <Text>{this.props.text}</Text>
-      </View>
-    )
-  }
-}
+const StackScroll = (props) => (
+  <ScrollView>
+      <Stack data={props.data} isSwipe={props.isSwipe}/>
+  </ScrollView>);
 
-class Stacks extends Component {
+class Index extends Component {
   constructor(props) {
-    super(props)
-    this.state = { cards: Cards }
-  }
-  handleYup (card) {
-   console.log(`Yup for ${card.text}`)
-  }
-  handleNope (card) {
-   console.log(`Nope for ${card.text}`)
+    super(props);
   }
   render() {
-   return (
-     <SwipeCards
-       cards={this.state.cards}
-       renderCard={(cardData) => <Card {...cardData} />}
-       renderNoMoreCards={() => <NoMoreCards />}
-       handleYup={this.handleYup}
-       handleNope={this.handleNope}
-     />
-   )
+    const s = style(this);
+
+    let { stacks, visibleStack, activeStack } = this.props.state.main;
+
+    let currentStacks = stacks.map((s, i) => ({ stackNumber: i, ...s }))
+                              .slice(visibleStack, visibleStack + 4)
+                              .reverse();
+    return (
+      <View style={S.base}>
+        <Header />
+        <View style={s.stacksContainer}>
+          {currentStacks.map((stack, i) =>  {
+            return ( stack.id === activeStack ? <StackScroll key={i} data={stack} isSwipe={false} /> :
+                                                <Stack key={i} data={stack} isSwipe={true}/> )
+          })}
+
+          {/* <ScrollView></ScrollView> */}
+        </View>
+      </View>
+    );
   }
 }
 
-
-const styles = StyleSheet.create({
-  card: {
+const style = (c) => (StyleSheet.create({
+  stacksContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 300,
-    height: 300,
+    backgroundColor: 'indigo',
+    position: 'relative'
+  },
+  stackContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    flex: 1,
+    margin: 15,
+    backgroundColor: 'red'
   }
-})
+}))
+
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -114,4 +115,4 @@ var mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Stacks)
+)(Index)

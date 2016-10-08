@@ -25,7 +25,6 @@ const {
 import Intro from '../components/intro/Intro'
 import Login from '../components/login/Login';
 import Index from '../components/index/Index';
-import Index_JA from '../components/index/Index_ja';
 
 class Routes extends Component {
 
@@ -62,9 +61,6 @@ class Routes extends Component {
         }
         if (scene.key === prefix + 'index') {
             return <Index _handleNavigate={this._handleNavigate.bind(this)} />
-        }
-        if (scene.key === prefix + 'index_ja') {
-            return <Index_JA _handleNavigate={this._handleNavigate.bind(this)} />
         }
     }
 
