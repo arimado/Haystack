@@ -187,7 +187,7 @@ var questions = [
     { id: '3'
     , stackId: '1'
     , position: '3'
-    , value: 'What is your favourite chair?' },
+    , value: 'What is your favourite chair? asdasd asd asd asd asd asd' },
     { id: '4'
     , stackId: '1'
     , position: '1'
@@ -265,7 +265,7 @@ var answers = [
     , isSelected: 'false'},
     { id: '5'
     , questionId: '3'
-    , value: 'Blue'
+    , value: 'Bluasdasde asd asd asd'
     , isCorrect: 'true'
     , isSelected: 'false'},
     { id: '6'

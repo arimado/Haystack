@@ -23,7 +23,7 @@ class Answer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      scale: new Animated.Value(1),
+      scale: new Animated.Value(2),
     }
   }
   componentWillMount() {
@@ -33,7 +33,14 @@ class Answer extends Component {
   render(){
     const s = style(this);
     let { answer } = this.props;
-    return (<TouchableOpacity onPress={()=>{this._press()}}><Text>{answer.value}, selected: {answer.isSelected}</Text></TouchableOpacity>)
+    let { scale } = this.state;
+    return (
+      <Animated.View style={s.rootContainer}>
+        <TouchableOpacity style={s.button} onPress={()=>{this._press()}}>
+          <Text style={s.text}>{answer.value}</Text>
+        </TouchableOpacity>
+      </Animated.View>
+    )
   }
 
   componentDidMount() {
@@ -47,6 +54,20 @@ class Answer extends Component {
 }
 
 const style = (c) => (StyleSheet.create({
+  rootContainer: {
+    margin: 5
+  },
+  button: {
+    padding: 10,
+    marginBottom: 5,
+    backgroundColor: 'rgba(0,0,0, 0.2)',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  text: {
+    color: 'white'
+  }
 }))
 
 

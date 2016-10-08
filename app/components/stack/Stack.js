@@ -300,7 +300,7 @@ const style = (c) => (StyleSheet.create({
     color: 'white'
   },
   body: {
-
+    flex: 1
   }
 }))
 
