@@ -21,6 +21,7 @@ const {
 } = NavigationExperimental
 
 import db from './database'
+import * as H from '../helpers/helpers'
 
 // ACTIONS ---------------------------------------------------------------------
 
@@ -28,7 +29,8 @@ import {
   INCREMENT_COUNTER,
   NEXT_CARD,
   ACTIVATE_STACK,
-  DEACTIVATE_STACK
+  DEACTIVATE_STACK,
+  SELECT_ANSWER
 } from '../constants/actionTypes'
 
 // STATE REDUCERS --------------------------------------------------------------
@@ -59,6 +61,10 @@ const mainReducer = (state = initialMainState, action) => {
       break;
     case DEACTIVATE_STACK:
       return Object.assign({}, state, { activeStack: null })
+      break;
+    case SELECT_ANSWER:
+      let updatedAnswerInAnswers = H.setValueOnEntity(state.answers, { id: action.id }, a => ({ isSelected: 'true' }));
+      return Object.assign({}, state, {answers: updatedAnswerInAnswers})
       break;
     default:
       return state;

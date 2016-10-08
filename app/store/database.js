@@ -246,43 +246,53 @@ var answers = [
     { id: '1'
     , questionId: '1'
     , value: 'Crawl'
-    , isCorrect: 'true' },
+    , isCorrect: 'true'
+    , isSelected: 'false'},
     { id: '2'
     , questionId: '1'
     , value: 'k.dot'
-    , isCorrect: 'true' },
+    , isCorrect: 'true'
+    , isSelected: 'false'},
     { id: '3'
     , questionId: '2'
     , value: 'J.cole'
-    , isCorrect: 'true' },
+    , isCorrect: 'true'
+    , isSelected: 'false'},
     { id: '4'
     , questionId: '2'
     , value: 'Blue'
-    , isCorrect: 'true' },
+    , isCorrect: 'true'
+    , isSelected: 'false'},
     { id: '5'
     , questionId: '3'
     , value: 'Blue'
-    , isCorrect: 'true' },
+    , isCorrect: 'true'
+    , isSelected: 'false'},
     { id: '6'
     , questionId: '3'
     , value: 'Blue'
-    , isCorrect: 'true' },
+    , isCorrect: 'true'
+    , isSelected: 'false'},
     { id: '7'
     , questionId: '3'
     , value: 'Blue'
-    , isCorrect: 'true' },
+    , isCorrect: 'true'
+    , isSelected: 'false'},
     { id: '8'
     , questionId: '3'
     , value: 'Blue'
-    , isCorrect: 'true' },
+    , isCorrect: 'true'
+    , isSelected: 'false'},
     { id: '9'
     , questionId: '4'
     , value: 'Blue'
-    , isCorrect: 'true' },
+    , isCorrect: 'true'
+    , isSelected: 'false'},
     { id: '10'
     , questionId: '4'
     , value: 'Blue'
-    , isCorrect: 'true' },
+    , isCorrect: 'true'
+    , isSelected: 'false'},
 ]
 
 const db = { users: users, stacks: stacks, questions: questions, answers: answers }

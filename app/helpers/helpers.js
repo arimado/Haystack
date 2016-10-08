@@ -1,9 +1,21 @@
+import _ from 'lodash';
+
 // DATA ------------------------------------------------------------------------
 
-export const setValueOnEntity = (entities, idObj, returnObj ) => {
+// setValueOnEntity --
+// updates value on a specified entity in an array and returns a new array with
+// that updated entity
+//          params --
+// -    entities: array of entities
+// -       idObj: object with identifier key and value
+// - transformCB: function that takes the found entity as a paramater
+//                the return value is the updated entity
+//
+
+export const setValueOnEntity = (entities, idObj, transformCB ) => {
     let i = _.findIndex(entities, idObj)
     let entity = entities[i];
-    let updatedEntity = Object.assign({}, entity, returnObj(entity))
+    let updatedEntity = Object.assign({}, entity, transformCB(entity))
     return [
         ...entities.slice(0, i),
         updatedEntity,

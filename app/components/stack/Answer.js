@@ -33,7 +33,7 @@ class Answer extends Component {
   render(){
     const s = style(this);
     let { answer } = this.props;
-    return (<TouchableOpacity><Text>{answer.value}</Text></TouchableOpacity>)
+    return (<TouchableOpacity onPress={()=>{this._press()}}><Text>{answer.value}, selected: {answer.isSelected}</Text></TouchableOpacity>)
   }
 
   componentDidMount() {
@@ -41,7 +41,7 @@ class Answer extends Component {
   }
 
   _press() {
-    
+    this.props.selectAnswer(this.props.answer.id)
   }
 
 }
