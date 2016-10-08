@@ -20,3 +20,17 @@ export const getCurrentQuestions = (questions, stackId) => {
       return 0;
     })
 }
+
+export const getCurrentAnswers = (answers, questionId) => {
+  return answers.filter(a => a.questionId === questionId)
+}
+
+// sort(entities)
+//
+// sortBy = sort(entities)
+//
+// sortByQuestions = sortBy('questions')
+//
+//
+//
+// export const sortByQuestion = sortBy('question')

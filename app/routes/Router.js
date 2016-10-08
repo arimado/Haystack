@@ -22,7 +22,7 @@ const {
   StateUtils: NavigationStateUtils
 } = NavigationExperimental
 
-import Intro from '../components/intro/Intro'
+import Intro from '../components/intro/Intro';
 import Login from '../components/login/Login';
 import Index from '../components/index/Index';
 

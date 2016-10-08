@@ -25,6 +25,7 @@ import RoutesContainer from '../../routes/RoutesContainer';
 import Header from '../shared/Header';
 import StackStaticPressContainer from './StackStaticPressContainer';
 import StaticQuestions from './StaticQuestions';
+import Test from './Test'
 
 // -----------------------------------------------------------------------------
 
@@ -207,7 +208,8 @@ class Stack extends Component {
                 QuestionsAndAnswers
               */}
 
-              <StaticQuestions stackId={stackData.id} questions={questions} />
+              { isSwipe ? <StaticQuestions stackId={stackData.id} questions={questions} />
+                        : <Test stackId={stackData.id} questions={questions} answers={answers} />}
 
 
 
