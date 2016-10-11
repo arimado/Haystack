@@ -8,12 +8,13 @@ import {
 import * as H from '../../helpers/helpers';
 
 import Answer from './Answer';
+import Question from './Question';
 
 const QuestionWithAnswers = ({ question, answers}) => {
   const s = style();
   return (
     <View style={s.rootContainer}>
-      <Text style={s.questionText}>{question.position}. {question.value}</Text>
+      <Question position={question.position} value={question.value} />
       <View style={s.answers}>
         {answers.map((a, i) => <Answer key={i} answer={a}/>)}
       </View>

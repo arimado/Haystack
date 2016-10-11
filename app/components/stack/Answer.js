@@ -55,7 +55,7 @@ class Answer extends Component {
 
 const style = (c) => (StyleSheet.create({
   rootContainer: {
-    flex: 1,
+    flex: 0.5,
     margin: 5
   },
   button: {

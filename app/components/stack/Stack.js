@@ -157,8 +157,7 @@ class Stack extends Component {
     } else {
       transform = {transform: [{translateX: 0}, {translateY: 0}, {rotate: '0deg'}, {scale}]};
     }
-
-
+    
     // JSX ----------------------------
 
     // get all the current questions with this stack id
