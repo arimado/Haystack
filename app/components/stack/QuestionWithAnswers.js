@@ -33,7 +33,9 @@ const style = (c) => (StyleSheet.create({
   },
   answers: {
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    alignItems: 'flex-start'
+
   }
 }))
 
