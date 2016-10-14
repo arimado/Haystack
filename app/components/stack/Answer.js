@@ -61,11 +61,12 @@ const style = (c) => (StyleSheet.create({
   button: {
     padding: 10,
     marginBottom: 5,
-    backgroundColor: 'rgba(0,0,0, 0.2)',
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',
+    borderWidth: 2,
+    borderColor: 'rgba(255,255,255, 0.2)'
   },
   text: {
     color: 'white'

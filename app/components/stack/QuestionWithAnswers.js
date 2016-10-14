@@ -24,12 +24,13 @@ const QuestionWithAnswers = ({ question, answers}) => {
 
 const style = (c) => (StyleSheet.create({
   rootContainer: {
-    flexDirection: 'column'
+    flexDirection: 'column',
+    marginTop: 15
   },
   questionText: {
     fontSize: 23,
     color: 'white',
-    marginBottom: 10
+    marginBottom: 10,
   },
   answers: {
     flexDirection: 'row',
