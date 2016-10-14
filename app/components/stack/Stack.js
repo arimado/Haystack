@@ -44,6 +44,7 @@ class Stack extends Component {
       pan: new Animated.ValueXY(),
       scale: new Animated.Value(1),
       rotate: new Animated.Value(),
+      rotateY: new Animated.Value(),
       response: ['lol', 'nice'],
       offsetEnabled: true
     }
@@ -57,7 +58,14 @@ class Stack extends Component {
       Animated.spring(this.state.scale, {
           toValue: OPEN_STACK_SCALE,
           friction: 3
-      }).start()
+      }).start(() => {
+        console.log('animate y rotation')
+        Animated.spring(this.state.rotateY, {
+            toValue: 60,
+            friction: 3
+        }).start()
+      })
+
     }
 
 
@@ -142,7 +150,7 @@ class Stack extends Component {
     // get card data
     let stackData   = this.props.data;
     let isSwipe     = this.props.isSwipe;
-    let { pan, scale, offsetEnabled } = this.state;
+    let { pan, scale, offsetEnabled, rotateY } = this.state;
     let [translateX, translateY] = [ pan.x, pan.y ];
     let initialOffset, rotate, opacity, transform = {};
 
@@ -150,14 +158,14 @@ class Stack extends Component {
 
     if (isSwipe) {
       initialOffset = offsetEnabled ? H.offsetRotationEvery(stackData.stackNumber, 4) : '0deg';
-      rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `${initialOffset}`, "30deg"]});
+      rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-180deg", `${initialOffset}`, "180deg"]});
       opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.4, 1, 0.4]});
       // transform position based on pan state
-      transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity};
+      transform = {transform: [{translateX}, {translateY}, {rotateY: rotate}, {scale}], opacity};
     } else {
       transform = {transform: [{translateX: 0}, {translateY: 0}, {rotate: '0deg'}, {scale}]};
     }
-    
+
     // JSX ----------------------------
 
     // get all the current questions with this stack id
