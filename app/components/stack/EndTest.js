@@ -20,6 +20,7 @@ import store from '../../store/reducers';
 
 // -----------------------------------------------------------------------------
 
+
 const EndTest = ({ stackClose, stackSubmit }) => {
   const s = style(this);
   return (
@@ -27,10 +28,11 @@ const EndTest = ({ stackClose, stackSubmit }) => {
     <TouchableOpacity style={[s.button, s.exitButton]} onPress={() => stackClose() }>
       <Icon name="circle-with-cross" style={s.icon} />
     </TouchableOpacity>
-    <TouchableOpacity style={[s.button, s.submitButton]} onPress={() => stackClose() }>
+    <TouchableOpacity style={[s.button, s.submitButton]} onPress={() => stackSubmit()}>
       <Icon name="paper-plane" style={s.icon} />
     </TouchableOpacity>
-  </View>)
+  </View>
+  )
 }
 
 const style = (c) => (StyleSheet.create({
@@ -80,6 +82,7 @@ import {
 
 import {
 selectAnswer,
+submitResult
 } from '../../store/actions'
 
 
@@ -91,7 +94,8 @@ var mapStateToProps = (state) => {
 
 var mapDispatchToProps = (dispatch) => {
   return {
-    selectAnswer: id => dispatch(selectAnswer(id))
+    selectAnswer: id => dispatch(selectAnswer(id)),
+    submitResult: (result) => dispatch(submitResult(result))
    }
 }
 

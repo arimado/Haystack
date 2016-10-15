@@ -15,7 +15,6 @@ import Icon from 'react-native-vector-icons/Entypo'
 
 import S from '../styles/styles.js';
 import * as H from '../../helpers/helpers';
-
 import _ from 'lodash';
 
 // -----------------------------------------------------------------------------
@@ -190,30 +189,16 @@ class Stack extends Component {
             </View>
             <View style={s.body}>
 
-              {/*
+              { isSwipe
+                ? <StaticQuestions stackId={stackData.id} questions={questions} />
+                : <Test stackId={stackData.id} questions={questions} answers={answers} /> }
 
-                - show questions
-                - hide questions
+              { isSwipe
+                ? null
+                : <EndTest
+                    stackClose={() => { this._stackClose() }}
+                    stackSubmit={() => { this._stackSubmit() }}/> }
 
-                StackContent component
-
-                it accepts all the data
-                one component renders all the data + interface gestures and all that
-                the other just renders questions
-
-                static component can be pure
-
-                touchable component will need animations and stuff on it
-
-                QuestionsAndAnswers
-              */}
-
-              { isSwipe ? <StaticQuestions stackId={stackData.id} questions={questions} />
-                        : <Test stackId={stackData.id} questions={questions} answers={answers} />}
-
-              { isSwipe ? null : (<EndTest stackClose={() => { this._stackClose()}}/>) }
-
-              {/*{this.state.response.map((res, i) => (<Text key={i}>{res}</Text>))}*/}
             </View>
           </StackStaticPressContainer>
         </Animated.View>
@@ -250,11 +235,34 @@ class Stack extends Component {
         friction: 3
     }).start(()=> {
     })
-
     this.props.deactivateStack();
+  }
+  _stackSubmit() {
+
+    // validate
+    // makre sure user has answered all questions
+    // make sure at least one answer isSelected for each question
+
+    // result
+    // get all questions associated with this stack
+    // get only the correct ones
+    // see if there all selected
+
+    // stack > questions > answers
+
+    let { id: stackId } = this.props.data;
+    let { questions, answers } = this.props.state.main;
+
+    let currentAnswers = _.flatten(H.getCurrentQuestions(questions, stackId)
+          .map((q) => H.getCurrentAnswers(answers, q.id)))
+
+
+    let correctAnswers = currentAnswers.filter(a => a.isCorrect === 'true').length
+    let correctlyAnswered = currentAnswers.filter(a => a.isCorrect === 'true' && a.isSelected === 'true').length
+
+    console.log(currentAnswers);
 
   }
-
 }
 
 const style = (c) => (StyleSheet.create({

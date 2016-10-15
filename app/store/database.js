@@ -91,87 +91,143 @@ var users = [
 var stacks = [
     { id: '1'
     , userId: '1'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'darkorange' },
     { id: '2'
     , userId: '2'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'darkseagreen' },
     { id: '3'
     , userId: '3'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'slateblue' },
     { id: '4'
     , userId: '4'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'crimson' },
     { id: '5'
     , userId: '5'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'gold' },
     { id: '6'
     , userId: '6'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'darkseagreen' },
     { id: '7'
     , userId: '7'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'slateblue' },
     { id: '8'
     , userId: '8'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'crimson' },
     { id: '9'
     , userId: '9'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'gold' },
     { id: '10'
     , userId: '10'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'darkseagreen' },
     { id: '11'
     , userId: '11'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'slateblue' },
     { id: '12'
     , userId: '12'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'crimson' },
     { id: '13'
     , userId: '13'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'gold' },
     { id: '14'
     , userId: '14'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'darkseagreen' },
     { id: '15'
     , userId: '15'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'slateblue' },
     { id: '16'
     , userId: '16'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'crimson' },
     { id: '17'
     , userId: '17'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'gold' },
     { id: '18'
     , userId: '18'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'darkseagreen' },
     { id: '19'
     , userId: '19'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'slateblue' },
     { id: '20'
     , userId: '20'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'crimson' },
     { id: '21'
     , userId: '21'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'gold' },
     { id: '22'
     , userId: '22'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'darkseagreen' },
     { id: '23'
     , userId: '23'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'slateblue' },
     { id: '24'
     , userId: '24'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'crimson' },
     { id: '25'
     , userId: '25'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'gold' },
     { id: '26'
     , userId: '26'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'darkseagreen' },
     { id: '27'
     , userId: '27'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'slateblue' },
     { id: '28'
     , userId: '28'
+    , attempted: 'false'
+    , result: 'null'
     , colorScheme: 'crimson' },
 ]
 
@@ -380,6 +436,29 @@ var answers = [
     , isSelected: 'false'},
 ]
 
-const db = { users: users, stacks: stacks, questions: questions, answers: answers }
+// { id: '1'
+// , user: 'userId'
+// , stackId: ''
+// , result: Bool } // pass, fail, skipped
+
+var results = []
+
+var matches = [
+  { id: '1'
+  , questionId: '1'
+  , value: 'War'
+  , isCorrect: 'true'
+  , isSelected: 'false'},
+]
+
+var messages = [
+  { id: '1'
+  , questionId: '1'
+  , value: 'War'
+  , isCorrect: 'true'
+  , isSelected: 'false'},
+]
+
+const db = { users: users, stacks: stacks, questions: questions, answers: answers, results: results }
 
 export default db;

@@ -32,7 +32,8 @@ import {
   DEACTIVATE_STACK,
   SELECT_ANSWER,
   RESET_STACKS,
-  DESELECT_ANSWERS
+  DESELECT_ANSWERS,
+  SUBMIT_RESULT
 } from '../constants/actionTypes'
 
 // STATE REDUCERS --------------------------------------------------------------
@@ -74,6 +75,10 @@ const mainReducer = (state = initialMainState, action) => {
       break;
     case RESET_STACKS: // You need to change this name to stack instead
       return Object.assign({}, state, { visibleStack: 0 })
+      break;
+    case SUBMIT_RESULT:
+      // get result
+      return
       break;
     default:
       return state;

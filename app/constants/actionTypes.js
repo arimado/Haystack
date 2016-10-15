@@ -5,4 +5,5 @@ export const ACTIVATE_STACK       = 'ACTIVATE_STACK';
 export const DEACTIVATE_STACK     = 'DEACTIVATE_STACK';
 export const RESET_STACKS         = 'RESET_STACKS';
 export const SELECT_ANSWER        = 'SELECT_ANSWER';
-export const DESELECT_ANSWERS     = 'DESELECT_ANSWERS'
+export const DESELECT_ANSWERS     = 'DESELECT_ANSWERS';
+export const SUBMIT_RESULT        = 'SUBMIT_RESULT';

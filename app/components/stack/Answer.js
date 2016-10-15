@@ -67,7 +67,6 @@ const style = (isSelected) => (StyleSheet.create({
     marginBottom: 5,
     borderRadius: 10,
     justifyContent: 'center',
-    alignItems: 'center',
     flexWrap: 'wrap',
     borderWidth: 1,
     borderColor: 'rgba(255,255,255, 0.2)',
@@ -111,7 +110,7 @@ var mapStateToProps = (state) => {
 var mapDispatchToProps = (dispatch) => {
   return {
     selectAnswer: id => dispatch(selectAnswer(id)),
-    deselectAnswers: questionId => dispatch(deselectAnswers(questionId))
+    deselectAnswers: questionId => dispatch(deselectAnswers(questionId)),
    }
 }
 
