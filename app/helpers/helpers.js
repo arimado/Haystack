@@ -23,6 +23,18 @@ export const setValueOnEntity = (entities, idObj, transformCB ) => {
     ]
 }
 
+
+// set all answers with a certain questionID to isSelected===false
+
+export const setValueOnEntities = (entities, idObj, transformCB) => {
+  let selectedEntities = _.filter(entities, idObj);
+  let updatedEntities = entities;
+  selectedEntities.forEach((selectedEntity) => {
+    updatedEntities = setValueOnEntity(updatedEntities, { id: selectedEntity.id} , transformCB)
+  });
+  return updatedEntities;
+}
+
 // ANIMATION -------------------------------------------------------------------
 
 export const offsetRotationEvery = (number, reset) => {

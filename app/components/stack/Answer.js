@@ -50,7 +50,9 @@ class Answer extends Component {
   }
 
   _press() {
-    this.props.selectAnswer(this.props.answer.id)
+    let { answer, deselectAnswers, selectAnswer } = this.props;
+    deselectAnswers(answer.questionId)
+    selectAnswer(answer.id)
   }
 
 }
@@ -96,6 +98,7 @@ import {
 
 import {
 selectAnswer,
+deselectAnswers
 } from '../../store/actions'
 
 
@@ -107,7 +110,8 @@ var mapStateToProps = (state) => {
 
 var mapDispatchToProps = (dispatch) => {
   return {
-    selectAnswer: id => dispatch(selectAnswer(id))
+    selectAnswer: id => dispatch(selectAnswer(id)),
+    deselectAnswers: questionId => dispatch(deselectAnswers(questionId))
    }
 }
 

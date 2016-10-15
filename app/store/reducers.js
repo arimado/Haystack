@@ -31,7 +31,8 @@ import {
   ACTIVATE_STACK,
   DEACTIVATE_STACK,
   SELECT_ANSWER,
-  RESET_STACKS
+  RESET_STACKS,
+  DESELECT_ANSWERS
 } from '../constants/actionTypes'
 
 // STATE REDUCERS --------------------------------------------------------------
@@ -66,6 +67,10 @@ const mainReducer = (state = initialMainState, action) => {
     case SELECT_ANSWER:
       let updatedAnswerInAnswers = H.setValueOnEntity(state.answers, { id: action.id }, a => ({ isSelected: 'true' }));
       return Object.assign({}, state, {answers: updatedAnswerInAnswers})
+      break;
+    case DESELECT_ANSWERS:
+      let updatedAnswers = H.setValueOnEntities(state.answers, { questionId: action.questionId }, a => ({ isSelected: 'false' }))
+      return Object.assign({}, state, {answers: updatedAnswers})
       break;
     case RESET_STACKS: // You need to change this name to stack instead
       return Object.assign({}, state, { visibleStack: 0 })

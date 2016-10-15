@@ -4,4 +4,5 @@ export const INCREMENT_COUNTER    = 'INCREMENT_COUNTER';
 export const ACTIVATE_STACK       = 'ACTIVATE_STACK';
 export const DEACTIVATE_STACK     = 'DEACTIVATE_STACK';
 export const RESET_STACKS         = 'RESET_STACKS';
-export const SELECT_ANSWER         = 'SELECT_ANSWER';
+export const SELECT_ANSWER        = 'SELECT_ANSWER';
+export const DESELECT_ANSWERS     = 'DESELECT_ANSWERS'
