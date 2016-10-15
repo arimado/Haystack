@@ -11,6 +11,7 @@ import {
 import S from '../styles/styles.js';
 import * as H from '../../helpers/helpers';
 import _ from 'lodash';
+import Icon from 'react-native-vector-icons/Entypo'
 
 // -----------------------------------------------------------------------------
 
@@ -19,57 +20,24 @@ import store from '../../store/reducers';
 
 // -----------------------------------------------------------------------------
 
-class Answer extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      scale: new Animated.Value(2),
-    }
-  }
-  componentWillMount() {
-  }
-
-  // RENDER --------------------------------------------------------------------
-  render(){
-    const s = style(this);
-    let { answer } = this.props;
-    let { scale } = this.state;
-    return (
-      <Animated.View style={s.rootContainer}>
-        <TouchableOpacity style={s.button} onPress={()=>{this._press()}}>
-          <Text style={s.text}>{answer.value}</Text>
-        </TouchableOpacity>
-      </Animated.View>
-    )
-  }
-
-  componentDidMount() {
-
-  }
-
-  _press() {
-    this.props.selectAnswer(this.props.answer.id)
-  }
-
+const EndTest = () => {
+  const s = style(this);
+  return (<TouchableOpacity style={s.exitButton} onPress={() => this._stackClose() }>
+    <Icon name="circle-with-cross" style={s.exitIcon} />
+  </TouchableOpacity>)
 }
 
 const style = (c) => (StyleSheet.create({
   rootContainer: {
-    flexGrow: 0.2,
-    margin: 5,
   },
-  button: {
-    padding: 10,
-    marginBottom: 5,
-    borderRadius: 10,
-    justifyContent: 'center',
+  exitButton: {
+    padding: 20,
     alignItems: 'center',
-    flexWrap: 'wrap',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255, 0.2)'
+    backgroundColor: 'rgba(0,0,0, 0.3)',
   },
-  text: {
-    color: 'white'
+  exitIcon: {
+    color: 'white',
+    fontSize: 30
   }
 }))
 
@@ -108,4 +76,4 @@ var mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Answer)
+)(EndTest)

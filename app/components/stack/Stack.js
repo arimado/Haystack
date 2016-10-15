@@ -26,7 +26,8 @@ import RoutesContainer from '../../routes/RoutesContainer';
 import Header from '../shared/Header';
 import StackStaticPressContainer from './StackStaticPressContainer';
 import StaticQuestions from './StaticQuestions';
-import Test from './Test'
+import Test from './Test';
+import EndTest from './EndTest';
 
 // -----------------------------------------------------------------------------
 
@@ -58,17 +59,8 @@ class Stack extends Component {
       Animated.spring(this.state.scale, {
           toValue: OPEN_STACK_SCALE,
           friction: 3
-      }).start(() => {
-        console.log('animate y rotation')
-        Animated.spring(this.state.rotateY, {
-            toValue: 60,
-            friction: 3
-        }).start()
-      })
-
+      }).start()
     }
-
-
 
     this._panResponder = PanResponder.create({
 
@@ -158,12 +150,12 @@ class Stack extends Component {
 
     if (isSwipe) {
       initialOffset = offsetEnabled ? H.offsetRotationEvery(stackData.stackNumber, 4) : '0deg';
-      rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-180deg", `${initialOffset}`, "180deg"]});
+      rotate = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: ["-30deg", `${initialOffset}`, "30deg"]});
       opacity = pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.4, 1, 0.4]});
       // transform position based on pan state
-      transform = {transform: [{translateX}, {translateY}, {rotateY: rotate}, {scale}], opacity};
+      transform = {transform: [{translateX}, {translateY}, {rotate}, {scale}], opacity};
     } else {
-      transform = {transform: [{translateX: 0}, {translateY: 0}, {rotate: '0deg'}, {scale}]};
+      transform = {transform: [{translateX: 0}, {translateY: 0}, { rotate: '0deg' }, {scale}]};
     }
 
     // JSX ----------------------------
@@ -219,9 +211,7 @@ class Stack extends Component {
               { isSwipe ? <StaticQuestions stackId={stackData.id} questions={questions} />
                         : <Test stackId={stackData.id} questions={questions} answers={answers} />}
 
-              { isSwipe ? null : (<TouchableOpacity style={s.exitButton} onPress={() => this._stackClose() }>
-                <Icon name="circle-with-cross" style={s.exitIcon} />
-              </TouchableOpacity>) }
+              { isSwipe ? null : (<EndTest />) }
 
               {/*{this.state.response.map((res, i) => (<Text key={i}>{res}</Text>))}*/}
             </View>
