@@ -31,9 +31,12 @@ class Answer extends Component {
 
   // RENDER --------------------------------------------------------------------
   render(){
-    const s = style(this);
+
     let { answer } = this.props;
     let { scale } = this.state;
+
+
+    const s = style(answer.isSelected);
     return (
       <Animated.View style={s.rootContainer}>
         <TouchableOpacity style={s.button} onPress={()=>{this._press()}}>
@@ -44,7 +47,6 @@ class Answer extends Component {
   }
 
   componentDidMount() {
-
   }
 
   _press() {
@@ -53,7 +55,7 @@ class Answer extends Component {
 
 }
 
-const style = (c) => (StyleSheet.create({
+const style = (isSelected) => (StyleSheet.create({
   rootContainer: {
     flexGrow: 0.2,
     margin: 5,
@@ -66,10 +68,14 @@ const style = (c) => (StyleSheet.create({
     alignItems: 'center',
     flexWrap: 'wrap',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255, 0.2)'
+    borderColor: 'rgba(255,255,255, 0.2)',
+    backgroundColor: isSelected === 'true' ? 'rgba(255,255,255, 0.7)' : 'transparent'
   },
   text: {
-    color: 'white'
+    color: isSelected === 'true' ? 'black' : 'white'
+  },
+  selectedText: {
+    color: 'black'
   }
 }))
 

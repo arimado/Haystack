@@ -37,23 +37,22 @@ const style = (c) => (StyleSheet.create({
   rootContainer: {
     flexDirection: 'row',
     borderColor: 'rgba(255,255,255, 0.2)',
-    backgroundColor: 'rgba(255,255,255, 0.2)',
+    // backgroundColor: 'rgba(100,100,100, 0.1)',
+    // borderTopWidth: 1
 
   },
   button: {
     padding: 20,
-    alignItems: 'center'
+    flex: 1
   },
   exitButton: {
     // backgroundColor: 'rgba(0,0,0, 0.3)',
-    flex: 0.2,
     borderColor: 'rgba(255,255,255, 0.2)',
-    borderRightWidth: 1
   },
   exitIcon: {
   },
   submitButton: {
-    flex: 0.8
+    alignItems: 'flex-end',
   },
   submitIcon: {
 
