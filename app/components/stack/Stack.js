@@ -211,7 +211,7 @@ class Stack extends Component {
               { isSwipe ? <StaticQuestions stackId={stackData.id} questions={questions} />
                         : <Test stackId={stackData.id} questions={questions} answers={answers} />}
 
-              { isSwipe ? null : (<EndTest />) }
+              { isSwipe ? null : (<EndTest stackClose={() => { this._stackClose()}}/>) }
 
               {/*{this.state.response.map((res, i) => (<Text key={i}>{res}</Text>))}*/}
             </View>
@@ -250,7 +250,9 @@ class Stack extends Component {
         friction: 3
     }).start(()=> {
     })
+
     this.props.deactivateStack();
+
   }
 
 }

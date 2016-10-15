@@ -28,7 +28,7 @@ const Test = ({ questions, answers, stackId }) => {
 
 const style = (c) => (StyleSheet.create({
   rootContainer: {
-    margin: 20
+    margin: 20,
   }
 }))
 

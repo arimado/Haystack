@@ -20,22 +20,45 @@ import store from '../../store/reducers';
 
 // -----------------------------------------------------------------------------
 
-const EndTest = () => {
+const EndTest = ({ stackClose, stackSubmit }) => {
   const s = style(this);
-  return (<TouchableOpacity style={s.exitButton} onPress={() => this._stackClose() }>
-    <Icon name="circle-with-cross" style={s.exitIcon} />
-  </TouchableOpacity>)
+  return (
+  <View style={s.rootContainer}>
+    <TouchableOpacity style={[s.button, s.exitButton]} onPress={() => stackClose() }>
+      <Icon name="circle-with-cross" style={s.icon} />
+    </TouchableOpacity>
+    <TouchableOpacity style={[s.button, s.submitButton]} onPress={() => stackClose() }>
+      <Icon name="paper-plane" style={s.icon} />
+    </TouchableOpacity>
+  </View>)
 }
 
 const style = (c) => (StyleSheet.create({
   rootContainer: {
+    flexDirection: 'row',
+    borderColor: 'rgba(255,255,255, 0.2)',
+    backgroundColor: 'rgba(255,255,255, 0.2)',
+
+  },
+  button: {
+    padding: 20,
+    alignItems: 'center'
   },
   exitButton: {
-    padding: 20,
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0, 0.3)',
+    // backgroundColor: 'rgba(0,0,0, 0.3)',
+    flex: 0.2,
+    borderColor: 'rgba(255,255,255, 0.2)',
+    borderRightWidth: 1
   },
   exitIcon: {
+  },
+  submitButton: {
+    flex: 0.8
+  },
+  submitIcon: {
+
+  },
+  icon: {
     color: 'white',
     fontSize: 30
   }

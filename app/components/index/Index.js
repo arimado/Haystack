@@ -24,6 +24,7 @@ import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
 import Header from '../shared/Header';
 import Stack from '../stack/Stack'
+import StackScroll from '../stack/StackScroll'
 
 // -----------------------------------------------------------------------------
 
@@ -33,10 +34,10 @@ const BACK = {
 
 // -----------------------------------------------------------------------------
 
-const StackScroll = (props) => (
-  <ScrollView>
-      <Stack data={props.data} isSwipe={props.isSwipe}/>
-  </ScrollView>);
+// const StackScroll = (props) => (
+//   <ScrollView>
+//       <Stack data={props.data} isSwipe={props.isSwipe}/>
+//   </ScrollView>);
 
 class Index extends Component {
   constructor(props) {
