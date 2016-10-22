@@ -616,17 +616,68 @@ var answers = [
     , isCorrect: 'true'
     , isSelected: 'false'} ,
 
-
-
-    // Question 14 -------------------------------------------------------------
-    // Question 15 -------------------------------------------------------------
-    // Question 16 -------------------------------------------------------------
-    // Question 17 -------------------------------------------------------------
-    // Question 18 -------------------------------------------------------------
     // Question 19 -------------------------------------------------------------
+    // --
+
+    { id: '57'
+    , questionId: '19'
+    , value: 'I, DANERYS STORMBORN'
+    , isCorrect: 'true'
+    , isSelected: 'false'} ,
+    { id: '58'
+    , questionId: '19'
+    , value: 'Jon Snow'
+    , isCorrect: 'false'
+    , isSelected: 'false'} ,
+
+
     // Question 20 -------------------------------------------------------------
+    // --
+
+    { id: '59'
+    , questionId: '20'
+    , value: 'I, DANERYS STORMBORN'
+    , isCorrect: 'true'
+    , isSelected: 'false'} ,
+    { id: '60'
+    , questionId: '20'
+    , value: 'Jon Snooze'
+    , isCorrect: 'false'
+    , isSelected: 'false'},
+
     // Question 21 -------------------------------------------------------------
+
+    { id: '59'
+    , questionId: '20'
+    , value: 'I, DANERYS STORMBORN'
+    , isCorrect: 'true'
+    , isSelected: 'false'} ,
+    { id: '60'
+    , questionId: '20'
+    , value: 'Jon Snooze'
+    , isCorrect: 'false'
+    , isSelected: 'false'},
+
     // Question 22 -------------------------------------------------------------
+
+    { id: '61'
+    , questionId: '20'
+    , value: 'Mac'
+    , isCorrect: 'true'
+    , isSelected: 'false'} ,
+    { id: '62'
+    , questionId: '20'
+    , value: 'PC'
+    , isCorrect: 'false'
+    , isSelected: 'false'},
+    { id: '63'
+    , questionId: '20'
+    , value: 'Linux'
+    , isCorrect: 'false'
+    , isSelected: 'false'},
+
+
+
     // Question 23 -------------------------------------------------------------
     // Question 24 -------------------------------------------------------------
     // Question 25 -------------------------------------------------------------
