@@ -66,46 +66,46 @@ var stacks = [
     , attempted: 'false'
     , result: 'null'
     , colorScheme: 'gold' },
-    { id: '6'
-    , userId: '6'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'darkseagreen' },
-    { id: '7'
-    , userId: '7'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'slateblue' },
-    { id: '8'
-    , userId: '8'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'crimson' },
-    { id: '9'
-    , userId: '9'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'gold' },
-    { id: '10'
-    , userId: '10'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'darkseagreen' },
-    { id: '11'
-    , userId: '11'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'slateblue' },
-    { id: '12'
-    , userId: '12'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'crimson' },
-    { id: '13'
-    , userId: '13'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'gold' }
+    // { id: '6'
+    // , userId: '6'
+    // , attempted: 'false'
+    // , result: 'null'
+    // , colorScheme: 'darkseagreen' },
+    // { id: '7'
+    // , userId: '7'
+    // , attempted: 'false'
+    // , result: 'null'
+    // , colorScheme: 'slateblue' },
+    // { id: '8'
+    // , userId: '8'
+    // , attempted: 'false'
+    // , result: 'null'
+    // , colorScheme: 'crimson' },
+    // { id: '9'
+    // , userId: '9'
+    // , attempted: 'false'
+    // , result: 'null'
+    // , colorScheme: 'gold' },
+    // { id: '10'
+    // , userId: '10'
+    // , attempted: 'false'
+    // , result: 'null'
+    // , colorScheme: 'darkseagreen' },
+    // { id: '11'
+    // , userId: '11'
+    // , attempted: 'false'
+    // , result: 'null'
+    // , colorScheme: 'slateblue' },
+    // { id: '12'
+    // , userId: '12'
+    // , attempted: 'false'
+    // , result: 'null'
+    // , colorScheme: 'crimson' },
+    // { id: '13'
+    // , userId: '13'
+    // , attempted: 'false'
+    // , result: 'null'
+    // , colorScheme: 'gold' }
 ]
 
 var questions = [
@@ -120,7 +120,7 @@ var questions = [
     { id: '2'
     , stackId: '1'
     , position: '2'
-    , value: 'Are you a dog person?' },
+    , value: 'Who would you fight??' },
     { id: '3'
     , stackId: '1'
     , position: '3'
@@ -183,7 +183,7 @@ var questions = [
     { id: '15'
     , stackId: '4'
     , position: '1'
-    , value: 'Who sand this line "Lisa its your birthday, Happy Birthday Lisa"' },
+    , value: 'Who sang this line "Lisa its your birthday, Happy Birthday Lisa"' },
     { id: '16'
     , stackId: '4'
     , position: '2'
@@ -454,26 +454,6 @@ var answers = [
     , isCorrect: 'true'
     , isSelected: 'false'},
 
-
-    // Question 11 --------------------------------------------------------------
-    // --
-
-    { id: '31'
-    , questionId: '11'
-    , value: 'Yes (It was good)'
-    , isCorrect: 'false'
-    , isSelected: 'false'},
-    { id: '32'
-    , questionId: '11'
-    , value: 'Yes (It was bad)'
-    , isCorrect: 'false'
-    , isSelected: 'false'},
-    { id: '33'
-    , questionId: '11'
-    , value: 'No (Im a bad person)'
-    , isCorrect: 'true'
-    , isSelected: 'false'},
-
     // Question 12 -------------------------------------------------------------
     // --
 
@@ -676,9 +656,27 @@ var answers = [
     , isCorrect: 'false'
     , isSelected: 'false'},
 
-
-
     // Question 23 -------------------------------------------------------------
+    // --
+
+    { id: '61'
+    , questionId: '23'
+    , value: 'Quite cool'
+    , isCorrect: 'false'
+    , isSelected: 'false'} ,
+    { id: '62'
+    , questionId: '23'
+    , value: 'Slightly wierd, but I can deal with it'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '63'
+    , questionId: '23'
+    , value: 'All childeren are childeren'
+    , isCorrect: 'false'
+    , isSelected: 'false'},
+
+
+
     // Question 24 -------------------------------------------------------------
     // Question 25 -------------------------------------------------------------
     // Question 26 -------------------------------------------------------------

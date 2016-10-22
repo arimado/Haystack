@@ -60,20 +60,24 @@ class Answer extends Component {
 const style = (isSelected) => (StyleSheet.create({
   rootContainer: {
     flexGrow: 0.2,
+    flexShrink: 1,
     margin: 5,
+    flexDirection: 'row',
   },
   button: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     padding: 10,
     marginBottom: 5,
     borderRadius: 10,
-    justifyContent: 'center',
-    flexWrap: 'wrap',
     borderWidth: 1,
     borderColor: 'rgba(255,255,255, 0.2)',
     backgroundColor: isSelected === 'true' ? 'rgba(255,255,255, 0.7)' : 'transparent'
   },
   text: {
-    color: isSelected === 'true' ? 'black' : 'white'
+    flex: 1,
+    color: isSelected === 'true' ? 'black' : 'white',
   },
   selectedText: {
     color: 'black'
