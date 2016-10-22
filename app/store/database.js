@@ -1,91 +1,43 @@
 var users = [
-    { name: 'Jeremy'
+    { name: 'Alice'
     , age:      '24'
     , id:        '1' },
-    { name:  'Alice'
+    { name:  'Tom'
     , age:      '24'
     , id:        '2' },
-    { name: 'Justin'
+    { name: 'Bill Murray'
     , age:      '26'
     , id:        '3' },
-    { name:  'Jesse'
+    { name:  'Lisa Simpson'
     , age:      '23'
     , id:        '4' },
-    { name: 'Pablo'
+    { name: 'Denarys Stormborn'
     , age:      '24'
     , id:        '5' },
-    { name:  'Abu Nazir'
+    { name:  'Jeremy'
     , age:      '24'
     , id:        '6' },
-    { name: 'Flaskman'
+    { name: 'Kendrick'
     , age:      '26'
     , id:        '7' },
-    { name:  'Taylor'
+    { name:  'Heisenburg'
     , age:      '23'
     , id:        '8' },
-    { name:    'Raw'
+    { name:    'Gob'
     , age:      '24'
     , id:        '9' },
-    { name:   'Mary'
+    { name:   'Beyonce Knowles'
     , age:      '24'
     , id:        '10' },
-    { name: 'Justin'
+    { name: 'Jon Snow'
     , age:      '26'
     , id:        '11' },
-    { name:  'Jesse'
+    { name:  'Tobias Funke'
     , age:      '23'
     , id:        '12' },
-    { name: 'Jeremy'
-    , age:      '24'
-    , id:        '13' },
-    { name:  'Alice'
-    , age:      '24'
-    , id:        '13' },
-    { name: 'Justin'
-    , age:      '26'
-    , id:        '14' },
-    { name:  'Jesse'
+    { name: 'Eleven'
     , age:      '23'
-    , id:        '15' },
-    { name: 'Jeremy'
-    , age:      '24'
-    , id:        '16' },
-    { name:  'Alice'
-    , age:      '24'
-    , id:        '17' },
-    { name: 'Justin'
-    , age:      '26'
-    , id:        '18' },
-    { name:  'Jesse'
-    , age:      '23'
-    , id:        '19' },
-    { name: 'Jeremy'
-    , age:      '24'
-    , id:        '20' },
-    { name:  'Alice'
-    , age:      '24'
-    , id:        '21' },
-    { name: 'Justin'
-    , age:      '26'
-    , id:        '22' },
-    { name:  'Jesse'
-    , age:      '23'
-    , id:        '23' },
-    { name:  'Jesse'
-    , age:      '23'
-    , id:        '24' },
-    { name:  'Jesse'
-    , age:      '23'
-    , id:        '25' },
-    { name:  'Jesse'
-    , age:      '23'
-    , id:        '26' },
-    { name:  'Jesse'
-    , age:      '23'
-    , id:        '27' },
-    { name:  'Jesse'
-    , age:      '23'
-    , id:        '28' },
+    , id:        '13' }
 ]
 
 var stacks = [
@@ -153,85 +105,13 @@ var stacks = [
     , userId: '13'
     , attempted: 'false'
     , result: 'null'
-    , colorScheme: 'gold' },
-    { id: '14'
-    , userId: '14'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'darkseagreen' },
-    { id: '15'
-    , userId: '15'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'slateblue' },
-    { id: '16'
-    , userId: '16'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'crimson' },
-    { id: '17'
-    , userId: '17'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'gold' },
-    { id: '18'
-    , userId: '18'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'darkseagreen' },
-    { id: '19'
-    , userId: '19'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'slateblue' },
-    { id: '20'
-    , userId: '20'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'crimson' },
-    { id: '21'
-    , userId: '21'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'gold' },
-    { id: '22'
-    , userId: '22'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'darkseagreen' },
-    { id: '23'
-    , userId: '23'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'slateblue' },
-    { id: '24'
-    , userId: '24'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'crimson' },
-    { id: '25'
-    , userId: '25'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'gold' },
-    { id: '26'
-    , userId: '26'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'darkseagreen' },
-    { id: '27'
-    , userId: '27'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'slateblue' },
-    { id: '28'
-    , userId: '28'
-    , attempted: 'false'
-    , result: 'null'
-    , colorScheme: 'crimson' },
+    , colorScheme: 'gold' }
 ]
 
 var questions = [
+
+    // Stack 1 -----------------------------------------------------------------
+
     { id: '1'
     , stackId: '1'
     , position: '1'
@@ -239,7 +119,7 @@ var questions = [
     { id: '2'
     , stackId: '1'
     , position: '2'
-    , value: 'Who would you fight?' },
+    , value: 'Are you a dog person?' },
     { id: '3'
     , stackId: '1'
     , position: '3'
@@ -248,6 +128,13 @@ var questions = [
     , stackId: '1'
     , position: '4'
     , value: 'Choose a Frank Ocean song' },
+    { id: '5'
+    , stackId: '1'
+    , position: '4'
+    , value: 'Travel to the US or EU' },
+
+    // Stack 2 -----------------------------------------------------------------
+
     { id: '5'
     , stackId: '2'
     , position: '1'
@@ -264,6 +151,9 @@ var questions = [
     , stackId: '2'
     , position: '4'
     , value: 'What do you do on Monday nights?' },
+
+    // Stack 3 -----------------------------------------------------------------
+
     { id: '9'
     , stackId: '3'
     , position: '1'
@@ -280,6 +170,9 @@ var questions = [
     , stackId: '3'
     , position: '4'
     , value: 'WHERE CAN I PURCHASE DRUGS?' },
+
+    // Stack 4 -----------------------------------------------------------------
+
     { id: '13'
     , stackId: '4'
     , position: '1'
@@ -296,9 +189,31 @@ var questions = [
     , stackId: '4'
     , position: '4'
     , value: 'What is your favourite color?' },
+
+    // Stack 5 -----------------------------------------------------------------
+
+    // Stack 6 -----------------------------------------------------------------
+
+    // Stack 7 -----------------------------------------------------------------
+
+    // Stack 8 -----------------------------------------------------------------
+
+    // Stack 9 -----------------------------------------------------------------
+
+    // Stack 10 ----------------------------------------------------------------
+
+    // Stack 11 ----------------------------------------------------------------
+
+    // Stack 12 ----------------------------------------------------------------
+
+    // Stack 13 ----------------------------------------------------------------
+
 ]
 
 var answers = [
+
+    // Question 1 --------------------------------------------------------------
+
     { id: '1'
     , questionId: '1'
     , value: 'War'
@@ -309,6 +224,9 @@ var answers = [
     , value: 'Trek'
     , isCorrect: 'true'
     , isSelected: 'false'},
+
+    // Question 2 --------------------------------------------------------------
+
     { id: '3'
     , questionId: '2'
     , value: 'William Shatner'
@@ -319,11 +237,15 @@ var answers = [
     , value: 'Shooter McGavin from Happy Gilmore'
     , isCorrect: 'true'
     , isSelected: 'false'},
+
+    // Question 3 --------------------------------------------------------------
+
     { id: '5'
     , questionId: '3'
     , value: 'MAKE AMERICA GREAT AGAIN'
     , isCorrect: 'true'
     , isSelected: 'false'},
+
     { id: '6'
     , questionId: '3'
     , value: 'IM WITH HER'
@@ -334,6 +256,9 @@ var answers = [
     , value: "Paris Hilton's dog"
     , isCorrect: 'true'
     , isSelected: 'false'},
+
+    // Question 4 --------------------------------------------------------------
+
     { id: '8'
     , questionId: '4'
     , value: 'Pyramids'
@@ -349,6 +274,9 @@ var answers = [
     , value: 'Lost'
     , isCorrect: 'true'
     , isSelected: 'false'},
+
+    // Question 5 --------------------------------------------------------------
+
     { id: '11'
     , questionId: '5'
     , value: 'Bey'
@@ -359,6 +287,9 @@ var answers = [
     , value: 'Jay'
     , isCorrect: 'true'
     , isSelected: 'false'},
+
+    // Question 6 --------------------------------------------------------------
+
     { id: '13'
     , questionId: '6'
     , value: 'Tay'
@@ -369,11 +300,17 @@ var answers = [
     , value: 'Ye'
     , isCorrect: 'true'
     , isSelected: 'false'},
+
+    // Question 7 --------------------------------------------------------------
+
     { id: '15'
     , questionId: '7'
     , value: 'Yes'
     , isCorrect: 'true'
     , isSelected: 'false'},
+
+    // Question 8 --------------------------------------------------------------
+    
     { id: '16'
     , questionId: '8'
     , value: 'Writing Raps'
@@ -389,6 +326,9 @@ var answers = [
     , value: 'Layin fake ass gangstas down'
     , isCorrect: 'true'
     , isSelected: 'false'},
+
+    // Question 9 --------------------------------------------------------------
+
     { id: '19'
     , questionId: '9'
     , value: 'Casio Watch'
@@ -399,6 +339,9 @@ var answers = [
     , value: 'Shooter McGavin from Happy Gilmore'
     , isCorrect: 'true'
     , isSelected: 'false'},
+
+    // Question 10 -------------------------------------------------------------
+
     { id: '21'
     , questionId: '10'
     , value: 'Beyonce Knowles'
@@ -414,11 +357,17 @@ var answers = [
     , value: 'Barack Obama'
     , isCorrect: 'true'
     , isSelected: 'false'},
+
+    // Question 11 -------------------------------------------------------------
+
     { id: '24'
     , questionId: '11'
     , value: 'Your Hopes and Dreams'
     , isCorrect: 'true'
     , isSelected: 'false'},
+
+    // Question 12 -------------------------------------------------------------
+
     { id: '25'
     , questionId: '12'
     , value: 'FUCK'
@@ -434,6 +383,25 @@ var answers = [
     , value: 'FUCK'
     , isCorrect: 'true'
     , isSelected: 'false'},
+
+    // Question 13 -------------------------------------------------------------
+    // Question 14 -------------------------------------------------------------
+    // Question 15 -------------------------------------------------------------
+    // Question 16 -------------------------------------------------------------
+    // Question 17 -------------------------------------------------------------
+    // Question 18 -------------------------------------------------------------
+    // Question 19 -------------------------------------------------------------
+    // Question 20 -------------------------------------------------------------
+    // Question 21 -------------------------------------------------------------
+    // Question 22 -------------------------------------------------------------
+    // Question 23 -------------------------------------------------------------
+    // Question 24 -------------------------------------------------------------
+    // Question 25 -------------------------------------------------------------
+    // Question 26 -------------------------------------------------------------
+    // Question 27 -------------------------------------------------------------
+    // Question 28 -------------------------------------------------------------
+    // Question 29 -------------------------------------------------------------
+
 ]
 
 // { id: '1'
