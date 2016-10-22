@@ -181,7 +181,7 @@ class Stack extends Component {
             <View style={s.header}>
               <Image
                 style={s.stackProfile}
-                source={{uri: 'https://www.phactual.com/wp-content/uploads/2015/05/006-bill-murray-theredlist-5-times-bill-murray-won-at-life-the-only-way-bill-murray-can.jpeg'}}
+                source={{uri: owner.img}}
               />
               <View style={s.headerTextContainer}>
                 <Text style={s.headerText}>{owner.name}, {owner.age}</Text>

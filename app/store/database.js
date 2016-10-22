@@ -1,42 +1,55 @@
 var users = [
     { name: 'Alice'
     , age:      '24'
+    , img: 'https://uberhumor.com/wp-content/uploads/2011/08/beautiful-face-51.jpg'
     , id:        '1' },
     { name:  'Tom'
     , age:      '24'
+    , img: 'https://a3-images.myspacecdn.com/images03/1/240e42b5d9ce48a78983961e7fcb3c39/600x600.jpg'
     , id:        '2' },
-    { name: 'Bill Murray'
+    { name: 'Bill'
     , age:      '26'
+    , img: 'https://www.phactual.com/wp-content/uploads/2015/05/006-bill-murray-theredlist-5-times-bill-murray-won-at-life-the-only-way-bill-murray-can.jpeg'
     , id:        '3' },
-    { name:  'Lisa Simpson'
+    { name:  'Lisa'
     , age:      '23'
+    , img: 'https://ghostofelberry.files.wordpress.com/2012/10/lisa-the-feminist.png'
     , id:        '4' },
-    { name: 'Denarys Stormborn'
+    { name: 'Denarys'
     , age:      '24'
+    , img: 'https://s-media-cache-ak0.pinimg.com/564x/03/03/76/03037671a5d4080f4008b1f0526457ad.jpg'
     , id:        '5' },
     { name:  'Jeremy'
     , age:      '24'
+    , img: 'https://scontent-syd1-1.xx.fbcdn.net/v/t1.0-9/12345487_10208207737053585_6593037359965759192_n.jpg?oh=d633a1ae7802719da4107aa771bb6806&oe=5896205B'
     , id:        '6' },
     { name: 'Kendrick'
     , age:      '26'
+    , img: ''
     , id:        '7' },
     { name:  'Heisenburg'
     , age:      '23'
+    , img: ''
     , id:        '8' },
     { name:    'Gob'
     , age:      '24'
+    , img: ''
     , id:        '9' },
-    { name:   'Beyonce Knowles'
+    { name:   'Beyonce'
     , age:      '24'
+    , img: ''
     , id:        '10' },
     { name: 'Jon Snow'
     , age:      '26'
+    , img: ''
     , id:        '11' },
-    { name:  'Tobias Funke'
+    { name:  'Tobias'
     , age:      '23'
+    , img: ''
     , id:        '12' },
     { name: 'Eleven'
     , age:      '23'
+    , img: ''
     , id:        '13' }
 ]
 
@@ -65,12 +78,12 @@ var stacks = [
     , userId: '5'
     , attempted: 'false'
     , result: 'null'
-    , colorScheme: 'gold' },
-    // { id: '6'
-    // , userId: '6'
-    // , attempted: 'false'
-    // , result: 'null'
-    // , colorScheme: 'darkseagreen' },
+    , colorScheme: 'orangered' },
+    { id: '6'
+    , userId: '6'
+    , attempted: 'false'
+    , result: 'null'
+    , colorScheme: 'darkseagreen' },
     // { id: '7'
     // , userId: '7'
     // , attempted: 'false'
@@ -203,15 +216,15 @@ var questions = [
     { id: '19'
     , stackId: '5'
     , position: '1'
-    , value: 'WHO IS THE RIGHTFUL RULER OF THE SEVEN KINGDOMS?' },
+    , value: 'Who is the rightful ruler of the Seven Kingdoms?' } ,
     { id: '20'
     , stackId: '5'
     , position: '2'
-    , value: 'Leggings or Jeans' },
+    , value: 'Leggings or Jeans' } ,
     { id: '21'
     , stackId: '5'
     , position: '3'
-    , value: 'If you had to eat chocolate ice-cream out of a human head - whos head would it be?' },
+    , value: 'If you had to eat chocolate ice-cream out of a human head - whos head would it be?' } ,
     { id: '22'
     , stackId: '5'
     , position: '4'
@@ -223,6 +236,30 @@ var questions = [
 
 
     // Stack 6 -----------------------------------------------------------------
+    // --
+
+    { id: '24'
+    , stackId: '6'
+    , position: '1'
+    , value: 'Object Oriented Programming or Functional Programming?' } ,
+    { id: '25'
+    , stackId: '6'
+    , position: '2'
+    , value: 'In most cases, is aiming for full-verification in code over-engineering?' } ,
+    { id: '26'
+    , stackId: '6'
+    , position: '3'
+    , value: 'Do you love deadlines?' } ,
+    { id: '27'
+    , stackId: '6'
+    , position: '4'
+    , value: 'Are you a bigger nerd than me?' },
+    { id: '28'
+    , stackId: '6'
+    , position: '5'
+    , value: 'const thing = x => y => x + y ?' },
+
+
 
     // Stack 7 -----------------------------------------------------------------
 
@@ -616,42 +653,57 @@ var answers = [
 
     { id: '59'
     , questionId: '20'
-    , value: 'I, DANERYS STORMBORN'
+    , value: 'Leggings'
     , isCorrect: 'true'
     , isSelected: 'false'} ,
     { id: '60'
     , questionId: '20'
-    , value: 'Jon Snooze'
+    , value: 'Jeans'
+    , isCorrect: 'false'
+    , isSelected: 'false'},
+    { id: '61'
+    , questionId: '20'
+    , value: 'Wot.'
     , isCorrect: 'false'
     , isSelected: 'false'},
 
     // Question 21 -------------------------------------------------------------
 
-    { id: '59'
-    , questionId: '20'
-    , value: 'I, DANERYS STORMBORN'
+    { id: '62'
+    , questionId: '21'
+    , value: 'Robert of House Baratheon'
     , isCorrect: 'true'
     , isSelected: 'false'} ,
-    { id: '60'
-    , questionId: '20'
-    , value: 'Jon Snooze'
+    { id: '63'
+    , questionId: '21'
+    , value: 'Cersei of House Lannister'
+    , isCorrect: 'false'
+    , isSelected: 'false'},
+    { id: '64'
+    , questionId: '21'
+    , value: 'Joffery of House Baratheon'
+    , isCorrect: 'true'
+    , isSelected: 'false'} ,
+    { id: '65'
+    , questionId: '21'
+    , value: 'Cersei of House Lannister'
     , isCorrect: 'false'
     , isSelected: 'false'},
 
     // Question 22 -------------------------------------------------------------
 
-    { id: '61'
-    , questionId: '20'
+    { id: '66'
+    , questionId: '22'
     , value: 'Mac'
     , isCorrect: 'true'
     , isSelected: 'false'} ,
-    { id: '62'
-    , questionId: '20'
+    { id: '67'
+    , questionId: '22'
     , value: 'PC'
     , isCorrect: 'false'
     , isSelected: 'false'},
-    { id: '63'
-    , questionId: '20'
+    { id: '68'
+    , questionId: '22'
     , value: 'Linux'
     , isCorrect: 'false'
     , isSelected: 'false'},
@@ -659,29 +711,98 @@ var answers = [
     // Question 23 -------------------------------------------------------------
     // --
 
-    { id: '61'
+    { id: '69'
     , questionId: '23'
     , value: 'Quite cool'
     , isCorrect: 'false'
     , isSelected: 'false'} ,
-    { id: '62'
+    { id: '70'
     , questionId: '23'
     , value: 'Slightly wierd, but I can deal with it'
     , isCorrect: 'true'
     , isSelected: 'false'},
-    { id: '63'
+    { id: '71'
     , questionId: '23'
     , value: 'All childeren are childeren'
     , isCorrect: 'false'
     , isSelected: 'false'},
 
 
-
     // Question 24 -------------------------------------------------------------
+
+    { id: '72'
+    , questionId: '24'
+    , value: 'OOP'
+    , isCorrect: 'false'
+    , isSelected: 'false'},
+    { id: '73'
+    , questionId: '24'
+    , value: 'FP'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+
     // Question 25 -------------------------------------------------------------
+
+    { id: '74'
+    , questionId: '25'
+    , value: 'Yes'
+    , isCorrect: 'false'
+    , isSelected: 'false'},
+    { id: '75'
+    , questionId: '25'
+    , value: 'No'
+    , isCorrect: 'false'
+    , isSelected: 'false'},
+    { id: '76'
+    , questionId: '25'
+    , value: 'There is no such thing as "over-engineering"'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+
     // Question 26 -------------------------------------------------------------
+
+    { id: '77'
+    , questionId: '26'
+    , value: " I'll marry a deadline one day. "
+    , isCorrect: 'false'
+    , isSelected: 'false'},
+    { id: '78'
+    , questionId: '26'
+    , value: 'Deadlines are BS anyway'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+    { id: '79'
+    , questionId: '26'
+    , value: 'Certainly not.'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+
     // Question 27 -------------------------------------------------------------
+
+    { id: '80'
+    , questionId: '27'
+    , value: "No"
+    , isCorrect: 'false'
+    , isSelected: 'false'},
+    { id: '81'
+    , questionId: '27'
+    , value: 'Yes'
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+
     // Question 28 -------------------------------------------------------------
+
+    { id: '82'
+    , questionId: '28'
+    , value: 'thing(1)(1) -> 2'
+    , isCorrect: 'false'
+    , isSelected: 'false'},
+    { id: '83'
+    , questionId: '28'
+    , value: 'thing(1)(1)() -> 2 '
+    , isCorrect: 'true'
+    , isSelected: 'false'},
+
     // Question 29 -------------------------------------------------------------
 
 ]
