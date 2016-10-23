@@ -36,24 +36,21 @@ class Routes extends Component {
     _handleNavigate(action) {
         switch (action && action.type) {
             case 'push':
-                this.props.pushRoute(action.route)
-                return true
+              this.props.pushRoute(action.route)
+              return true
             case 'back':
             case 'pop':
-                if (this.props.navigation.index === 0) {
-                  return false
-                }
-                this.props.popRoute()
-                return true
+              if (this.props.navigation.index === 0) {
+                return false
+              }
+              this.props.popRoute()
+              return true
             default:
                 return false
         }
     }
 
     _renderScene(props) {
-
-        console.log(props);
-
         const prefix = 'scene_'
         const { scene } = props
         if (scene.key === prefix + 'intro') {

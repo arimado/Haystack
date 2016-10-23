@@ -59,8 +59,6 @@ class Index extends Component {
             return ( stack.id === activeStack ? <StackScroll key={i} data={stack} isSwipe={false} /> :
                                                 <Stack key={i} data={stack} isSwipe={true}/> )
           })}
-
-          {/* <ScrollView></ScrollView> */}
         </View>
       </View>
     );
