@@ -34,8 +34,7 @@ class Answer extends Component {
 
     let { answer } = this.props;
     let { scale } = this.state;
-
-
+    
     const s = style(answer.isSelected);
     return (
       <Animated.View style={s.rootContainer}>

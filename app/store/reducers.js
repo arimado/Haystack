@@ -46,16 +46,12 @@ const initialMainState = {
   questions: db.questions,
   answers: db.answers,
   users: db.users,
-  counter: 0
+  counter: 0,
+  showMatchModal: null
 }
 
 const mainReducer = (state = initialMainState, action) => {
   switch (action.type) {
-    case INCREMENT_COUNTER:
-      return Object.assign({}, state, {
-        counter: state.counter += 1
-      })
-      break;
     case NEXT_CARD: // You need to change this name to stack instead
       return Object.assign({}, state, { visibleStack: state.visibleStack + 1 })
       break;
@@ -77,7 +73,7 @@ const mainReducer = (state = initialMainState, action) => {
       return Object.assign({}, state, { visibleStack: 0 })
       break;
     case SUBMIT_RESULT:
-      // get result
+
       return
       break;
     default:
