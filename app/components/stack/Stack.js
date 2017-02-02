@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   PanResponder,
   Animated,
-  Image
+  Image,
+  Modal
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo'
 
@@ -30,8 +31,11 @@ import EndTest from './EndTest';
 
 // -----------------------------------------------------------------------------
 
+// Constants
+
 const BACK = { type: 'pop'};
 const SWIPE_THRESHOLD = 150;
+const CLOSED_STACK_SCALE = 1;
 const OPEN_STACK_SCALE = 1.03;
 
 // -----------------------------------------------------------------------------
@@ -42,7 +46,7 @@ class Stack extends Component {
     this.state = {
       bounceValue: new Animated.Value(0),
       pan: new Animated.ValueXY(),
-      scale: new Animated.Value(1),
+      scale: new Animated.Value(CLOSED_STACK_SCALE),
       rotate: new Animated.Value(),
       rotateY: new Animated.Value(),
       response: ['lol', 'nice'],
@@ -186,6 +190,7 @@ class Stack extends Component {
               <View style={s.headerTextContainer}>
                 <Text style={s.headerText}>{owner.name}, {owner.age}</Text>
               </View>
+
             </View>
             <View style={s.body}>
 
