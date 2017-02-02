@@ -190,14 +190,19 @@ class Stack extends Component {
             <View style={s.body}>
 
               { isSwipe
-                ? <StaticQuestions stackId={stackData.id} questions={questions} />
-                : <Test stackId={stackData.id} questions={questions} answers={answers} /> }
+                ? <StaticQuestions
+                    stackId={stackData.id}
+                    questions={questions} />
+                : <Test
+                    stackId={stackData.id}
+                    questions={questions}
+                    answers={answers} /> }
 
               { isSwipe
                 ? null
                 : <EndTest
-                    stackClose={() => { this._stackClose() }}
-                    stackSubmit={() => { this._stackSubmit() }}/> }
+                    stackClose={this._stackClose()}
+                    stackSubmit={this._stackSubmit()}/> }
 
             </View>
           </StackStaticPressContainer>
@@ -219,23 +224,24 @@ class Stack extends Component {
   }
 
   _stackPress() {
-    let that = this;
     return () => {
       let { id } = this.props.data;
-      that.setState((s1, s2) => {
+      this.setState((s1, s2) => {
         return { response: ['press' + id, ...s1.response] }
       })
-      that.props.activateStack(id);
+      this.props.activateStack(id);
     }
   }
   _stackClose() {
-    this.setState({offsetEnabled: false});
-    Animated.spring(this.state.scale, {
-        toValue: OPEN_STACK_SCALE,
-        friction: 3
-    }).start(()=> {
-    })
-    this.props.deactivateStack();
+    return () => {
+      this.setState({offsetEnabled: false});
+      Animated.spring(this.state.scale, {
+          toValue: OPEN_STACK_SCALE,
+          friction: 3
+      }).start(()=> {
+      })
+      this.props.deactivateStack();
+    }
   }
   _stackSubmit() {
 
@@ -250,17 +256,23 @@ class Stack extends Component {
 
     // stack > questions > answers
 
-    let { id: stackId } = this.props.data;
-    let { questions, answers } = this.props.state.main;
+    return () => {
 
-    let currentAnswers = _.flatten(H.getCurrentQuestions(questions, stackId)
-          .map((q) => H.getCurrentAnswers(answers, q.id)))
+      let { id: stackId } = this.props.data;
+      let { questions, answers } = this.props.state.main;
 
+      let currentAnswers = _.flatten(
+            H.getCurrentQuestions(questions, stackId)
+            .map(q => H.getCurrentAnswers(answers, q.id)))
 
-    let correctAnswers = currentAnswers.filter(a => a.isCorrect === 'true').length
-    let correctlyAnswered = currentAnswers.filter(a => a.isCorrect === 'true' && a.isSelected === 'true').length
+      let correctAnswers = currentAnswers
+        .filter(a => a.isCorrect === 'true').length
+      let correctlyAnswered = currentAnswers
+        .filter(a => a.isCorrect === 'true' && a.isSelected === 'true')
+        .length
 
-    console.log(currentAnswers);
+      console.log(currentAnswers);
+    }
 
   }
 }

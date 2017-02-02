@@ -53,11 +53,13 @@ class Index extends Component {
                               .reverse();
     return (
       <View style={S.base}>
-        <Header handleNavigate={this.props._handleNavigate} resetStacks={this.props.resetStacks}/>
+        <Header handleNavigate={this.props._handleNavigate}
+                resetStacks={this.props.resetStacks}/>
         <View style={s.stacksContainer}>
           {currentStacks.map((stack, i) =>  {
-            return ( stack.id === activeStack ? <StackScroll key={i} data={stack} isSwipe={false} /> :
-                                                <Stack key={i} data={stack} isSwipe={true}/> )
+            return ( stack.id === activeStack
+                     ? <StackScroll key={i} data={stack} isSwipe={false} />
+                     : <Stack key={i} data={stack} isSwipe={true}/> )
           })}
         </View>
       </View>
