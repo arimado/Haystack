@@ -7,6 +7,8 @@ import {
   Text
 } from 'react-native'
 
+import { MODAL_COLOR } from '../../constants/layout'
+
 const INITAL_SCALE = 0.2;
 const OPEN_SCALE = 1.03;
 
@@ -30,7 +32,12 @@ class Modal extends Component {
     return (
       <View style={s.container}>
         <View style={s.verticalSpacer}/>
-        <Animated.View style={[s.box, {transform: [{ scale }]}]} />
+        <Animated.View style={[s.box, {transform: [{ scale }]}]}>
+          <View style={s.modal}>
+            <View></View>
+            <View></View>
+          </View>
+        </Animated.View>
         <View style={s.verticalSpacer} />
       </View>
     );
@@ -39,22 +46,24 @@ class Modal extends Component {
 
 const s = StyleSheet.create({
   container: {
-    backgroundColor: 'yellow',
     flexDirection: 'column',
     position: 'absolute',
     left: 0,
     top: 0,
     right: 0,
-    bottom: 0
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.2)'
   },
   box: {
-    flex: 0.2,
-    backgroundColor: 'red',
+    flex: 0.4,
+    padding: 40
+  },
+  modal: {
+    flex: 1,
+    backgroundColor: MODAL_COLOR
   },
   verticalSpacer: {
-    flex: 0.4,
-    backgroundColor: 'blue',
-
+    flex: 0.3,
   }
 })
 
