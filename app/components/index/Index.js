@@ -49,9 +49,11 @@ class Index extends Component {
 
     let { stacks, visibleStack, activeStack } = this.props.state.main;
 
-    let currentStacks = stacks.map((s, i) => ({ stackNumber: i, ...s }))
-                              .slice(visibleStack, visibleStack + 4)
-                              .reverse();
+    let currentStacks = stacks
+      .map((s, i) => ({ stackNumber: i, ...s }))
+      .slice(visibleStack, visibleStack + 4)
+      .reverse();
+
     return (
       <View style={S.base}>
         <Header handleNavigate={this.props._handleNavigate}

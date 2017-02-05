@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import {
   View,
   StyleSheet,
-  Animated
+  Animated,
+  Text
 } from 'react-native'
 
 const INITAL_SCALE = 0.2;
@@ -28,9 +29,9 @@ class Modal extends Component {
 
     return (
       <View style={s.container}>
-       <Animated.View
-          style={[s.box, {transform: [{ scale }]}]}
-          />
+        <View style={s.verticalSpacer}/>
+        <Animated.View style={[s.box, {transform: [{ scale }]}]} />
+        <View style={s.verticalSpacer} />
       </View>
     );
   }
@@ -38,16 +39,22 @@ class Modal extends Component {
 
 const s = StyleSheet.create({
   container: {
-    flex: 1,
+    backgroundColor: 'yellow',
+    flexDirection: 'column',
     position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center'
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0
   },
   box: {
-    flex: 1, 
+    flex: 0.2,
     backgroundColor: 'red',
-    height: 300,
-    width: 100
+  },
+  verticalSpacer: {
+    flex: 0.4,
+    backgroundColor: 'blue',
+
   }
 })
 
