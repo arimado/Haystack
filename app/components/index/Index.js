@@ -47,7 +47,7 @@ class Index extends Component {
   render() {
     const s = style(this);
 
-    let { stacks, visibleStack, activeStack } = this.props.state.main;
+    const { stacks, visibleStack, activeStack, showMatchModal } = this.props.state.main;
 
     let currentStacks = stacks
       .map((s, i) => ({ stackNumber: i, ...s }))
@@ -65,8 +65,7 @@ class Index extends Component {
                      : <Stack key={i} data={stack} isSwipe={true}/> )
           })}
         </View>
-        <Modal /> 
-
+        { showMatchModal ? <Modal /> : null }
       </View>
     );
   }

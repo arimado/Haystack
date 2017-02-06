@@ -263,20 +263,21 @@ class Stack extends Component {
 
     return () => {
 
-      let { id: stackId } = this.props.data;
-      let { questions, answers } = this.props.state.main;
+      const { toggleMatchModal }      = this.props;
+      const { id: stackId }         = this.props.data;
+      const { questions, answers }  = this.props.state.main;
 
-      let currentAnswers = _.flatten(
+      const currentAnswers = _.flatten(
             H.getCurrentQuestions(questions, stackId)
-            .map(q => H.getCurrentAnswers(answers, q.id)))
+            .map(q => H.getCurrentAnswers(answers, q.id)));
 
-      let correctAnswers = currentAnswers
-        .filter(a => a.isCorrect === 'true').length
-      let correctlyAnswered = currentAnswers
+      const correctAnswers = currentAnswers
+        .filter(a => a.isCorrect === 'true').length;
+      const correctlyAnswered = currentAnswers
         .filter(a => a.isCorrect === 'true' && a.isSelected === 'true')
-        .length
+        .length;
 
-      console.log(currentAnswers);
+      toggleMatchModal();
     }
 
   }
@@ -355,9 +356,9 @@ import {
 import {
 nextCard,
 activateStack,
-deactivateStack
+deactivateStack,
+toggleMatchModal
 } from '../../store/actions'
-
 
 var mapStateToProps = (state) => {
   return {
@@ -370,7 +371,8 @@ var mapDispatchToProps = (dispatch) => {
     doSomething: arg => console.log('nice'),
     nextCard: () => dispatch(nextCard()),
     activateStack: stackNum => dispatch(activateStack(stackNum)),
-    deactivateStack: stackNum => dispatch(deactivateStack(stackNum))
+    deactivateStack: stackNum => dispatch(deactivateStack(stackNum)),
+    toggleMatchModal: () => dispatch(toggleMatchModal())
   }
 }
 

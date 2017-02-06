@@ -33,7 +33,8 @@ import {
   SELECT_ANSWER,
   RESET_STACKS,
   DESELECT_ANSWERS,
-  SUBMIT_RESULT
+  SUBMIT_RESULT,
+  TOGGLE_MATCH_MODAL
 } from '../constants/actionTypes'
 
 // STATE REDUCERS --------------------------------------------------------------
@@ -47,7 +48,7 @@ const initialMainState = {
   answers: db.answers,
   users: db.users,
   counter: 0,
-  showMatchModal: null
+  showMatchModal: false
 }
 
 const mainReducer = (state = initialMainState, action) => {
@@ -73,9 +74,10 @@ const mainReducer = (state = initialMainState, action) => {
       return Object.assign({}, state, { visibleStack: 0 })
       break;
     case SUBMIT_RESULT:
-
       return
       break;
+    case TOGGLE_MATCH_MODAL:
+      return Object.assign({}, state, { showMatchModal: !state.showMatchModal })
     default:
       return state;
   }

@@ -31,7 +31,6 @@ class Modal extends Component {
   }
   render() {
     const { scale } = this.state;
-
     return (
       <View style={s.container}>
         <View style={s.verticalSpacer}/>

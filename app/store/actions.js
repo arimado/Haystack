@@ -1,17 +1,18 @@
-import * as types from '../constants/actionTypes'
+import * as T from '../constants/actionTypes'
 
 export const incrementCounter = ( count ) => {
     return {
-        type: types.INCREMENT_COUNTER
+        type: T.INCREMENT_COUNTER
     }
 }
-export const nextCard         = ()            => ({ type: types.NEXT_CARD });
-export const activateStack    = (stackNum)    => ({ type: types.ACTIVATE_STACK, stackNum });
-export const deactivateStack  = (stackNum)    => ({ type: types.DEACTIVATE_STACK, stackNum });
-export const selectAnswer     = (id)          => ({ type: types.SELECT_ANSWER, id });
-export const deselectAnswers  = (questionId)  => ({ type: types.DESELECT_ANSWERS, questionId });
-export const resetStacks      = ()            => ({ type: types.RESET_STACKS });
-export const submitResult     = ()            => ({ type: types.SUBMIT_RESULT });
+export const nextCard         = ()            => ({ type: T.NEXT_CARD });
+export const activateStack    = stackNum      => ({ type: T.ACTIVATE_STACK, stackNum });
+export const deactivateStack  = stackNum      => ({ type: T.DEACTIVATE_STACK, stackNum });
+export const selectAnswer     = id            => ({ type: T.SELECT_ANSWER, id });
+export const deselectAnswers  = questionId    => ({ type: T.DESELECT_ANSWERS, questionId });
+export const resetStacks      = ()            => ({ type: T.RESET_STACKS });
+export const submitResult     = ()            => ({ type: T.SUBMIT_RESULT });
+export const toggleMatchModal = ()            => ({ type: T.TOGGLE_MATCH_MODAL });
 
 
 // -----------------------------------------------------------------------------
