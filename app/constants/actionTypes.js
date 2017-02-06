@@ -11,4 +11,4 @@ export const SUBMIT_RESULT        = 'SUBMIT_RESULT';
 
 export const ADD_STACK            = 'ADD_STACK';
 
-export const TOGGLE_MATCH_MODAL           = 'TOGGLE_MATCH_MODAL';
+export const TOGGLE_MATCH_MODAL   = 'TOGGLE_MATCH_MODAL';

@@ -13,17 +13,3 @@ export const deselectAnswers  = questionId    => ({ type: T.DESELECT_ANSWERS, qu
 export const resetStacks      = ()            => ({ type: T.RESET_STACKS });
 export const submitResult     = ()            => ({ type: T.SUBMIT_RESULT });
 export const toggleMatchModal = ()            => ({ type: T.TOGGLE_MATCH_MODAL });
-
-
-// -----------------------------------------------------------------------------
-
-// Example actions:
-
-// import * as types from '../constants/ActionTypes'
-//
-// export const addTodo = text => ({ type: types.ADD_TODO, text })
-// export const deleteTodo = id => ({ type: types.DELETE_TODO, id })
-// export const editTodo = (id, text) => ({ type: types.EDIT_TODO, id, text })
-// export const completeTodo = id => ({ type: types.COMPLETE_TODO, id })
-// export const completeAll = () => ({ type: types.COMPLETE_ALL })
-// export const clearCompleted = () => ({ type: types.CLEAR_COMPLETED })

@@ -264,8 +264,8 @@ class Stack extends Component {
     return () => {
 
       const { toggleMatchModal }      = this.props;
-      const { id: stackId }         = this.props.data;
-      const { questions, answers }  = this.props.state.main;
+      const { id: stackId }           = this.props.data;
+      const { questions, answers }    = this.props.state.main;
 
       const currentAnswers = _.flatten(
             H.getCurrentQuestions(questions, stackId)

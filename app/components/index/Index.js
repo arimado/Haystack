@@ -65,7 +65,9 @@ class Index extends Component {
                      : <Stack key={i} data={stack} isSwipe={true}/> )
           })}
         </View>
-        { showMatchModal ? <Modal /> : null }
+        { showMatchModal
+            ? <Modal handleNavigate={this.props._handleNavigate}/>
+            : null }
       </View>
     );
   }

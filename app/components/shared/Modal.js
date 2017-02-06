@@ -13,26 +13,32 @@ import Icon from 'react-native-vector-icons/Entypo'
 import { MODAL_COLOR } from '../../constants/layout'
 
 const INITAL_SCALE = 0.2;
-const OPEN_SCALE = 1.03;
+const OPEN_SCALE   = 1.03;
+const CLOSE_SCALE  = 0;
+const FRICTION     = 3;
+const INITIAL_OPACITY = 1;
+const CLOSE_OPACITY = 0;
 
 class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = {
       translateY: new Animated.Value(0),
-      scale: new Animated.Value(INITAL_SCALE)
+      scale: new Animated.Value(INITAL_SCALE),
+      opacity: new Animated.Value(INITIAL_OPACITY)
     }
   }
   componentWillMount() {
     Animated.spring(this.state.scale, {
       toValue: OPEN_SCALE,
-      friction: 3
+      friction: FRICTION
     }).start();
   }
   render() {
-    const { scale } = this.state;
+    const { scale, opacity } = this.state;
+    const { toggleMatchModal } = this.props;
     return (
-      <View style={s.container}>
+      <Animated.View style={[s.container, { opacity }]}>
         <View style={s.verticalSpacer}/>
         <Animated.View style={[s.box, {transform: [{ scale }]}]}>
           <View style={s.modal}>
@@ -44,15 +50,32 @@ class Modal extends Component {
               <TouchableOpacity style={s.button}>
                 <Text style={s.buttonText}> Message </Text>
               </TouchableOpacity>
-              <TouchableOpacity style={s.button}>
+              <TouchableOpacity style={s.button} onPress={this._pressClose()}>
                 <Icon name="layers" style={s.buttonText} />
               </TouchableOpacity>
             </View>
           </View>
         </Animated.View>
         <View style={s.verticalSpacer} />
-      </View>
+      </Animated.View>
     );
+  }
+
+  _pressNext() {
+
+  }
+
+  _pressClose() {
+    return () => {
+      this.props.deactivateStack();
+      Animated.timing(this.state.opacity, {
+        toValue: CLOSE_OPACITY,
+        duration: 200
+      })
+      .start(() => {
+        this.props.toggleMatchModal();
+      });
+    }
   }
 }
 
@@ -103,4 +126,35 @@ const s = StyleSheet.create({
   }
 })
 
-export default Modal
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// REDUX CONTAINER -------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
+
+import {
+  connect
+} from 'react-redux';
+
+import {
+  toggleMatchModal,
+  deactivateStack
+} from '../../store/actions'
+
+// -----------------------------------------------------------------------------
+
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleMatchModal: () => dispatch(toggleMatchModal()),
+    deactivateStack: stackNum => dispatch(deactivateStack(stackNum))
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Modal)
