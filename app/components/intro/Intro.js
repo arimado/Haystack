@@ -27,11 +27,9 @@ const INDEX_ROUTE = {
 // -----------------------------------------------------------------------------
 
 class CurrentComponent extends Component {
-
   constructor(props, context) {
     super(props);
   }
-
   render() {
     return (
       <View style={s.base}>

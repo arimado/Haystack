@@ -37,18 +37,16 @@ class Modal extends Component {
         <View style={s.verticalSpacer}/>
         <Animated.View style={[s.box, {transform: [{ scale }]}]}>
           <View style={s.modal}>
-            <View style={s.row}>
-               <Text> Image </Text>
-            </View>
-            <View style={s.row}>
-              <Text> You matched </Text>
+            <View style={[s.button, s.row]}>
+              <Icon name="check" style={[s.buttonText, s.modalIcon]} />
+              <Text style={s.buttonText}> You matched with [name] ! </Text>
             </View>
             <View style={s.buttonsParent}>
               <TouchableOpacity style={s.button}>
-                <Text style={s.buttonText}> Message [name] now </Text>
+                <Text style={s.buttonText}> Message </Text>
               </TouchableOpacity>
               <TouchableOpacity style={s.button}>
-                <Text style={s.buttonText}> Go back to the stack </Text>
+                <Icon name="layers" style={s.buttonText} />
               </TouchableOpacity>
             </View>
           </View>
@@ -67,7 +65,7 @@ const s = StyleSheet.create({
     top: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.2)'
+    backgroundColor: 'rgba(0, 0, 0, 0.4)'
   },
   box: {
     flex: 0.4,
@@ -75,18 +73,21 @@ const s = StyleSheet.create({
   },
   modal: {
     flex: 1,
-    backgroundColor: MODAL_COLOR
+
   },
   verticalSpacer: {
     flex: 0.3,
   },
   row: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: MODAL_COLOR
   },
   buttonsParent: {
     backgroundColor: 'blueviolet',
     flexDirection: 'row',
-    flex: 1,
+    flex: 0.3,
     alignItems: 'center',
   },
   button: {
@@ -95,7 +96,11 @@ const s = StyleSheet.create({
   },
   buttonText: {
     color: 'cornsilk',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: 15
+  },
+  modalIcon: {
+    fontSize: 40
   }
 })
 

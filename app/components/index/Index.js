@@ -66,6 +66,7 @@ class Index extends Component {
           })}
         </View>
         <Modal /> 
+
       </View>
     );
   }
