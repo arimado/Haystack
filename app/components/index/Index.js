@@ -65,7 +65,7 @@ class Index extends Component {
                      : <Stack key={i} data={stack} isSwipe={true}/> )
           })}
         </View>
-        <Modal />
+        <Modal /> 
       </View>
     );
   }

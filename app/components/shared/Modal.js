@@ -4,8 +4,11 @@ import {
   View,
   StyleSheet,
   Animated,
-  Text
+  Text,
+  TouchableOpacity
 } from 'react-native'
+
+import Icon from 'react-native-vector-icons/Entypo'
 
 import { MODAL_COLOR } from '../../constants/layout'
 
@@ -34,8 +37,20 @@ class Modal extends Component {
         <View style={s.verticalSpacer}/>
         <Animated.View style={[s.box, {transform: [{ scale }]}]}>
           <View style={s.modal}>
-            <View></View>
-            <View></View>
+            <View style={s.row}>
+               <Text> Image </Text>
+            </View>
+            <View style={s.row}>
+              <Text> You matched </Text>
+            </View>
+            <View style={s.buttonsParent}>
+              <TouchableOpacity style={s.button}>
+                <Text style={s.buttonText}> Message [name] now </Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={s.button}>
+                <Text style={s.buttonText}> Go back to the stack </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </Animated.View>
         <View style={s.verticalSpacer} />
@@ -64,6 +79,23 @@ const s = StyleSheet.create({
   },
   verticalSpacer: {
     flex: 0.3,
+  },
+  row: {
+    flex: 1
+  },
+  buttonsParent: {
+    backgroundColor: 'blueviolet',
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'center',
+  },
+  button: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  buttonText: {
+    color: 'cornsilk',
+    textAlign: 'center'
   }
 })
 

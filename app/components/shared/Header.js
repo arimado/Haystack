@@ -45,7 +45,6 @@ const Header = ({handleNavigate, resetStacks}) => {
       <StatusBarBg/>
       <View style={s.container}>
         <TouchableOpacity style={s.button} onPress={() => { handleNavigate(INTRO_ROUTE) }} >
-            {/*<Text style={s.buttonText}> M </Text>*/}
             <Icon name="text-document-inverted" style={s.buttonText} />
         </TouchableOpacity>
         <TouchableOpacity style={s.button} onPress={() => {resetStacks()}}>
