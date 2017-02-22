@@ -1,20 +1,11 @@
 import React, { Component } from 'react'
 
 import {
-  AppRegistry,
   StyleSheet,
-  Text,
   View,
-  NavigationExperimental,
-  TouchableOpacity,
-  PanResponder,
-  Animated,
-  ScrollView
-} from 'react-native'
+} from 'react-native';
 
-import S from '../styles/styles.js';
-
-import _ from 'lodash';
+import S from 'app/components/styles/styles';
 
 // -----------------------------------------------------------------------------
 
@@ -23,9 +14,9 @@ import _ from 'lodash';
 import store from '../../store/reducers';
 import RoutesContainer from '../../routes/RoutesContainer';
 import Header from '../shared/Header';
-import Modal from '../shared/Modal'
-import Stack from '../stack/Stack'
-import StackScroll from '../stack/StackScroll'
+import Modal from '../shared/Modal';
+import Stack from '../stack/Stack';
+import StackScroll from '../stack/StackScroll';
 
 // -----------------------------------------------------------------------------
 
@@ -34,11 +25,6 @@ const BACK = {
 }
 
 // -----------------------------------------------------------------------------
-
-// const StackScroll = (props) => (
-//   <ScrollView>
-//       <Stack data={props.data} isSwipe={props.isSwipe}/>
-//   </ScrollView>);
 
 class Index extends Component {
   constructor(props) {
