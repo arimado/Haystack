@@ -59,6 +59,10 @@ class Routes extends Component {
         if (scene.key === prefix + 'index') {
             return <Index _handleNavigate={this._handleNavigate.bind(this)} />
         }
+        if (scene.key === prefix + 'match-list') {
+            console.log('route to match list')
+            return
+        }
     }
 
     render() {

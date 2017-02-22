@@ -67,7 +67,8 @@ class Modal extends Component {
 
   _pressClose() {
     return () => {
-      this.props.deactivateStack();
+      // this.props.deactivateStack();
+      this.props.nextCard();
       Animated.timing(this.state.opacity, {
         toValue: CLOSE_OPACITY,
         duration: 200
@@ -141,7 +142,8 @@ import {
 
 import {
   toggleMatchModal,
-  deactivateStack
+  deactivateStack,
+  nextCard
 } from '../../store/actions'
 
 // -----------------------------------------------------------------------------
@@ -150,7 +152,8 @@ import {
 const mapDispatchToProps = (dispatch) => {
   return {
     toggleMatchModal: () => dispatch(toggleMatchModal()),
-    deactivateStack: stackNum => dispatch(deactivateStack(stackNum))
+    deactivateStack: stackNum => dispatch(deactivateStack(stackNum)),
+    nextCard: () => dispatch(nextCard())
   }
 }
 
