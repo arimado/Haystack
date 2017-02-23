@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   View,
+  Text
 } from 'react-native';
 
 import S from 'app/components/styles/styles';
@@ -11,12 +12,12 @@ import S from 'app/components/styles/styles';
 
 // reducers.js currently holds the store object
 
-import store from '../../store/reducers';
-import RoutesContainer from '../../routes/RoutesContainer';
-import Header from '../shared/Header';
-import Modal from '../shared/Modal';
-import Stack from '../stack/Stack';
-import StackScroll from '../stack/StackScroll';
+import store from 'app/store/reducers';
+import RoutesContainer from 'app/routes/RoutesContainer';
+import Header from 'app/components/shared/Header';
+import Modal from 'app/components/shared/Modal';
+import Stack from 'app/components/stack/Stack';
+import StackScroll from 'app/components/stack/StackScroll';
 
 // -----------------------------------------------------------------------------
 
@@ -27,9 +28,6 @@ const BACK = {
 // -----------------------------------------------------------------------------
 
 class Index extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const s = style(this);
 
@@ -42,14 +40,15 @@ class Index extends Component {
 
     return (
       <View style={S.base}>
-        <Header handleNavigate={this.props._handleNavigate}
-                resetStacks={this.props.resetStacks}/>
+        <Header
+          handleNavigate={this.props._handleNavigate}
+          resetStacks={this.props.resetStacks}
+        />
         <View style={s.stacksContainer}>
-          {currentStacks.map((stack, i) =>  {
-            return ( stack.id === activeStack
-                     ? <StackScroll key={i} data={stack} isSwipe={false} />
-                     : <Stack key={i} data={stack} isSwipe={true}/> )
-          })}
+          {currentStacks.map((stack, i) => (stack.id === activeStack
+                     ? <StackScroll key={stack.id} data={stack} isSwipe={false} />
+                     : <Stack key={stack.id} data={stack} isSwipe={true}/> )
+          )}
         </View>
         { showMatchModal
             ? <Modal handleNavigate={this.props._handleNavigate}/>
