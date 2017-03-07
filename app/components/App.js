@@ -27,9 +27,8 @@ import _ from 'lodash';
 
 // reducers.js currently holds the store object
 
-import store from '../store/reducers';
-import RoutesContainer from '../routes/RoutesContainer';
-import Login from './login/Login';
+import store from 'app/store/reducers';
+import RoutesContainer from 'app/routes/RoutesContainer';
 
 // -----------------------------------------------------------------------------
 

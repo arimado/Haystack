@@ -14,8 +14,8 @@ import _ from 'lodash';
 // -----------------------------------------------------------------------------
 
 // reducers.js currently holds the store object
-import store from '../../store/reducers';
-import RoutesContainer from '../../routes/RoutesContainer';
+import store from 'app/store/reducers';
+import RoutesContainer from 'app/routes/RoutesContainer';
 
 // -----------------------------------------------------------------------------
 
@@ -39,6 +39,7 @@ class Login extends Component {
   render() {
     return (
       <View>
+          <Text> Login screen </Text>
       </View>
     );
   }
@@ -56,7 +57,7 @@ import {
   connect
 } from 'react-redux';
 
-import { incrementCounter } from '../../store/actions'
+import { incrementCounter } from 'app/store/actions'
 
 // -----------------------------------------------------------------------------
 

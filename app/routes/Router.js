@@ -22,9 +22,9 @@ const {
   StateUtils: NavigationStateUtils
 } = NavigationExperimental
 
-import Intro from '../components/intro/Intro';
-import Login from '../components/login/Login';
-import Index from '../components/index/Index';
+import Intro from 'app/components/intro/Intro';
+import Login from 'app/login';
+import Index from 'app/components/index/Index';
 
 class Routes extends Component {
 
@@ -53,15 +53,15 @@ class Routes extends Component {
     _renderScene(props) {
         const prefix = 'scene_'
         const { scene } = props
-        if (scene.key === prefix + 'intro') {
-            return  <Intro _handleNavigate={this._handleNavigate.bind(this)} />
-        }
-        if (scene.key === prefix + 'index') {
-            return <Index _handleNavigate={this._handleNavigate.bind(this)} />
-        }
-        if (scene.key === prefix + 'match-list') {
-            console.log('route to match list')
-            return
+        switch(scene.key) {
+          case prefix + 'intro':
+            return <Intro _handleNavigate={this._handleNavigate.bind(this)} />;
+          case prefix + 'index':
+            return <Index _handleNavigate={this._handleNavigate.bind(this)} />;
+          case prefix + 'login':
+            return <Login _handleNavigate={this._handleNavigate.bind(this)} />;
+          default:
+            return;
         }
     }
 

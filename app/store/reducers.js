@@ -90,7 +90,7 @@ const initialNavState = {
     key: 'root',
     routes: [
         {
-            key: 'index',
+            key: 'login',
             // key: 'intro',
             // key: 'index',
             title: 'Welcome',
