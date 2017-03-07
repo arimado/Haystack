@@ -1,31 +1,23 @@
 import React, { Component } from 'react'
 
 import {
-  AppRegistry,
   StyleSheet,
-  Text,
   View,
-  NavigationExperimental,
-  TouchableOpacity,
-  PanResponder,
-  Animated,
-  ScrollView
-} from 'react-native'
+  Text
+} from 'react-native';
 
-import S from '../styles/styles.js';
-
-import _ from 'lodash';
+import S from 'app/components/styles/styles';
 
 // -----------------------------------------------------------------------------
 
 // reducers.js currently holds the store object
 
-import store from '../../store/reducers';
-import RoutesContainer from '../../routes/RoutesContainer';
-import Header from '../shared/Header';
-import Modal from '../shared/Modal'
-import Stack from '../stack/Stack'
-import StackScroll from '../stack/StackScroll'
+import store from 'app/store/reducers';
+import RoutesContainer from 'app/routes/RoutesContainer';
+import Header from 'app/components/shared/Header';
+import Modal from 'app/components/shared/Modal';
+import Stack from 'app/components/stack/Stack';
+import StackScroll from 'app/components/stack/StackScroll';
 
 // -----------------------------------------------------------------------------
 
@@ -34,44 +26,6 @@ const BACK = {
 }
 
 // -----------------------------------------------------------------------------
-
-// const StackScroll = (props) => (
-//   <ScrollView>
-//       <Stack data={props.data} isSwipe={props.isSwipe}/>
-//   </ScrollView>);
-
-class Index extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    const s = style(this);
-
-    const { stacks, visibleStack, activeStack, showMatchModal } = this.props.state.main;
-
-    let currentStacks = stacks
-      .map((s, i) => ({ stackNumber: i, ...s }))
-      .slice(visibleStack, visibleStack + 4)
-      .reverse();
-
-    return (
-      <View style={S.base}>
-        <Header handleNavigate={this.props._handleNavigate}
-                resetStacks={this.props.resetStacks}/>
-        <View style={s.stacksContainer}>
-          {currentStacks.map((stack, i) =>  {
-            return ( stack.id === activeStack
-                     ? <StackScroll key={i} data={stack} isSwipe={false} />
-                     : <Stack key={i} data={stack} isSwipe={true}/> )
-          })}
-        </View>
-        { showMatchModal
-            ? <Modal handleNavigate={this.props._handleNavigate}/>
-            : null }
-      </View>
-    );
-  }
-}
 
 const style = (c) => (StyleSheet.create({
   stacksContainer: {
@@ -90,6 +44,37 @@ const style = (c) => (StyleSheet.create({
     backgroundColor: 'red'
   }
 }))
+
+class Index extends Component {
+  render() {
+    const s = style(this);
+
+    const { stacks, visibleStack, activeStack, showMatchModal } = this.props.state.main;
+
+    let currentStacks = stacks
+      .map((s, i) => ({ stackNumber: i, ...s }))
+      .slice(visibleStack, visibleStack + 4)
+      .reverse();
+
+    return (
+      <View style={S.base}>
+        <Header
+          handleNavigate={this.props._handleNavigate}
+          resetStacks={this.props.resetStacks}
+        />
+        <View style={s.stacksContainer}>
+          {currentStacks.map((stack, i) => (stack.id === activeStack
+                     ? <StackScroll key={stack.id} data={stack} isSwipe={false} />
+                     : <Stack key={stack.id} data={stack} isSwipe={true}/> )
+          )}
+        </View>
+        { showMatchModal
+            ? <Modal handleNavigate={this.props._handleNavigate}/>
+            : null }
+      </View>
+    );
+  }
+}
 
 
 // -----------------------------------------------------------------------------
