@@ -11,7 +11,9 @@ import {
 
 import {
   LoginButton,
-  AccessToken
+  AccessToken,
+  GraphRequest,
+  GraphRequestManager
 } from 'react-native-fbsdk';
 
 import _ from 'lodash';
@@ -33,6 +35,28 @@ const STACKS_ROUTE = {
 }
 
 // -----------------------------------------------------------------------------
+
+
+const responseInfoCallback = function (error, result) {
+  if (error) {
+    alert('Error fetching data: ' + error.toString());
+  } else {
+    alert('Success fetching data: ' + result.toString());
+    debugger;
+  }
+}
+
+// Create a graph request asking for user information with a callback to handle the response.
+const infoRequest = new GraphRequest(
+  '/me',
+  null,
+  responseInfoCallback,
+);
+// Start the graph request.
+const getFBMe = function () {
+  new GraphRequestManager().addRequest(infoRequest).start();
+}
+
 
 class Login extends Component {
 
@@ -63,6 +87,9 @@ class Login extends Component {
               }
             }
             onLogoutFinished={() => alert("logout.")}/>
+            <TouchableOpacity onPress={getFBMe}>
+              <Text>ME</Text>
+            </TouchableOpacity>
       </View>
     );
   }
