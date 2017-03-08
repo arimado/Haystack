@@ -9,7 +9,10 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import { LoginButton } from 'react-native-fbsdk';
+import {
+  LoginButton,
+  AccessToken
+} from 'react-native-fbsdk';
 
 import _ from 'lodash';
 
@@ -43,19 +46,23 @@ class Login extends Component {
       <View>
           <Text> Login screen </Text>
           <LoginButton
-          publishPermissions={["publish_actions"]}
-          onLoginFinished={
-            (error, result) => {
-              if (error) {
-                alert("Login failed with error: " + result.error);
-              } else if (result.isCancelled) {
-                alert("Login was cancelled");
-              } else {
-                alert("Login was successful with permissions: " + result.grantedPermissions)
+            publishPermissions={["publish_actions"]}
+            onLoginFinished={
+              (error, result) => {
+                if (error) {
+                  alert("login has error: " + result.error);
+                } else if (result.isCancelled) {
+                  alert("login is cancelled.");
+                } else {
+                  AccessToken.getCurrentAccessToken().then(
+                    (data) => {
+                      alert(data.accessToken.toString())
+                    }
+                  )
+                }
               }
             }
-          }
-          onLogoutFinished={() => alert("User logged out")}/>
+            onLogoutFinished={() => alert("logout.")}/>
       </View>
     );
   }
