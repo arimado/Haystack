@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 import {
   AppRegistry,
@@ -7,7 +7,9 @@ import {
   View,
   NavigationExperimental,
   TouchableOpacity
-} from 'react-native'
+} from 'react-native';
+
+import { LoginButton } from 'react-native-fbsdk';
 
 import _ from 'lodash';
 
@@ -40,10 +42,96 @@ class Login extends Component {
     return (
       <View>
           <Text> Login screen </Text>
+          <LoginButton
+          publishPermissions={["publish_actions"]}
+          onLoginFinished={
+            (error, result) => {
+              if (error) {
+                alert("Login failed with error: " + result.error);
+              } else if (result.isCancelled) {
+                alert("Login was cancelled");
+              } else {
+                alert("Login was successful with permissions: " + result.grantedPermissions)
+              }
+            }
+          }
+          onLogoutFinished={() => alert("User logged out")}/>
       </View>
     );
   }
 }
+
+const s = StyleSheet.create({
+  base: {
+    flex: 1
+  },
+  bg: {
+    flex: 1,
+    backgroundColor: 'cornflowerblue'
+  },
+  topSection: {
+    backgroundColor: 'burlywood',
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+
+  contentSpacerTop: {
+    flex: 0.3
+  },
+
+  content: {
+    backgroundColor: 'lemonchiffon',
+    padding: 20,
+    flex: 1
+  },
+
+    logo: {
+      fontSize: 40
+    },
+
+  contentSpacerBot: {
+    flex: 0.2
+  },
+
+  botSection: {
+    backgroundColor: 'coral',
+    flex: 0.3
+  },
+  bottomSection: {
+    backgroundColor: '#F5FCFF'
+  },
+  pagerParent: {
+    backgroundColor: 'chartreuse',
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1
+  },
+  pager: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+    pagerItem: {
+      flex: 1,
+      textAlign: 'center',
+      color: 'cornsilk'
+    },
+  buttonsParent: {
+    backgroundColor: 'blueviolet',
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'center',
+  },
+  button: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  buttonText: {
+    color: 'cornsilk',
+    textAlign: 'center'
+  }
+
+})
 
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
