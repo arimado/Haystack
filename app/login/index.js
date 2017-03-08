@@ -36,25 +36,46 @@ const STACKS_ROUTE = {
 
 // -----------------------------------------------------------------------------
 
+const graphReq = function(req) {
+  return new GraphRequestManager().addRequest(req).start();
+};
 
 const responseInfoCallback = function (error, result) {
   if (error) {
+    console.log('error');
     alert('Error fetching data: ' + error.toString());
+    // debugger;
   } else {
+    console.log('success')
     alert('Success fetching data: ' + result.toString());
-    debugger;
+    // debugger;
   }
-}
+} 
 
 // Create a graph request asking for user information with a callback to handle the response.
-const infoRequest = new GraphRequest(
+const userRequest = new GraphRequest(
+  "/{user-id}",
+  null,
+  responseInfoCallback,
+);
+
+
+const meRequest = new GraphRequest(
   '/me',
   null,
   responseInfoCallback,
 );
+
 // Start the graph request.
 const getFBMe = function () {
-  new GraphRequestManager().addRequest(infoRequest).start();
+  console.log('getFBme')
+  var req = new GraphRequestManager().addRequest(meRequest).start(function() {
+    console.log('getFBme done');
+  });
+}
+
+const getFBUser = function () {
+  return graphReq(userRequest);
 }
 
 
@@ -88,6 +109,9 @@ class Login extends Component {
             }
             onLogoutFinished={() => alert("logout.")}/>
             <TouchableOpacity onPress={getFBMe}>
+              <Text>ME</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={getFBUser}>
               <Text>ME</Text>
             </TouchableOpacity>
       </View>
