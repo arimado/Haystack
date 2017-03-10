@@ -75,7 +75,7 @@ const meRequest = new GraphRequest(
 );
 
 const profileReq = new GraphRequest(
-  `/me?fields=email,education,first_name,last_name,location,work`,
+  '/me?fields=email,education,first_name,last_name,location,work,albums',
   null,
   function(error, result) {
     if (error) {
@@ -86,6 +86,7 @@ const profileReq = new GraphRequest(
       console.log('success')
       alert('Success fetching data: ' + result.toString());
       if ( result.id ) {
+        console.log('profileReq: ', result );
         graphReq(realProfileReq(result.id));
       }
     }
@@ -93,7 +94,7 @@ const profileReq = new GraphRequest(
 );
 
 const realProfileReq = function(id) {
-  return new GraphRequest(`${id}?fields=email,education,location,work`, null, function(error, result) {
+  return new GraphRequest(`${id}?fields=email,work,albums{type}`, null, function(error, result) {
     if ( error ) {
       console.log('real profile request didnt work: ', error);
     } else {
@@ -127,6 +128,7 @@ const loginFinishHandler = function (error, result) {
     AccessToken.getCurrentAccessToken().then(
       (data) => {
         alert(data.accessToken.toString())
+        console.log(data.accessToken.toString())
       }
     )
   }
