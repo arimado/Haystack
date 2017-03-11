@@ -84,7 +84,7 @@ const profileReq = new GraphRequest(
       // debugger;
     } else {
       console.log('success')
-      alert('Success fetching data: ' + result.toString());
+      // alert('Success fetching data: ' + result.toString());
       if ( result.id ) {
         console.log('profileReq: ', result );
         graphReq(realProfileReq(result.id));
@@ -96,8 +96,10 @@ const profileReq = new GraphRequest(
 const realProfileReq = function(id) {
   return new GraphRequest(`${id}?fields=email,work,albums{type}`, null, function(error, result) {
     if ( error ) {
+      alert('real profile was not requested');
       console.log('real profile request didnt work: ', error);
     } else {
+      alert('real profile was requested');
       console.log('it worked: ', result);
     }
   })
