@@ -16,11 +16,15 @@ import {
   GraphRequestManager
 } from 'react-native-fbsdk';
 
+import {
+  fetchProfile,
+  READ_PERMISSIONS
+} from 'app/api/fb';
+
 import _ from 'lodash';
 
-// -----------------------------------------------------------------------------
-
-// reducers.js currently holds the store object
+import { connect } from 'react-redux';
+import { incrementCounter } from 'app/store/actions'
 import store from 'app/store/reducers';
 import RoutesContainer from 'app/routes/RoutesContainer';
 
@@ -36,130 +40,32 @@ const STACKS_ROUTE = {
 
 // -----------------------------------------------------------------------------
 
-const readPermissions = [
-  'email',
-  'user_about_me',
-  'user_birthday',
-  'user_photos',
-  'user_work_history'
-]
-
-
-const graphReq = function(req) {
-  return new GraphRequestManager().addRequest(req).start();
-};
-
-const responseInfoCallback = function (error, result, cb) {
+const loginFinishHandler = function (error, result) {
   if (error) {
-    console.log('error');
-    alert('Error fetching data: ' + error.toString());
-    // debugger;
-  } else {
-    console.log('success')
-    alert('Success fetching data: ' + result.toString());
+    return alert("login has error: " + result.error);
   }
-}
-
-// Create a graph request asking for user information with a callback to handle the response.
-const userRequest = new GraphRequest(
-  "/{user-id}",
-  null,
-  responseInfoCallback,
-);
-
-
-const meRequest = new GraphRequest(
-  '/me',
-  null,
-  responseInfoCallback,
-);
-
-const profileReq = new GraphRequest(
-  '/me?fields=email,education,first_name,last_name,location,work,albums',
-  null,
-  function(error, result) {
-    if (error) {
-      console.log('error');
-      alert('Error fetching data: ' + error.toString());
-      // debugger;
-    } else {
-      console.log('success')
-      // alert('Success fetching data: ' + result.toString());
-      if ( result.id ) {
-        console.log('profileReq: ', result );
-        graphReq(realProfileReq(result.id));
-      }
-    }
-  },
-);
-
-const realProfileReq = function(id) {
-  return new GraphRequest(`${id}?fields=email,work,albums{type}`, null, function(error, result) {
-    if ( error ) {
-      alert('real profile was not requested');
-      console.log('real profile request didnt work: ', error);
-    } else {
-      alert('real profile was requested');
-      console.log('it worked: ', result);
-    }
+  if (result.isCancelled) {
+    return alert("login is cancelled.");
+  }
+  AccessToken.getCurrentAccessToken().then( data => {
+    console.log('login successfull. Token: ', data.accessToken.toString())
   })
 }
 
-// Start the graph request.
-const getFBMe = function () {
-  console.log('getFBme')
-  var req = new GraphRequestManager().addRequest(meRequest).start(function() {
-    console.log('getFBme done');
-  });
-}
-
-const getFBUser = function () {
-  return graphReq(userRequest);
-}
-
-const getProfile = function () {
-  return graphReq(profileReq);
-}
-
-const loginFinishHandler = function (error, result) {
-  if (error) {
-    alert("login has error: " + result.error);
-  } else if (result.isCancelled) {
-    alert("login is cancelled.");
-  } else {
-    AccessToken.getCurrentAccessToken().then(
-      (data) => {
-        alert(data.accessToken.toString())
-        console.log(data.accessToken.toString())
-      }
-    )
-  }
-}
-
-
 class Login extends Component {
-
   constructor(props, context) {
     super(props);
-    console.log(props);
   }
-
   render() {
     return (
       <View>
           <Text> Login screen </Text>
           <LoginButton
-            readPermissions={readPermissions}
+            readPermissions={READ_PERMISSIONS}
             onLoginFinished={loginFinishHandler}
             onLogoutFinished={() => alert("logout.")}/>
-            <TouchableOpacity onPress={getFBMe}>
-              <Text>ME</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={getFBUser}>
-              <Text>ME</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={getProfile}>
-              <Text>PROFILE</Text>
+            <TouchableOpacity onPress={fetchProfile}>
+              <Text>FETCH PROFILE</Text>
             </TouchableOpacity>
       </View>
     );
@@ -171,19 +77,7 @@ const s = StyleSheet.create({
 })
 
 // -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
 // REDUX CONTAINER -------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-
-import {
-  connect
-} from 'react-redux';
-
-import { incrementCounter } from 'app/store/actions'
-
 // -----------------------------------------------------------------------------
 
 var mapStateToProps = (state) => {
