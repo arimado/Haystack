@@ -25,7 +25,6 @@ export const fetchProfile = function () {
     function(error, result) {
       if (error) {
         throw new Error("Error fetching profile");
-        return
       }
       console.log('fetchProfile successfull: ', result);
     }
@@ -33,5 +32,4 @@ export const fetchProfile = function () {
 }
 
 export const fetchProfilePhotos = function () {
-
 }

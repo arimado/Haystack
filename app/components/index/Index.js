@@ -6,6 +6,9 @@ import {
   Text
 } from 'react-native';
 
+
+import createStyleSheet 'app/styles';
+
 import S from 'app/components/styles/styles';
 
 // -----------------------------------------------------------------------------
@@ -27,6 +30,26 @@ const BACK = {
 
 // -----------------------------------------------------------------------------
 
+
+const style = createStyleSheet(common => ({
+  base: common.base
+  stacksContainer: {
+    flex: 1,
+    backgroundColor: 'indigo',
+    position: 'relative'
+  },
+  stackContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    flex: 1,
+    margin: 15,
+    backgroundColor: 'red'
+  }
+}))
+
 const style = (c) => (StyleSheet.create({
   stacksContainer: {
     flex: 1,
@@ -44,6 +67,8 @@ const style = (c) => (StyleSheet.create({
     backgroundColor: 'red'
   }
 }))
+
+
 
 class Index extends Component {
   render() {
