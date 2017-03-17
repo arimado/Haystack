@@ -1,19 +1,15 @@
 import React, { Component } from 'react'
-
 import {
   StyleSheet,
   View,
   Text
 } from 'react-native';
+import { connect } from 'react-redux';
+import { resetStacks } from '../../store/actions';
 
-
-import createStyleSheet 'app/styles';
+import createStyleSheet from 'app/styles';
 
 import S from 'app/components/styles/styles';
-
-// -----------------------------------------------------------------------------
-
-// reducers.js currently holds the store object
 
 import store from 'app/store/reducers';
 import RoutesContainer from 'app/routes/RoutesContainer';
@@ -22,21 +18,17 @@ import Modal from 'app/components/shared/Modal';
 import Stack from 'app/components/stack/Stack';
 import StackScroll from 'app/components/stack/StackScroll';
 
-// -----------------------------------------------------------------------------
-
-const BACK = {
-  type: 'pop'
-}
-
-// -----------------------------------------------------------------------------
-
+/*############################################################################*/
+/*############################################################################*/
+/*############################################################################*/
+/*############################################################################*/
 
 const style = createStyleSheet(common => ({
-  base: common.base
+  base: common.base,
   stacksContainer: {
     flex: 1,
     backgroundColor: 'indigo',
-    position: 'relative'
+    position: 'relative',
   },
   stackContainer: {
     position: 'absolute',
@@ -46,41 +38,18 @@ const style = createStyleSheet(common => ({
     bottom: 0,
     flex: 1,
     margin: 15,
-    backgroundColor: 'red'
+    backgroundColor: 'red',
   }
 }))
-
-const style = (c) => (StyleSheet.create({
-  stacksContainer: {
-    flex: 1,
-    backgroundColor: 'indigo',
-    position: 'relative'
-  },
-  stackContainer: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    flex: 1,
-    margin: 15,
-    backgroundColor: 'red'
-  }
-}))
-
-
 
 class Index extends Component {
   render() {
     const s = style(this);
-
     const { stacks, visibleStack, activeStack, showMatchModal } = this.props.state.main;
-
     let currentStacks = stacks
       .map((s, i) => ({ stackNumber: i, ...s }))
       .slice(visibleStack, visibleStack + 4)
       .reverse();
-
     return (
       <View style={S.base}>
         <Header
@@ -101,24 +70,10 @@ class Index extends Component {
   }
 }
 
-
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// REDUX CONTAINER -------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
-
-import {
-  connect
-} from 'react-redux';
-
-// -----------------------------------------------------------------------------
-
-import {
-resetStacks
-} from '../../store/actions'
+/*############################################################################*/
+/*############################################################################*/
+/*############################################################################*/
+/*############################################################################*/
 
 var mapStateToProps = (state) => {
   return {
