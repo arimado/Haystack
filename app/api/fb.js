@@ -6,7 +6,7 @@ import {
 
 
 // TODO - Maybe move the cosntants somewhere else?
-export const READ_PERMISSIONS = [
+const READ_PERMISSIONS = [
   'email',
   'user_about_me',
   'user_birthday',
@@ -15,10 +15,11 @@ export const READ_PERMISSIONS = [
 ]
 
 const initGraphReq = function ( req ) {
-  return new GraphRequestManager().addRequest(req).start();
+  return new GraphRequestManager().addRequest(req)
 };
 
-export const fetchProfile = function () {
+const fetchProfile = function () {
+
   return initGraphReq(new GraphRequest(
     '/me?fields=email,education,first_name,last_name,location,work,albums',
     null,
@@ -26,10 +27,16 @@ export const fetchProfile = function () {
       if (error) {
         throw new Error("Error fetching profile");
       }
+
+      return Promise.resolve(result)
       console.log('fetchProfile successfull: ', result);
     }
   ));
 }
 
-export const fetchProfilePhotos = function () {
+
+export {
+  READ_PERMISSIONS,
+  fetchProfile,
+  initGraphReq
 }

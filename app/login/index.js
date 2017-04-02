@@ -109,7 +109,12 @@ const loginFinishHandler = function (error, result) {
     return alert("login is cancelled.");
   }
   AccessToken.getCurrentAccessToken().then( data => {
+
+    fetch('http://localhost:3005/').then(data => {})
+
     console.log('login successfull. Token: ', data.accessToken.toString())
+    console.log(fetchProfile());
+    
   })
 }
 

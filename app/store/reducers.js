@@ -92,7 +92,7 @@ const initialNavState = {
         {
             key: 'login',
             // key: 'intro',
-            // key: 'index',
+            key: 'index',
             title: 'Welcome',
         }
     ]

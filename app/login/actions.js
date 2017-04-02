@@ -1,18 +1,27 @@
+import { postUser } from '../api/server'
 
-export const fetchProfile = function () {
+const fetchProfile = function () {
   return {type: T.FETCH_PROFILE};
 }
 
-export const updateFirstName = function () {
+const updateFirstName = function () {
   return {};
 }
 
-export const updateProfileSummary = function () {
+const updateProfileSummary = function () {
   return {};
 }
 
-export const addImage = function () {
+const addImage = function () {
   return {};
+}
+
+function createUser(user) {
+  return
 }
 
 // ---
+
+export {
+  createUser
+}
